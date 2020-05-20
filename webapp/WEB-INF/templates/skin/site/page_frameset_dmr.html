@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>DansMaRue Suivi d'une anomalie</title>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <base href="${base_url}" />
+        <meta charset="UTF-8" />
+        <meta name="description" content="DansMaRue Suivi d'une anomalie" />
+		<meta property="og:title" content="DansMaRue Suivi d'une anomalie"/>
+		<meta property="og:image" content=""/>
+		<meta property="og:description" content="DansMaRue Suivi d'une anomalie"/>
+		<meta property="og:type" content="non_profit"/>
+		<meta property="og:site_name" content="DansMaRue Suivi d'une anomalie"/>		
+		
+        ${document_meta?default("<!-- no document_meta -->")}
+        <link rel="stylesheet" href="js/jquery/plugins/treeview/jquery.treeview.css" type="text/css" media="screen, projection" />
+<!--         <link rel="stylesheet" href="js/jquery/plugins/ui/css/jquery-ui.min.css" type="text/css" media="screen, projection" /> -->
+        <link rel="stylesheet" href="js/jquery/plugins/autocomplete/jquery.autocomplete.css" type="text/css" media="screen, projection" />
+        ${plugins_css_links}
+
+		<link href="css/bootstrap.css" rel="stylesheet"/>  
+		<link href="css/dansmarue.css" rel="stylesheet"/>
+		<link href="css/sira.css" rel="stylesheet"/>
+        <script src="js/jquery/jquery.min.js" type="text/javascript"></script>
+    </head>
+    <body>
+
+		${page_header}
+		<div class="hero" >
+			<div class="hero-filter">
+				<div class="container">
+					<div class="main-heading vertical-align text-center">
+						<h1>Déclarer une anomalie sur un espace punlic ou un équipement municipale</h1>
+					</div>
+				</div>
+			</div>
+			<img  src="images/image-DMR/hero.jpg" class="hidden" alt="Image d'illustration du téléservice dans ma rue"/>
+		</div>
+		${page_footer}
+		${statistical_include}
+        <script src="js/jquery/plugins/treeview/jquery.cookie.js" type="text/javascript"></script>
+        <script src="js/jquery/plugins/treeview/jquery.treeview.pack.js" type="text/javascript"></script>
+<!--         <script src="js/jquery/plugins/ui/jquery-ui.js" type="text/javascript"></script>
+        <script src="js/jquery/plugins/ui/datepicker-fr.js" type="text/javascript"></script> -->
+        <script src="js/jquery/plugins/autocomplete/jquery.autocomplete.pack.js" type="text/javascript"></script>
+        ${plugins_javascript_links}
+        <!-- Piwik include -->
+		${piwik!}
+    </body>
+</html>
+

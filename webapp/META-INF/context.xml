@@ -1,0 +1,17 @@
+<Context>
+         <Resource name="jdbc/portal" auth="Container" type="javax.sql.DataSource"
+                        username=""
+                        password=""
+                        driverClassName="org.postgresql.Driver"
+                        url=""
+                        initialSize="2"
+                        maxActive="20"
+                        testOnBorrow="true"
+						testWhileIdle="true"
+                        removeAbandoned="true"
+                        logAbandoned="true"
+                        removeAbandonedTimeout="300"
+          				validationQuery="SELECT 1"
+                        timeBetweenEvictionRunsMillis="3600000"
+                />
+</Context>

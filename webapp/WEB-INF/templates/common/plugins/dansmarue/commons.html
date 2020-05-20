@@ -1,0 +1,430 @@
+<#macro header>
+<header>
+	<nav class="navbar navbar-default navbar-general">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="logo" href="jsp/site/Portal.jsp?page=fodansmarue">
+					<img class="img-responsive " alt="Tele" src="images/image-DMR/logo.png"/>
+				</a>
+				<a class="logo mobile" href="jsp/site/Portal.jsp?page=fodansmarue">
+					<img class="img-responsive" alt="Tele" src="images/image-DMR/logo-paris-mobile.png"/>
+				</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
+		<div class="hero" >
+			<div class="hero-filter">
+				<div class="container">
+					<div class="main-heading vertical-align">
+						<h1>#i18n{fodansmarue.banner.title}</h1>
+					</div>
+				</div>
+			</div>
+			<img  src="images/image-DMR/hero.jpg" class="hidden" alt="Image d'illustration du t&eacute;l&eacute;service dans ma rue"/>
+		</div>
+</#macro>
+<#macro descriptionSteps>
+<div class="picto-steps">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs12 col-md-4">
+				<div class="step pull-middle">
+					<small>
+						<span>1</span>
+					</small>
+					<div class="picto">
+						<img src="images/image-DMR/step-picto1.png">
+					</div>
+				</div>
+				<div class="step-description">
+					<span>#i18n{fodansmarue.etape.description.step.un}</span>
+				</div>
+			</div>
+			<div class="col-xs12 col-md-4">
+				<div class="step pull-middle">
+					<small>
+						<span>2</span>
+					</small>
+					<div class="picto">
+						<img src="images/image-DMR/step-picto2.png">
+					</div>
+				</div>
+				<div class="step-description">
+					<span>#i18n{fodansmarue.etape.description.step.deux}</span>
+				</div>
+			</div>
+			<div class="col-xs12 col-md-4">
+				<div class="step pull-middle">
+					<small>
+						<span>3</span>
+					</small>
+					<div class="picto">
+						<img src="images/image-DMR/step-picto3.png">
+					</div>
+				</div>
+				<div class="step-description">
+					<span>#i18n{fodansmarue.etape.description.step.trois}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</#macro>
+
+<#macro mobileDescription>
+	<div class="mobile-app">
+		<div class="container">
+		    <div class="row">
+			   <div class="col-md-11"><p>#dskey{sitelabels.site_property.inportant.information.htmlblock}</p></div>
+			</div>
+			<div class="row">
+				<div class="col-md-1 app-logo">
+					<img src="images/image-DMR/mobile-app.jpg">
+				</div>
+				<div class="col-md-10 app-description">
+					<span class="app-title">#dskey{sitelabels.site_property.app.title}</span>
+					<p>#dskey{sitelabels.site_property.app.content}</p>
+					<ul class="badges">
+						<li>
+							<a target="_blank" href="#dskey{sitelabels.site_property.mobile.android.link.href}" title="#i18n{fodansmarue.accueil.intro.android.download}">
+								<img class="img-responsive" src="images/image-DMR/google-play-badge.png" alt="image illustrant le store android">
+							</a>
+						</li>
+						<li>
+							<a target="_blank" href="#dskey{sitelabels.site_property.mobile.apple.link.href}" title="#i18n{fodansmarue.accueil.intro.ios.download}">
+								<img class="img-responsive" src="images/image-DMR/app-store-badge.png" alt="image illustrant le store apple">
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</#macro>
+
+<#macro stepActive step etape>
+	<div class="headline">
+		<div class="container">
+			<h2 class="title">
+				<img  src="images/image-DMR/step-${step}.png" alt="pictogramme etape numero ${step}">
+				<span>${i18n('fodansmarue.etape.formulaire.anomalie.'+ etape)}</span>
+			</h2>
+		</div>
+	</div>
+
+</#macro>
+<#macro mentionObligatoire>
+    <div class="container">
+    	<div class="row">
+        	<div class="col-md-offset-9 col-md-3 col-sm-offset-8 col-sm-4 col-xs-12">
+             	<p class="champs-info">#i18n{fodansmarue.mention.obligatoire}</p>
+            </div>
+         </div>
+    </div>
+</#macro>
+<#macro infobulle text id>
+	<#if text?has_content>
+		<div id="#${id}" class="infobulle" style="z-index:0;">
+			<div class="popover right">
+				<div class="arrow"></div>
+				<div class="popover-content">
+				  <p class="infobulle-center">${text}</p>
+				</div>
+			</div>
+		</div>
+	</#if>
+</#macro>
+
+<#macro selectSign name aria_describedby items='' default_value="" id=name size='' sort=false multiple=0 params='' title=''>
+	<select aria-describedby="${aria_describedby}" id="${id}" name="${name}" class="form-control<#if size!=''> input-${size}</#if>" <#if (multiple &gt; 0)>multiple size="${multiple}"</#if><#if params!=''> ${params}</#if><#if title!=''> ${title}</#if>>
+	<#if items?has_content>
+		<#if sort=true>
+			<#list items?sort_by("name") as item>
+			<#if default_value="${item.code}">
+			<option selected="selected" value="${item.code}" <#if !item.name?has_content>label="${i18n("portal.util.labelEmpty")}"</#if>>${item.name}</option>
+			<#else>
+			<option value="${item.code}" <#if !item.name?has_content>label="${i18n("portal.util.labelEmpty")}"</#if>>${item.name}</option>
+			</#if>
+			</#list>
+		<#else>
+			<#list items as item>
+			<#if default_value="${item.code}">
+			<option selected="selected" value="${item.code}" <#if !item.name?has_content>label="${i18n("portal.util.labelEmpty")}"</#if>>${item.name}</option>
+			<#else>
+			<option value="${item.code}" <#if !item.name?has_content>label="${i18n("portal.util.labelEmpty")}"</#if>>${item.name}</option>
+			</#if>
+			</#list>
+		</#if>
+	<#else>
+		<#nested>
+	</#if>
+	</select>
+</#macro>
+
+
+<#macro stepInactive step etape>
+            <div class="step">
+                <div class="headline">
+                    <div class="container">
+                        <h2 class="title">
+                            <img src="images/image-DMR/step-${step}-b.png" alt="pictogramme etape numero ${step} - non active">
+                            <span>${i18n('fodansmarue.etape.formulaire.anomalie.'+etape)}</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+</#macro>
+
+<#macro conditionGeneral>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <a target="_blank" class="cgu" href="#dskey{sitelabels.site_property.condition_utilisation.link.href}">#i18n{fodansmarue.lien.condition.general}</a>
+                </div>
+            </div>
+        </div>
+</#macro>
+<#macro rowPreviousStep etape view >
+<div class="step">
+	<div class="headline validation">
+     	<div class="container">
+         	<h2 class="title">
+            <img src="images/image-DMR/step-validation.png" alt="pictogramme etape validation - non active">
+            <span>${i18n('fodansmarue.etape.formulaire.anomalie.'+etape)}</span>
+            <p class="info-step1">227, rue de Bercy 75012 Paris</p> 
+             </h2>
+           <a href="jsp/site/Portal.jsp?page=fodansmarue&view=${view}"  class="btn modifier">#i18n{fodansmarue.modifier}</a>
+          </div>
+    </div>
+</div>
+</#macro>
+
+<#macro rowPreviousStepDeclaration >
+<div class="step">
+	<div class="headline validation">
+     	<div class="container">
+         	<h2 class="title">
+            	<img src="images/image-DMR/step-validation.png" alt="pictogramme etape numero 1 - non active">
+            	<span>#i18n{fodansmarue.etape.formulaire.anomalie.declaration}</span>
+            </h2>
+            <div class="bloc-indication">
+            	<#if choix_declaration == "Espace public">
+            		<p class="info-step1">#i18n{fodansmarue.etape.formulaire.anomalie.declaration.check.espace.public}</p>
+            	<#else>
+            		<p class="info-step1">${(typeEquipementLibelle)!}</p>
+            	</#if>
+            	
+            </div>            
+           <a href="jsp/site/Portal.jsp?page=fodansmarue&view=dansmarue"  class="btn modifier">#i18n{fodansmarue.modifier}</a>
+          </div>
+    </div>
+</div>
+</#macro>
+<#macro rowPreviousStepLocalisation >
+<div class="step">
+	<div class="headline validation">
+     	<div class="container">
+         	<h2 class="title">
+            	<img src="images/image-DMR/step-validation.png" alt="pictogramme etape numero 2 - non active">
+            	<span>#i18n{fodansmarue.etape.formulaire.anomalie.localisation}</span>
+            </h2>	
+            <div class="bloc-indication">
+            	<#if choix_declaration == "Espace public">
+            		<p class="info-step1">${(adresse.adresse)!}</p>
+            	<#else>
+            		<p class="info-step1">${(equipement.name)!}</p>
+            	</#if>
+            </div>            
+           <a href="jsp/site/Portal.jsp?page=fodansmarue&view=adresse"  class="btn modifier">#i18n{fodansmarue.modifier}</a>
+          </div>
+    </div>
+</div>
+</#macro>
+<#macro rowPreviousStepDoublons >
+<div class="step">
+	<div class="headline validation">
+     	<div class="container">
+         	<h2 class="title">
+            	<img src="images/image-DMR/step-validation.png" alt="pictogramme etape numero 3 - non active">
+            	<span>#i18n{fodansmarue.etape.formulaire.anomalie.enregistre}</span>
+           	</h2>
+            <div class="bloc-indication">
+            	<p class="info-step1">#i18n{fodansmarue.doublons.recap}</p> 
+            </div>             
+           <a href="jsp/site/Portal.jsp?page=fodansmarue&view=doublons"  class="btn modifier">#i18n{fodansmarue.modifier}</a>
+          </div>
+    </div>
+</div>
+</#macro>
+<#macro rowPreviousStepCategorie >
+<div class="step">
+	<div class="headline validation">
+     	<div class="container">
+         	<h2 class="title">
+            	<img src="images/image-DMR/step-validation.png" alt="pictogramme etape numero 4 - non active">
+            	<span>${i18n('fodansmarue.etape.formulaire.anomalie.categorie')}</span>
+           	</h2>
+            <div class="bloc-indication">
+            	<p class="info-step1">${(typeSignalement)!}</p>
+            </div>             
+           <a href="jsp/site/Portal.jsp?page=fodansmarue&view=categorie" class="btn modifier">#i18n{fodansmarue.modifier}</a>
+          </div>
+    </div>
+</div>
+</#macro>
+<#macro rowPreviousStepFinalisation >
+<script type="text/javascript">
+function formatBytes(bytes,decimals) {
+   if(bytes == 0) return '0 Octet';
+   var k = 1000;
+   var dm = decimals + 1 || 0;
+   var sizes = ['Octets', 'Ko', 'Mo', 'Go', 'To', 'Po', 'Eo', 'Zo', 'Yo'];
+   var i = Math.floor(Math.log(bytes) / Math.log(k));
+   return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+}
+</script>
+<#assign baseUrl= "jsp/site/Portal.jsp?page=fodansmarue&">
+<div class="step">
+	<div class="headline validation">
+     	<div class="container">
+         	<h2 class="title">
+            	<img src="images/image-DMR/step-validation.png" alt="pictogramme etape numero 5 - non active">
+            	<span>${i18n('fodansmarue.etape.formulaire.anomalie.finalisation')}</span>
+            </h2>	
+            <div class="bloc-indication">
+            	<p class="info-step1">#i18n{fodansmarue.etape.recap.finalisation.priorite}  ${(signalementFOBean.priorite.libelle)!}</p>
+            	<p class="info-sup info-sup-precisions">#i18n{fodansmarue.etape.recap.finalisation.precision} ${(signalementFOBean.commentaire)!}</p>
+            </div>
+            <#if signalementFOBean.photos?has_content>
+            <#assign numberPhotos = signalementFOBean.photos?size>
+            <div class="info-sup">#i18n{fodansmarue.etape.finalisation.field.label.0} <#assign filename = ''>
+										<#if (photo_detaillee.name)?? && (photo_detaillee.name) != ''>
+											<#assign filename = photo_detaillee.name >
+										<#else>
+											<#if (photo_detaillee.title)?? && (photo_detaillee.title) != ''>
+												<#assign filename = photo_detaillee.title >
+											</#if>
+										</#if>
+										<#if filename != '' >
+										 <div class="filename"><a	href="${baseUrl}action=download&fieldName=photo_detaillee">${filename}</a></div>
+										 <div class="filesize">(<script>document.write(formatBytes(${photo_detaillee.size}));</script>)</div>
+										</#if></div>
+            <#if numberPhotos == 2>
+            <div class="info-sup">#i18n{fodansmarue.etape.finalisation.field.label.1}  <#assign filename = ''>
+										<#if photo_ensemble.name?? && photo_ensemble.name != ''>
+											<#assign filename = photo_ensemble.name >
+										<#else>
+											<#if photo_ensemble.title?? && photo_ensemble.title != ''>
+												<#assign filename = photo_ensemble.title >
+											</#if>
+										</#if>
+										<#if filename != '' >
+											<div class="filename"><a	href="${baseUrl}action=download&fieldName=photo_ensemble">${filename}</a></div>
+											<div class="filesize">(<script>document.write(formatBytes(${photo_ensemble.size}));</script>)</div>
+										</#if></div>
+            </#if>
+            </#if>
+           <a href="jsp/site/Portal.jsp?page=fodansmarue&view=finalisation"  class="btn modifier">${i18n('fodansmarue.modifier')}</a>
+          </div>
+    </div>
+</div>
+</#macro>
+<#macro modifyButton step>
+		<a href="jsp/site/Portal.jsp?page=${step}" class="button uppercase button-blue btn btn-lg" role="button" aria-pressed="true">#dskey{sitelabels.site_property.general.formulaire.bouton.modifier}</a>
+</#macro>
+<#macro checkForErrors key>
+	<#if map_errors?has_content && (map_errors[key])?has_content >
+		<div class="error-block" id="monancre">
+			<#nested>
+		</div>
+	<#else>
+		<#nested>
+	</#if>
+	<script type="text/javascript">
+	$(window).scrollTop($("#monancre").offset().top);
+</script>
+</#macro>
+
+<#macro printError key>
+	<#if map_errors?has_content && (map_errors[key])?has_content>
+			<div field='${key}' class="errorDesc">${map_errors[key]}</div>
+	</#if>
+</#macro>
+<#macro repeat count>
+  <#list 1..count as x>
+    <div class="container">
+   		<div class="row">
+        	<div class="detailed-photo4">
+            	<div class="col-md-6 col-sm-6 col-xs-12">
+                 	<#if listupload_photo?has_content>
+						 <#assign listFiles = listupload_photo>
+					<#else>
+						 <#assign listFiles = ''>
+					</#if>
+
+            	</div><!--/col-->
+        	</div>
+    	</div>
+    </div>
+  </#list>
+</#macro>
+
+<#macro adresse_autocomplete_includes>
+	<script src="js/proj4js-combined.js" type="text/javascript"></script>
+	<script src="js/jquery/plugins/ui/jquery.ui.custom-autocomplete.min.js"	type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="css/plugins/jquery/plugins/ui/jquery.autocomplete.css" />
+	<link rel="stylesheet" type="text/css" href="js/jquery/plugins/ui/css/jquery-ui.min.css" /> 
+</#macro>
+
+<#macro leaflet_map_includes>
+	<#-- <link rel="stylesheet" type="text/css" href="js/plugins/leaflet/leaflet/leaflet.css" /> -->
+	<#-- <script src="js/plugins/leaflet/leaflet/leaflet.js"></script> -->
+	<link rel="stylesheet" type="text/css" href="css/plugins/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
+       integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
+       crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
+       integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
+       crossorigin=""></script>
+	<script src="https://unpkg.com/esri-leaflet@2.0.8"></script>
+
+	<script type="text/javascript">
+	
+	var LeafIcon = L.Icon.extend({
+		options: {
+			 shadowUrl: 'js/plugins/leaflet/leaflet/images/marker-shadow.png',
+			 iconSize: [25, 41],
+			 iconAnchor: [12, 41],
+			 popupAnchor: [1, -34],
+			 shadowSize: [41, 41]
+		}
+	});
+	
+	var greenIcon = new LeafIcon({
+		iconUrl: 'js/plugins/leaflet/leaflet/images/marker-icon-green.png'
+	});
+		
+	var yellowIcon = new LeafIcon({
+		iconUrl: 'js/plugins/leaflet/leaflet/images/marker-icon-yellow.png'
+	});
+	
+	var redIcon = new LeafIcon({
+		iconUrl: 'js/plugins/leaflet/leaflet/images/marker-icon-red.png'
+	});	
+	
+	</script>
+</#macro>
+
+<#macro leaflet_cluster_includes>
+	<#-- <link rel="stylesheet" href="js/plugins/leaflet/leaflet/MarkerCluster.css"/> -->
+    <#-- <link rel="stylesheet" href="js/plugins/leaflet/leaflet/MarkerCluster.Default.css"/> -->
+    <#-- <script src="js/plugins/leaflet/leaflet/leaflet.markercluster.js"></script> -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.0.5/dist/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.0.5/dist/MarkerCluster.Default.css"/>
+    <script src="https://unpkg.com/leaflet.markercluster@1.0.5/dist/leaflet.markercluster.js"></script>
+</#macro>

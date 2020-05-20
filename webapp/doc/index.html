@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="ISO-8859-1" />
+	<title>Projet DansMaRue</title>
+	<meta name="description" content="Guide d'utilisation du backoffice DansMaRue">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="css/normalize.css" rel="stylesheet" media="all" />
+	<link href="css/styles.css" rel="stylesheet" media="all" />
+	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+	<!--[if lt IE 9]>
+		<script src="js/html5shiv.js" media="all"></script>
+		<script src="js/html5shiv-printshiv.js" media="print"></script>
+	<![endif]-->
+	<style>
+	.inline-block {
+		display: inline-block;
+		vertical-align:text-top;
+	}
+	body {
+		margin-left:2px;
+	}
+	</style>
+</head>
+<body>
+	<h1>Projet DansMaRue</h1>
+	<h3>Cin&eacute;matique de traitement</h3>
+	<div id="cinematique">
+		<div class="inline-block" style="padding-top:2em">
+			
+			<div><a href="https://teleservices.paris.fr/signalement/jsp/site/Portal.jsp?page=formengine&form=signalement" target="other">D&eacute;claration d'anomalies</a> sur la voie public</div>
+			<div>D&eacute;claration d'anomalies via Android</div>
+			<div>D&eacute;claration d'anomalies via iPhone</div>
+		</div>
+		<div class="inline-block" style="width:160px; margin-left:1em">
+			<span style="font-size:4em">&rarr;</span><br>
+			Saisie de l'adresse via une carte (comme google map) provenant de <a href="http://r57.apps.paris.mdp/geoserver/wms?service=WMS&version=1.1.0&request=GetMap&layers=fonddeplan&styles=&bbox=585952.624124161,109314.875007471,620704.1033706589,145502.60034566963&width=491&height=512&srs=EPSG:27561&format=application/openlayers" target="other">geoserver</a><br>
+			La latitude et longitude serviront tout au long du traitement.
+		</div>
+		<div class="inline-block" style="width:160px; margin-left:1em">
+			<span style="font-size:4em; margin-left:0.4em">&#8635;</span><br>
+			Croisement entre la latitude/longitude de l'anomalie avec l'empreinte g&eacute;ographique de l'entit&eacute; m&eacute;tier la plus pr&eacute;cise possible via <a href="http://dev.lutece.paris.fr/plugins/plugin-unittree/fr/" target="other">plugin-unittree</a>
+		</div>
+		<div class="inline-block" style="width:160px; margin-left:1em">
+			<span style="font-size:4em; margin-left:0.4em">&#8635;</span><br>
+			Traitement par l'entit&eacute; m&eacute;tier via <a href="doc_utilisateur/index.html#workflow">un workflow param&eacute;trable</a> (<a href="http://dev.lutece.paris.fr/plugins/plugin-workflow/fr/" target="other">plugin-workflow</a>).<br>
+		</div>
+		<div class="inline-block" style="width:80px; margin-left:1em">
+			<span style="font-size:4em">&rarr;</span><br>
+			Retour a l'usager par email.
+		</div>
+		</div>
+	<div>&nbsp;</div>
+	<div>Geoserver et Lutece/plugin-unittree sont des serveurs java <a href="http://fr.wikipedia.org/wiki/Logiciel_libre" target="other">libres</a> faisant usage des fonctions geospaciales de <a href="http://postgis.net/" target="other">PostGIS</a></div>
+	<h3>Index documentation</h3>
+	<ol>
+		<li><a href="http://webpro.mdp/webpro/jsp/site/Portal.jsp?page_id=53" target="webpros">Toute la documentation sur le projet.</a></li>
+		<li>Utilisation de l'application DansMaRue.
+			<ol>
+				<li><a href="doc_utilisateur/index.html#ajoutIntraparis">Arrivez d&eacute;j&agrave; connect&eacute; &agrave; DansMaRue depuis le bandeau Intraparis</a></li>
+				<li><a href="doc_utilisateur/index.html#workflow">Workflow de traitement des anomalies dans DansMaRue.</a></li>
+			</ol>
+		</li>
+		<li>Administration de l'application DansMaRue
+			<ol>
+				<li><a href="doc_administrateur/index.html#ajoutUtilisateur">Ajout d'un utilisateur</a></li>
+				<li><a href="doc_administrateur/index.html#profilsEntit&eacute;">Associer un utilisateur &agrave; un profil et une entit&eacute;</a></li>
+				<li><a href="doc_administrateur/index.html#administrationNomenclature">Administration de la nomenclature DansMaRue</a></li>
+				<li><a href="doc_administrateur/index.html#transf&eacute;rerPrestataire">Transf&eacute;rer une anomalie DansMaRue &agrave; un prestataire</a></li>
+				<li><a href="doc_administrateur/index.html#cr&eacute;erSecteur">Cr&eacute;er un <abbr title="Un secteur/sector est la table en base de donn&eacute;e contenant une empreinte g&eacute;ographique">secteur</abbr></a></li>
+				<li><a href="doc_administrateur/index.html#visualiserSecteur">Visualisez les <abbr title="Un secteur/sector est la table en base de donn&eacute;e contenant une empreinte g&eacute;ographique">secteurs</abbr></a></li>
+			</ol>
+		</li>
+		<li>Applications Android pour DansMaRue
+			<ol>
+				<li><a href="doc_android/index.html#miseAjour">Manuel sur la mise &agrave; jour de l'application DansMaRue Paris</a></li>
+				<li><a href="doc_android/index.html#geoloc">Probl&egrave;me de g&eacute;olocalisation</a></li>
+				<li><a href="doc_android/feuille_de_route.html">Application FeuilleDeRoute sur Android</a></li>
+			</ol>				
+		</li>
+		<li><a href="doc_technique/index.html">Architecture de l'application</a></li>
+	</ol>
+</body>
+</html>

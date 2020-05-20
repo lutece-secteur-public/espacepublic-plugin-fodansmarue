@@ -1,0 +1,23 @@
+header.main-header .navbar{
+	background-color: rgb(12,81,138) !important;
+}
+
+header.main-header .tasks-menu > a{
+	text-transform: uppercase !important;
+}
+
+.main-header .nav .home{
+	background-color: rgb(12,81,138) !important;
+}
+.main-header .nav .home .fa-home, .nav .fa-power-off{
+	color: rgb(255,255,255) !important;
+	font-size: 20px;
+}
+
+.main-header .nav.navbar-nav > li > a{
+	text-transform: uppercase !important;
+}
+
+.skin-blue-light .wrapper{
+	background-color: rgb(255,255,255);
+}

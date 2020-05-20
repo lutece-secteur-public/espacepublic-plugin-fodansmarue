@@ -1,0 +1,66 @@
+.picto-steps-ramen .bloc-accueil , .picto-steps-ramen .bloc-recap, .bloc-indication {
+    display: block;
+    margin: 0 auto;
+    font-family: 'Montserrat-Light';
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.input-radio-button {
+    border: solid 1px #CCC;
+    border-radius: 5px;
+    margin: 5px 35px 5px 0px;
+    padding: 10px;
+    font-size: 16px;
+    font-family: "Montserrat-Light", sans-serif;
+    background-color: #FCFCFC;
+    float: left;
+    clear: none;
+}
+.bloc-accueil h1, .bloc-accueil h2, .bloc-accueil h3, .bloc-accueil h4{
+	color: rgb(12, 81, 138);
+	margin: 0px;
+}
+img.datepicker_trigger {
+	cursor:pointer;
+	float:left;
+	margin-left:-30px;
+	padding-bottom:8px;
+	padding-top:8px;
+}
+img.ui-datepicker-trigger {
+	cursor:pointer;
+	float:left;
+	margin-left: -35px;
+    margin-top: -2px;
+	padding-bottom:8px;
+	padding-top:8px;
+}
+#dateDepot {
+	float:left;
+	width:230px;
+}
+.row.pictos .svg {
+    text-align: center;
+    position: relative;
+}
+.row.pictos .svg.active {
+    fill: rgb(175, 175, 175);
+}
+.row.pictos [class*="col-"] {
+    margin-bottom: 40px;
+}
+.row.pictos [class*="col-"] a > *{
+    text-align: center;
+    display: block;
+}
+.row.pictos [class*="col-"] a.selected .svg {
+    fill: rgb(12, 81, 138);
+}
+.row.pictos [class*="col-"] a.selected .type-remarque-texte,
+.row.pictos [class*="col-"] a.selected  {
+    color:  rgb(12, 81, 138);
+}
+.row.pictos [class*="col-"] a.selected .selected-value {
+    font-weight: 500;
+}

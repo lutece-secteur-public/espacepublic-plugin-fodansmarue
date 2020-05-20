@@ -1,0 +1,9 @@
+/* Style for Image in a modal */
+#imageModal .modal-body{
+	padding: 0px !important;
+}
+
+#imageModal{
+	overflow-x: auto;
+	overflow-y: auto;
+}

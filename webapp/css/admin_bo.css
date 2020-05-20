@@ -1,0 +1,98 @@
+/********************/
+/* 		FONTS 		*/
+/********************/
+@font-face {
+    font-family: 'Montserrat-Light';
+    src: url("fonts/Montserrat-Light-webfont.eot");
+    src: url("fonts/Montserrat-Light-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/Montserrat-Light-webfont.woff2") format("woff2"), url("fonts/Montserrat-Light-webfont.woff") format("woff"), url("fonts/Montserrat-Light-webfont.ttf") format("truetype"), url("fonts/Montserrat-Light-webfont.svg#montserratlight") format("svg");
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url("fonts/Montserrat-Regular-webfont.eot");
+    src: url("fonts/Montserrat-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/Montserrat-Regular-webfont.woff2") format("woff2"), url("fonts/Montserrat-Regular-webfont.woff") format("woff"), url("fonts/Montserrat-Regular-webfont.ttf") format("truetype"), url("fonts/Montserrat-Regular-webfont.svg#montserratregular") format("svg");
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat-Bold';
+    src: url("fonts/Montserrat-Bold-webfont.eot");
+    src: url("fonts/Montserrat-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/Montserrat-Bold-webfont.woff2") format("woff2"), url("fonts/Montserrat-Bold-webfont.woff") format("woff"), url("fonts/Montserrat-Bold-webfont.ttf") format("truetype"), url("fonts/Montserrat-Bold-webfont.svg#montserratbold") format("svg");
+    font-weight: 700;
+    font-style: normal;
+}
+
+/********************/
+/* 		BODY 		*/
+/********************/
+.control-label, .form-group, #manage-signalement, #dashboard{
+	font-family: "Montserrat-Light";
+}
+
+/********************/
+/* 		TITLE 		*/
+/********************/
+
+legend, .box-header .box-title {
+    color: rgb(12,81,138);
+    font-family: "Montserrat";
+}
+
+/********************/
+/* 		FORM 		*/
+/********************/
+label.control-label{
+	color: rgb(12,81,138);
+	font-family: "Montserrat";
+}
+
+.form-group .control-label{
+	text-align:left;
+	font-family: "Montserrat-Light";
+	font-size: 15px;
+}
+
+/* BUTTONS */
+.btn-paris:hover:after, .btn-paris:focus:after, .btn-paris[disabled]:after {
+	width: 100%;
+}
+
+.btn-paris, .btn-paris:hover{
+	text-transform: uppercase;
+	color: rgb(255,255,255);
+	font-family: "Montserrat";
+	font-size: 14px;
+	position: relative;
+	z-index: 1;
+}
+
+.btn-paris:after{
+	border-radius: 5px;
+	content: "";
+	display: block;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	-webkit-transition: width 0.35s ease;
+	transition: width 0.35s ease;
+	width: 0;
+	z-index: -1;
+}
+
+.btn-red{
+	background-color: #df225a;
+}
+
+.btn-blue{
+	background-color: #0c518a;
+}
+
+.btn-red:after{
+	background-color: #b41a48;
+}
+
+.btn-blue:after{
+	background-color: #0f4573;
+}

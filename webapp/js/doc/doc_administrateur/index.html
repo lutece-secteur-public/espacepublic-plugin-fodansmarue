@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Tutoriels DansMaRue</title>
+<meta name="description" content="Guide d'utilisation du backoffice DansMaRue">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="../css/normalize.css" rel="stylesheet" media="all" />
+<link href="../css/styles.css" rel="stylesheet" media="all" />
+<link href="../css/custom.css" rel="stylesheet" media="all" />
+<link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+<!--[if lt IE 9]>
+		<script src="../js/html5shiv.js" media="all"></script>
+		<script src="../js/html5shiv-printshiv.js" media="print"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="wrap">
+		<section role="main">
+			<article id="ajoutUtilisateur">
+				<h3>Ajout d'un utilisateur</h3>
+				<p>Rendez vous dans la gestion utilisateur :</p>
+				<img src="../img/010_ajout_user.png" />
+				<p>Rendez vous dans le formulaire de création d'un utilisateur</p>
+				<img src="../img/020_ajout_user.png" />
+				<p>Créez l'utilisateur, il sera alors notifié.</p>
+				<img src="../img/030_ajout_user.png" />
+				<p>L'utilisateur a ainsi été crée et notifié par email. Il n'a aucun droit à ce stade. Il faut lui associé un profil.</p>
+				<p class="retour">
+					<a href="../index.html">Retour au menu.</a>
+				</p>
+			</article>
+			<article id="profilsEntité">
+				<h3>Associez un utilisateur à un profil et une entité</h3>
+				<p>
+					Il est <b>très important</b> de comprendre que les "profils" ne sont que des moyens d'attribuer automatiquement des droits et des rôles aux utilisateurs.
+				</p>
+				<p>Un profil n'existe pas en temps que tel, seuls les droits et les rôles existent.</p>
+				<p>Un droit donne accès à une partie de l'application. Exemple : la partie DansMaRue, la partie Ramen, la partie "feuille de route".</p>
+				<p>Un rôle donne accès à une fonctionnalité. Exemple : la permission d'ajouter une anomalie dans DansMaRue, la permission d'ajouter un commentaire sur uneanomaliee.</p>
+				<p>Un certain nombre de "profils" a donc été créé pour facilité la gestion des droits et des rôles.</p>
+				<p>Rendez vous dans la page d'administration des entités :</p>
+				<img src="../img/110-entie-profil.png">
+				<p>Choisir le niveau dans l'arborescence de entités sur lequel vous souhaitez associer l'utilisateur précédement créé :</p>
+				<img src="../img/120-entie-profil.png">
+				<p>Sur une entité donnée, vous pouvez lister et rechercher les utilisateurs associés.</p>
+				<img src="../img/130-entie-profil.png">
+				<p>Associez un utilisateur à une entité et un profil.</p>
+				<img src="../img/140-entie-profil.png">
+				<p>Le compte de l'utilisateur est maintenant configuré correctement.</p>
+				<p class="retour">
+					<a href="../index.html">Retour au menu.</a>
+				</p>
+			</article>
+			<article id="administrationNomenclature">
+				<h3>Administration de la nomenclature DansMaRue</h3>
+				<p>La nomenclature est utilisée à plusieurs endroits dans l'application :</p>
+				<ul>
+					<li>dans le <a href="http://r57.apps.paris.mdp/sira/jsp/site/Portal.jsp?page=formengine&form=signalement" target="_other">formulaire web de création</a>. (dans l'étape 3 du formulaire)
+					</li>
+					<li>dans les applications mobiles.</li>
+					<li>dans le <a href="http://r57.apps.paris.mdp/sira/jsp/admin/plugins/ramen/SaveDossier.jsp" target="_other">formulaire back-office</a>. (si vous possédez les droits sur cette fonctionnalité)
+					</li>
+				</ul>
+				<p>Pour administrer ce référentiel, rendez vous dans l'onglet de "gestion du référentiel" :</p>
+				<img src="../img/210-gestion_referentiel.png">
+				<p>Rendez vous dans la gestion du référentiel.</p>
+				<img src="../img/220-gestion_referentiel.png"> <img src="../img/230-gestion_referentiel.png"> <img src="../img/240-gestion_referentiel.png">
+				<p class="retour">
+					<a href="../index.html">Retour au menu.</a>
+				</p>
+			</article>
+			<article id="transférerPrestataire">
+				<h3>Transférer un anomalie DansMaRue à un prestataire.</h3>
+				<p>
+					Créez autant de <abbr title="Un secteur/sector est la table en base de donnée contenant une empreinte géographique">secteurs</abbr> que de prestataires externes. Ce secteur peut couvrir l'ensemble du territoire parisien. Ils peuvent être nommés indifféremment (par ex prestaire 1, prestataire 2 etc...). <a href="#créerSecteur">Voir créer un secteur</a>
+				</p>
+				<p>
+					Créez une <abbr title="Les entités, encore appelées Unit, sont organisées de manière hiérarchique et représente l'organisation de la mairie. Les secteurs sont associés aux entités feuilles et non aux branches.">entité</abbr> au niveau racine :
+				</p>
+				<img src="../img/410-ajout-unit.png">
+				<p>Dans <a href="http://r57.apps.paris.mdp/sira/jsp/admin/plugins/signalement/ManageTypeSignalement.jsp" target="other">l'administration de la nomenclature</a>, associé une entrée de la nomenclature à la unit créée</p>
+				<img src="../img/420-assoc-nomenclature-entity.png">
+				<p>Dans une tache de workflow, configurez l'envoyer les messages de l'entité créée à une liste d'email.</p>
+				<p class="retour">
+					<a href="../index.html">Retour au menu.</a>
+				</p>
+			</article>
+			<article id="créerSecteur">
+				<h3>
+					Créer un <abbr title="Un secteur/sector est la table en base de donnée contenant une empreinte géographique">secteur</abbr>
+				</h3>
+				<p>TODO Alexis</p>
+				<p>procédure d'import des sectors</p>
+				<p>Téléchargez <a href="http://www.qgis.org/" target="other">qgis</a></p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p class="retour">
+					<a href="../index.html">Retour au menu.</a>
+				</p>
+			</article>
+			<article id="visualiserSecteur">
+				<h3>Visualisez les <abbr title="Un secteur/sector est la table en base de donnée contenant une empreinte géographique">secteurs</abbr>.</h3>
+				<p>Il est possible de visualiser les secteurs géographiques sur une carte. Ce chapitre détaille comment faire.</p>
+				<p>
+					Téléchargez et installez <a href="http://www.google.com/earth/index.html" target="other">google earth</a>.
+				</p>
+				<p>
+					Téléchargez le <a href="http://r57.apps.paris.mdp/geoserver/cora/wms?service=WMS&version=1.1.0&request=GetMap&layers=cora:unittree_sector&styles=&bbox=2.22021389007568,48.8001174926758,2.47084069252014,48.9111976623535&width=744&height=330&srs=EPSG:4326&format=application%2Fvnd.google-earth.kml%2Bxml" target="other">fichier KML</a> permettant de visualiser les secteurs. L'ouvrir avec google earth en double cliquant sur le fichier.
+				</p>
+				<p>Dé-selectionnez l'ensemble des secteurs : </p>
+				<img src="../img/510-googleearth.png">
+				<p>Utilisez le champs de recherche pour rechercher un secteur par son numéro. Double cliquez sur le secteur pour zoomer dessus.</p>
+				<img src="../img/520-googleearth.png">
+				<p>Parfois, les traits peuvent être peu visibles. Vous pouvez agrandir l'épaisseur du trait en faisant un clique droit sur le secteur puis "propriété". Vous obtenez alors l'écran suivant qui permet de modifier l'épaisseur du trait :</p>
+				<img src="../img/530-googleearth.png">
+				<p>Le secteur apparait alors plus nettement :</p>
+				<img src="../img/540-googleearth.png">
+				<p class="retour">
+					<a href="../index.html">Retour au menu.</a>
+				</p>
+			</article>
+		</section>
+	</div>
+</body>
+</html>

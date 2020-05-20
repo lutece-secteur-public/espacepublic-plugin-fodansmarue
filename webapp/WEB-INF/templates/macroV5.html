@@ -1,0 +1,46 @@
+<#-- Script repris sur Davanne -->
+
+
+<#macro modalImage>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#imageModal").on("show.bs.modal",function(event){
+				var imgSrc = event.relatedTarget.getAttribute('image-url');
+				$("#modal-img").attr("src",imgSrc);
+				$("#modal-img").hide();
+			});
+			
+			$('#imageModal').on('shown.bs.modal', function (event) {
+				var imgWidth = $(this).find("#modal-img")[0].width;
+				var imgHeight = $(this).find("#modal-img")[0].height;
+				var height=imgHeight;
+				var width=imgWidth;
+				if(imgWidth > window.innerWidth*0.8){
+					width = "80vw";
+				}
+				$(this).find('.modal-dialog').css({
+					width:width
+				});
+				
+				if(imgHeight > window.innerHeight*0.8){
+					height = "80vh";
+				}
+				$(this).find('.modal-body').css({
+					height: height
+				});
+				
+				$("#modal-img").show();
+			});
+		});
+	</script>
+	<link href="css/modal_image.css" rel="stylesheet">
+	<div class="modal fade" id="imageModal" tabindex="-1" role="dialog">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body">
+	        <img id="modal-img" src=""></img>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</#macro>

@@ -1,0 +1,91 @@
+a.buttonStyle {
+	background:#55B4E5;
+    border-color:#55B4E5;
+    color:#fff;
+    font-weight:bold;
+    text-shadow:0 -1px 0 rgba(0, 0, 0, 0.3);
+    -moz-border-radius:11px 11px 11px 11px;border-radius:11px 11px 11px 11px;
+    -webkit-border-radius:11px 11px 11px 11px;
+    -moz-box-sizing:content-box;
+    border-style:solid;
+    border-width:1px;
+    cursor:pointer;
+    font-size:11px !important;
+    line-height:13px;
+    padding:3px 8px;
+    text-decoration:none;
+}
+
+div.content-box label.typeDossier {
+	display: inline;
+    float: none;
+    font-weight: normal;
+    color: #000000;
+}
+
+/** buttons*/
+input[type="submit"].actionAdd {
+	background-color:#FFF;
+	border:none;
+	display:inline-block;
+	height:100px;
+	width:120px;
+	background-position:center top;
+	color:transparent;
+	border:none;
+	background-repeat:no-repeat;
+	border-width:0px;
+	cursor:pointer;
+	font-size:0;
+}
+.actionRemove {
+	background-image:url("../images/remove_btn.png");
+	font-size:11px;
+	font-weight:bold;
+	font-family:"Arial";
+	color:#fff;
+	border-width:1px;
+	margin-left:-26px;
+}
+.accessibleObjects {
+	text-align:center;
+	vertical-align:bottom;
+	width:120px;
+	display:inline-block;
+}
+.objects_list tr {
+	text-align:left;
+	width: 710px;
+}
+.rightContent {
+	display:inline-block;
+	width: 40%;
+	vertical-align: top;	
+}
+.leftContent {
+	width: 40%;
+	display:inline-block;
+}
+.bottomContent {
+}
+.allContentPage {
+	margin: 0pt auto;
+	display: inline-block; 
+	float: none;
+	width:100%;
+}
+.shiftLabelSignalement {
+	width: 171px;
+}
+div.content-box label.etatsCheckbox {
+	display: inline;
+    float: none;
+    font-weight: normal;
+    color: #000000;
+}
+div.content-box label.inLine {
+	display: inline;
+    float: none;
+    font-weight: normal;
+    color: #000000;
+}
