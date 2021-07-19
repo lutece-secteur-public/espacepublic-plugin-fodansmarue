@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,30 +35,29 @@ package fr.paris.lutece.plugins.fodansmarue.business.entities;
 
 import java.io.Serializable;
 
-
 /**
  * The Class Signaleur.
  */
 public class Signaleur implements Serializable
 {
-    
+
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 2636787537138228333L;
 
     /** The l id. */
-    private Long              _lId;
+    private Long _lId;
 
     /** The str mail. */
-    private String            _strMail;
+    private String _strMail;
 
     /** The signalement. */
-    private Signalement       _signalement;
+    private Signalement _signalement;
 
     /** The str id telephone. */
-    private String            _strIdTelephone;
+    private String _strIdTelephone;
 
     /** The str guid. */
-    private String            _strGuid;
+    private String _strGuid;
 
     /**
      * Gets the id.

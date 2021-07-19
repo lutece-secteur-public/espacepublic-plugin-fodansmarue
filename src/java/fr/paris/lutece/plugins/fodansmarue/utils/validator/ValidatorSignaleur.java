@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,7 +42,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
 
-
 /**
  * The Class ValidatorSignaleur.
  */
@@ -51,14 +50,15 @@ public class ValidatorSignaleur
 
     /** The Constant ADRESSE_EMAIL_NULL. */
     private static final String ADRESSE_EMAIL_NULL = "#i18n{fodansmarue.message.erreur.email.invalide}";
-    
+
     /** The Constant PARAMETER_EMAIL. */
-    private static final String PARAMETER_EMAIL    = "email";
+    private static final String PARAMETER_EMAIL = "email";
 
     /**
      * Validate.
      *
-     * @param request the request
+     * @param request
+     *            the request
      * @return the map
      */
     public Map<String, String> validate( HttpServletRequest request )

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,7 +45,6 @@ import fr.paris.lutece.plugins.fodansmarue.utils.constants.SignalementConstants;
 import fr.paris.lutece.portal.service.spring.SpringContextService;
 import fr.paris.lutece.portal.service.util.AppLogService;
 
-
 /**
  * The Class ValidatorLocalisation.
  */
@@ -55,7 +54,8 @@ public class ValidatorLocalisation
     /**
      * Validate.
      *
-     * @param adresse the adresse
+     * @param adresse
+     *            the adresse
      * @return true, if successful
      */
     public boolean validate( Adresse adresse )
@@ -68,7 +68,7 @@ public class ValidatorLocalisation
             dLat = adresse.getLat( );
             dLng = adresse.getLng( );
         }
-        catch ( Exception e )
+        catch( Exception e )
         {
             AppLogService.error( e );
             // en cas d'erreur de cast des champs lat/lng
@@ -81,7 +81,8 @@ public class ValidatorLocalisation
     /**
      * Retrieves from the request, the coordinates, then check if inside Paris.
      *
-     * @param request the request
+     * @param request
+     *            the request
      * @return true, if successful
      */
     public boolean validate( HttpServletRequest request )
@@ -93,7 +94,7 @@ public class ValidatorLocalisation
             dLat = Double.parseDouble( request.getParameter( SignalementConstants.FIELD_LAT ) );
             dLng = Double.parseDouble( request.getParameter( SignalementConstants.FIELD_LNG ) );
         }
-        catch ( Exception e )
+        catch( Exception e )
         {
             AppLogService.error( e );
             // en cas d'erreur de cast des champs lat/lng
@@ -106,8 +107,10 @@ public class ValidatorLocalisation
     /**
      * Checks if coordinates are inside Paris.
      *
-     * @param dLat the d lat
-     * @param dLng the d lng
+     * @param dLat
+     *            the d lat
+     * @param dLng
+     *            the d lng
      * @return true, if successful
      */
     public boolean validate( Double dLat, Double dLng )
@@ -118,8 +121,10 @@ public class ValidatorLocalisation
     /**
      * Est dans paris.
      *
-     * @param dLat            the lat
-     * @param dLng            the lng
+     * @param dLat
+     *            the lat
+     * @param dLng
+     *            the lng
      * @return true, if successful, coordinate are within paris.
      */
     private boolean estDansParis( Double dLat, Double dLng )
@@ -143,12 +148,19 @@ public class ValidatorLocalisation
     /**
      * Checks if is numero ok.
      *
-     * @param adresse the adresse
+     * @param adresse
+     *            the adresse
      * @return true, if is numero ok
      */
     // Check si l'adresse contient un numéro de voie/rue
     public boolean isNumeroOk( String adresse )
     {
+        // si l'adresse corespond à un pont pas besoin de numero
+        if ( adresse.startsWith( SignalementConstants.BRIDGE_ADDRESS ) )
+        {
+            return true;
+        }
+
         Pattern pattern = Pattern.compile( "^\\d" );
         Matcher matcher = pattern.matcher( adresse );
         return matcher.find( );

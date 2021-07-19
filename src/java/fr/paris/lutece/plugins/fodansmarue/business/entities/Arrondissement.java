@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,6 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import fr.paris.lutece.portal.service.rbac.RBACResource;
 
-
 /**
  * The Class Arrondissement.
  */
@@ -48,19 +47,19 @@ public class Arrondissement implements Comparable<Arrondissement>, RBACResource,
 {
 
     /** The Constant serialVersionUID. */
-    private static final long  serialVersionUID = -2702794218450557582L;
+    private static final long serialVersionUID = -2702794218450557582L;
 
     /** The Constant RESOURCE_TYPE. */
-    public static final String RESOURCE_TYPE    = "SIGNALEMENT_ARRONDISSEMENT";
+    public static final String RESOURCE_TYPE = "SIGNALEMENT_ARRONDISSEMENT";
 
     /** The n id. */
-    private Long               _nId;
+    private Long _nId;
 
     /** The str numero. */
-    private String             _strNumero;
+    private String _strNumero;
 
     /** The b actif. */
-    private boolean            _bActif;
+    private boolean _bActif;
 
     /**
      * Gets the id.

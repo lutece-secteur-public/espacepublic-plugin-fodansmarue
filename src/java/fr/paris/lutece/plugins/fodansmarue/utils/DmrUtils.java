@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -116,8 +116,8 @@ public class DmrUtils
 
         for ( Equipement equipement : listEquipement )
         {
-            char[] charsDataName = new char[equipement.getName( ).length( )];
-            char[] charsDataAdresse = new char[equipement.getAdresse( ).length( )];
+            char [ ] charsDataName = new char [ equipement.getName( ).length( )];
+            char [ ] charsDataAdresse = new char [ equipement.getAdresse( ).length( )];
             equipement.getName( ).getChars( 0, charsDataName.length, charsDataName, 0 );
             equipement.getAdresse( ).getChars( 0, charsDataAdresse.length, charsDataAdresse, 0 );
 
@@ -131,19 +131,19 @@ public class DmrUtils
     }
 
     // Formattage du nom/adresse de l'équipement
-    private static void format( char[] charsData )
+    private static void format( char [ ] charsData )
     {
         char c;
 
         for ( int i = 0; i < charsData.length; i++ )
         {
-            if ( ( ( c = charsData[i] ) >= 'A' ) && ( c <= 'Z' ) )
+            if ( ( ( c = charsData [i] ) >= 'A' ) && ( c <= 'Z' ) )
             {
-                charsData[i] = ( char ) ( ( c - 'A' ) + 'a' );
+                charsData [i] = (char) ( ( c - 'A' ) + 'a' );
             }
             else
             {
-                switch ( c )
+                switch( c )
                 {
                     case '\u00e0':
                     case '\u00e1':
@@ -155,11 +155,11 @@ public class DmrUtils
                     case '\u00c2':
                     case '\u00c3':
                     case '\u00c4':
-                        charsData[i] = 'a';
+                        charsData [i] = 'a';
                         break;
                     case '\u00e7':
                     case '\u00c7':
-                        charsData[i] = 'c';
+                        charsData [i] = 'c';
                         break;
                     case '\u00e8':
                     case '\u00e9':
@@ -169,13 +169,13 @@ public class DmrUtils
                     case '\u00c9':
                     case '\u00ca':
                     case '\u00cb':
-                        charsData[i] = 'e';
+                        charsData [i] = 'e';
                         break;
                     case '\u00ee':
                     case '\u00ef':
                     case '\u00ce':
                     case '\u00cf':
-                        charsData[i] = 'i';
+                        charsData [i] = 'i';
                         break;
                     case '\u00f2':
                     case '\u00f4':
@@ -183,7 +183,7 @@ public class DmrUtils
                     case '\u00d2':
                     case '\u00d4':
                     case '\u00d6':
-                        charsData[i] = 'o';
+                        charsData [i] = 'o';
                         break;
                     case '\u00f9':
                     case '\u00fb':
@@ -191,7 +191,7 @@ public class DmrUtils
                     case '\u00d9':
                     case '\u00db':
                     case '\u00dc':
-                        charsData[i] = 'u';
+                        charsData [i] = 'u';
                         break;
                     default:
                         break;

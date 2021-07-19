@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,6 @@ import fr.paris.lutece.plugins.fodansmarue.dto.DossierSignalementDTO;
 import fr.paris.lutece.plugins.leaflet.modules.dansmarue.entities.Address;
 import fr.paris.lutece.portal.service.security.LuteceUser;
 
-
 /**
  * The Interface ISignalementBOService.
  */
@@ -60,120 +59,163 @@ public interface ISignalementBOService
     /**
      * Gets the geom from lambert to wgs 84.
      *
-     * @param dLatLambert the d lat lambert
-     * @param dLngLambert the d lng lambert
+     * @param dLatLambert
+     *            the d lat lambert
+     * @param dLngLambert
+     *            the d lng lambert
      * @return the geom from lambert to wgs 84
-     * @throws JSONException the JSON exception
-     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws JSONException
+     *             the JSON exception
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
-    Double[] getGeomFromLambertToWgs84( Double dLatLambert, Double dLngLambert ) throws JSONException, IOException;
+    Double [ ] getGeomFromLambertToWgs84( Double dLatLambert, Double dLngLambert ) throws JSONException, IOException;
 
     /**
      * Gets the geom from lambert 93 to wgs 84.
      *
-     * @param dLatLambert the d lat lambert
-     * @param dLngLambert the d lng lambert
+     * @param dLatLambert
+     *            the d lat lambert
+     * @param dLngLambert
+     *            the d lng lambert
      * @return the geom from lambert 93 to wgs 84
-     * @throws JSONException the JSON exception
-     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws JSONException
+     *             the JSON exception
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
-    Double[] getGeomFromLambert93ToWgs84( Double dLatLambert, Double dLngLambert ) throws JSONException, IOException;
+    Double [ ] getGeomFromLambert93ToWgs84( Double dLatLambert, Double dLngLambert ) throws JSONException, IOException;
 
     /**
      * Find all signalement in perimeter with DTO.
      *
-     * @param lat the lat
-     * @param lng the lng
-     * @param radius the radius
+     * @param lat
+     *            the lat
+     * @param lng
+     *            the lng
+     * @param radius
+     *            the radius
      * @return the list
-     * @throws JSONException the JSON exception
-     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws JSONException
+     *             the JSON exception
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
     List<DossierSignalementDTO> findAllSignalementInPerimeterWithDTO( Double lat, Double lng, Integer radius ) throws JSONException, IOException;
 
     /**
      * Gets the distance between signalement.
      *
-     * @param lat1 the lat 1
-     * @param lng1 the lng 1
-     * @param lat2 the lat 2
-     * @param lng2 the lng 2
+     * @param lat1
+     *            the lat 1
+     * @param lng1
+     *            the lng 1
+     * @param lat2
+     *            the lat 2
+     * @param lng2
+     *            the lng 2
      * @return the distance between signalement
-     * @throws IOException Signals that an I/O exception has occurred.
-     * @throws JSONException the JSON exception
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
+     * @throws JSONException
+     *             the JSON exception
      */
     Integer getDistanceBetweenSignalement( double lat1, double lng1, double lat2, double lng2 ) throws IOException, JSONException;
 
     /**
      * Checks if is signalement followable andis signalement followed by user.
      *
-     * @param nIdSignalement the n id signalement
-     * @param userGuid the user guid
-     * @param choice the choice
+     * @param nIdSignalement
+     *            the n id signalement
+     * @param userGuid
+     *            the user guid
+     * @param choice
+     *            the choice
      * @return true, if is signalement followable andis signalement followed by user
-     * @throws IOException Signals that an I/O exception has occurred.
-     * @throws JSONException the JSON exception
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
+     * @throws JSONException
+     *             the JSON exception
      */
     boolean isSignalementFollowableAndisSignalementFollowedByUser( int nIdSignalement, String userGuid, String choice ) throws IOException, JSONException;
 
     /**
      * Gets the all priorite.
      *
-     * @param choice the choice
+     * @param choice
+     *            the choice
      * @return the all priorite
-     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
     List<Priorite> getAllPriorite( String choice ) throws IOException;
 
     /**
      * Load priorite by id.
      *
-     * @param lId the l id
+     * @param lId
+     *            the l id
      * @return the priorite
-     * @throws IOException Signals that an I/O exception has occurred.
-     * @throws JSONException the JSON exception
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
+     * @throws JSONException
+     *             the JSON exception
      */
     Priorite loadPrioriteById( long lId ) throws IOException, JSONException;
 
     /**
      * Gets the arrondissement by geom.
      *
-     * @param lng the lng
-     * @param lat the lat
+     * @param lng
+     *            the lng
+     * @param lat
+     *            the lat
      * @return the arrondissement by geom
-     * @throws IOException Signals that an I/O exception has occurred.
-     * @throws JSONException the JSON exception
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
+     * @throws JSONException
+     *             the JSON exception
      */
     Arrondissement getArrondissementByGeom( double lng, double lat ) throws IOException, JSONException;
 
     /**
      * Find by id type signalement.
      *
-     * @param nIdSignalement the n id signalement
+     * @param nIdSignalement
+     *            the n id signalement
      * @return the type signalement
-     * @throws JSONException the JSON exception
-     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws JSONException
+     *             the JSON exception
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
     TypeSignalement findByIdTypeSignalement( int nIdSignalement ) throws JSONException, IOException;
 
     /**
      * Gets the address item.
      *
-     * @param address the address
+     * @param address
+     *            the address
      * @return the address item
-     * @throws IOException Signals that an I/O exception has occurred.
-     * @throws JSONException the JSON exception
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
+     * @throws JSONException
+     *             the JSON exception
      */
     List<Address> getAddressItem( String address ) throws IOException, JSONException;
 
     /**
      * Gets the dossiers courrants by geom with limit.
      *
-     * @param longitude the longitude
-     * @param latitude the latitude
+     * @param longitude
+     *            the longitude
+     * @param latitude
+     *            the latitude
      * @return the dossiers courrants by geom with limit
-     * @throws IOException Signals that an I/O exception has occurred.
-     * @throws JSONException the JSON exception
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
+     * @throws JSONException
+     *             the JSON exception
      */
     List<DossierSignalementDTO> getDossiersCourrantsByGeomWithLimit( Double longitude, Double latitude ) throws IOException, JSONException;
 
@@ -181,15 +223,18 @@ public interface ISignalementBOService
      * Gets the all equipements.
      *
      * @return the all equipements
-     * @throws IOException Signals that an I/O exception has occurred.
-     * @throws JSONException the JSON exception
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
+     * @throws JSONException
+     *             the JSON exception
      */
     List<TypeEquipement> getAllEquipements( ) throws IOException, JSONException;
 
     /**
      * Gets the incidents by equipement.
      *
-     * @param equipementId the equipement id
+     * @param equipementId
+     *            the equipement id
      * @return the incidents by equipement
      */
     List<DossierSignalementDTO> getIncidentsByEquipement( Long equipementId );
@@ -197,8 +242,10 @@ public interface ISignalementBOService
     /**
      * Gets the type signalement.
      *
-     * @param nIdSignalement the n id signalement
-     * @param choice the choice
+     * @param nIdSignalement
+     *            the n id signalement
+     * @param choice
+     *            the choice
      * @return the type signalement
      */
     TypeSignalement getTypeSignalement( int nIdSignalement, String choice );
@@ -206,9 +253,11 @@ public interface ISignalementBOService
     /**
      * Gets the type signalement tree equipement.
      *
-     * @param typeEquipementId the type equipement id
+     * @param typeEquipementId
+     *            the type equipement id
      * @return the type signalement tree equipement
-     * @throws JSONException the JSON exception
+     * @throws JSONException
+     *             the JSON exception
      */
     List<TypeSignalementDTO> getTypeSignalementTreeEquipement( Long typeEquipementId ) throws JSONException;
 
@@ -240,35 +289,52 @@ public interface ISignalementBOService
     /**
      * Sauvegarder signalement.
      *
-     * @param demandeSignalement the demande signalement
-     * @param user the user
-     * @param choice the choice
+     * @param demandeSignalement
+     *            the demande signalement
+     * @param user
+     *            the user
+     * @param choice
+     *            the choice
      * @return the JSON object
-     * @throws IOException Signals that an I/O exception has occurred.
-     * @throws JSONException the JSON exception
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
+     * @throws JSONException
+     *             the JSON exception
      */
     JSONObject sauvegarderSignalement( Signalement demandeSignalement, LuteceUser user, String choice ) throws IOException, JSONException;
 
     /**
      * Adds the follower.
      *
-     * @param signalementId the signalement id
-     * @param guid the guid
-     * @param strUDID the str UDID
-     * @param email the email
-     * @param device the device
-     * @param userToken the user token
-     * @param createUser the create user
-     * @param choice the choice
-     * @throws Exception the exception
+     * @param signalementId
+     *            the signalement id
+     * @param guid
+     *            the guid
+     * @param strUDID
+     *            the str UDID
+     * @param email
+     *            the email
+     * @param device
+     *            the device
+     * @param userToken
+     *            the user token
+     * @param createUser
+     *            the create user
+     * @param choice
+     *            the choice
+     * @throws Exception
+     *             the exception
      */
-    void addFollower( Long signalementId, String guid, String strUDID, String email, String device, String userToken, boolean createUser, String choice ) throws Exception;
+    void addFollower( Long signalementId, String guid, String strUDID, String email, String device, String userToken, boolean createUser, String choice )
+            throws Exception;
 
     /**
      * Gets the signalement by token.
      *
-     * @param token the token
-     * @param instance the instance
+     * @param token
+     *            the token
+     * @param instance
+     *            the instance
      * @return the signalement by token
      */
     Signalement getSignalementByToken( String token, String instance );
@@ -276,18 +342,23 @@ public interface ISignalementBOService
     /**
      * Gets the history signalement.
      *
-     * @param idSignalement the id signalement
-     * @param instance the instance
+     * @param idSignalement
+     *            the id signalement
+     * @param instance
+     *            the instance
      * @return the history signalement
-     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
     String getHistorySignalement( Integer idSignalement, String instance ) throws IOException;
 
     /**
      * Validate service fait signalement by token.
      *
-     * @param token the token
-     * @param instance the instance
+     * @param token
+     *            the token
+     * @param instance
+     *            the instance
      * @return true, if successful
      */
     boolean validateServiceFaitSignalementByToken( String token, String instance );

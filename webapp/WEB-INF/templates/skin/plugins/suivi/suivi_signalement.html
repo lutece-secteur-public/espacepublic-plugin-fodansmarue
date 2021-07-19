@@ -126,20 +126,28 @@
 	 		</div>
 			<div class="row">
 				<div class="col-md-12 radio">
-			 		<label for="servicefait" class="info-suivi"><input type="radio" checked id="servicefait" name="servicefait">#i18n{fodansmarue.page.suivi.action.servicefait}</label>
+					<#if currentStateId == 20>
+						<label for="servicefait" class="info-suivi"><input type="radio" checked id="servicefait" disabled name="servicefait">#i18n{fodansmarue.page.suivi.action.servicefait}</label>
+						<p class="text-danger">#i18n{fodansmarue.page.suivi.servicefait.notAllowed}</p>
+					<#else>
+						<label for="servicefait" class="info-suivi"><input type="radio" checked id="servicefait" name="servicefait">#i18n{fodansmarue.page.suivi.action.servicefait}</label>
+					</#if>
+			 		
 				</div>
 			</div>
 		</div>
-		<div class="container">
-			<div class="row">
-				<div class="text-center">
-					<form id="form" action="jsp/site/Portal.jsp?page=suivi&instance=${instance}&token=${token}"  method="post" novalidate>
-						<input type="hidden" name="token" value="${token}"/>
-						<button type="submit" class="btn btn-center continue" name="action_validate_service_fait" role="button">#i18n{fodansmarue.valider}</button>
-					</form>
+		<#if currentStateId != 20>
+			<div class="container">
+				<div class="row">
+					<div class="text-center">
+						<form id="form" action="jsp/site/Portal.jsp?page=suivi&instance=${instance}&token=${token}"  method="post" novalidate>
+							<input type="hidden" name="token" value="${token}"/>
+							<button type="submit" class="btn btn-center continue" name="action_validate_service_fait" role="button">#i18n{fodansmarue.valider}</button>
+						</form>
+					</div>
 				</div>
 			</div>
-		</div>
+		</#if>
 	</#if>
 	<#if history!?has_content && (history!?size > 0) >	
 	<div class="container">

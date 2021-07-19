@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,43 +46,43 @@ public class TypeSignalementDTO
 {
 
     /** The _actif. */
-    private boolean                  _actif;
+    private boolean _actif;
 
     /** The id. */
-    private Integer                  _id;
+    private Integer _id;
 
     /** The id type signalement parent. */
-    private Integer                  _idTypeSignalementParent;
+    private Integer _idTypeSignalementParent;
 
     /** The _is selected. */
-    private boolean                  _isSelected;
+    private boolean _isSelected;
 
     /** The libelle. */
-    private String                   _libelle;
+    private String _libelle;
 
     /** The imageUrl. */
-    private String                   _imageUrl;
+    private String _imageUrl;
 
     /** The list child. */
     private List<TypeSignalementDTO> _listChild = new ArrayList<>( );
 
     /** The _minus. */
-    private boolean                  _minus;
+    private boolean _minus;
 
     /** The type signalement parent. */
-    private TypeSignalement          _typeSignalementParent;
+    private TypeSignalement _typeSignalementParent;
 
     /** The unit. */
-    private Unit                     _unit;
+    private Unit _unit;
 
     /** The is agent. */
-    private Boolean                  _isAgent;
+    private Boolean _isAgent;
 
     /** The b hors DMR. */
-    private boolean                  _bHorsDMR;
+    private boolean _bHorsDMR;
 
     /** The str message hors DMR. */
-    private String                   _strMessageHorsDMR;
+    private String _strMessageHorsDMR;
 
     /**
      * Gets the id.
@@ -247,8 +247,8 @@ public class TypeSignalementDTO
      */
     public void setListChild( List<TypeSignalementDTO> listChild )
     {
-        _listChild = listChild.stream( ).filter( typeSignalementDTO -> ( ( typeSignalementDTO.isAgent( ) != null ) && !typeSignalementDTO.isAgent( ) ) || ( typeSignalementDTO.isAgent( ) == null ) )
-                .collect( Collectors.toList( ) );
+        _listChild = listChild.stream( ).filter( typeSignalementDTO -> ( ( typeSignalementDTO.isAgent( ) != null ) && !typeSignalementDTO.isAgent( ) )
+                || ( typeSignalementDTO.isAgent( ) == null ) ).collect( Collectors.toList( ) );
     }
 
     /**

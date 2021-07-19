@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -48,10 +48,10 @@ public class BusinessException extends FunctionnalException
     private static final long serialVersionUID = -615983331551016543L;
 
     /** The code. */
-    private String            _code;
+    private String _code;
 
     /** The arguments. */
-    private String[]          _arguments;
+    private String [ ] _arguments;
 
     /**
      * Constructeur de l'exception.
@@ -144,7 +144,7 @@ public class BusinessException extends FunctionnalException
      *
      * @return les arguments de l'exception
      */
-    public String[] getArguments( )
+    public String [ ] getArguments( )
     {
         return _arguments.clone( );
     }
@@ -155,7 +155,7 @@ public class BusinessException extends FunctionnalException
      * @param arguments
      *            les arguments de l'exception
      */
-    public void setArguments( String[] arguments )
+    public void setArguments( String [ ] arguments )
     {
         _arguments = arguments.clone( );
     }

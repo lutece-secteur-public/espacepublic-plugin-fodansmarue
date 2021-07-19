@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,6 @@ import fr.paris.lutece.portal.service.image.ImageResource;
 import fr.paris.lutece.portal.web.constants.Parameters;
 import fr.paris.lutece.util.url.UrlItem;
 
-
 /**
  * The Class PhotoDMR.
  */
@@ -47,31 +46,31 @@ public class PhotoDMR implements Serializable
 {
 
     /** The Constant serialVersionUID. */
-    private static final long   serialVersionUID       = 8933736650673904955L;
+    private static final long serialVersionUID = 8933736650673904955L;
 
     /** The Constant VUE_D_ENSEMBLE. */
-    public static final Integer VUE_D_ENSEMBLE         = 1;
+    public static final Integer VUE_D_ENSEMBLE = 1;
 
     /** The Constant VUE_DETAILLE. */
-    public static final Integer VUE_DETAILLE           = 0;
+    public static final Integer VUE_DETAILLE = 0;
 
     /** The l id. */
-    private Long                _lId;
+    private Long _lId;
 
     /** The image. */
-    private ImageResource       _image                 = null;
+    private ImageResource _image = null;
 
     /** The image thumbnail. */
-    private ImageResource       _imageThumbnail        = new ImageResource( );
+    private ImageResource _imageThumbnail = new ImageResource( );
 
     /** The signalement. */
-    private Signalement         _signalement;
+    private Signalement _signalement;
 
     /** The date. */
-    private String              _date;
+    private String _date;
 
     /** The n vue. */
-    private Integer             _nVue;
+    private Integer _nVue;
 
     /** The Constant IMAGE_RESOURCE_TYPE_ID. */
     private static final String IMAGE_RESOURCE_TYPE_ID = "photo_signalement";
@@ -169,7 +168,7 @@ public class PhotoDMR implements Serializable
      * @param imageContent
      *            the new image content
      */
-    public void setImageContent( byte[] imageContent )
+    public void setImageContent( byte [ ] imageContent )
     {
         _image.setImage( imageContent );
     }
@@ -180,7 +179,7 @@ public class PhotoDMR implements Serializable
      * @param imageContent
      *            the new image thumbnail
      */
-    public void setImageThumbnail( byte[] imageContent )
+    public void setImageThumbnail( byte [ ] imageContent )
     {
         _imageThumbnail.setImage( imageContent );
 

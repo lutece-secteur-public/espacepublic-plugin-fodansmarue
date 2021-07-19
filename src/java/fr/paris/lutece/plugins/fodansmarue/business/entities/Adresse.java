@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,40 +37,41 @@ import java.io.Serializable;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-
 /**
  * The Class Adresse.
  */
-@JsonIgnoreProperties( { "googleLink" } )
+@JsonIgnoreProperties( {
+        "googleLink"
+} )
 public class Adresse implements Serializable
 {
-    
+
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8953938689889579663L;
 
     /** The lat. */
-    private Double            _lat;
+    private Double _lat;
 
     /** The lng. */
-    private Double            _lng;
+    private Double _lng;
 
     /** The lat address. */
-    private Double            _latAddress;
+    private Double _latAddress;
 
     /** The lng address. */
-    private Double            _lngAddress;
+    private Double _lngAddress;
 
     /** The n id. */
-    private Long              _nId;
+    private Long _nId;
 
     /** The signalement. */
-    private Signalement       _signalement;
+    private Signalement _signalement;
 
     /** The str adresse. */
-    private String            _strAdresse;
+    private String _strAdresse;
 
     /** The str precision localisation. */
-    private String            _strPrecisionLocalisation;
+    private String _strPrecisionLocalisation;
 
     /**
      * Gets the adresse.

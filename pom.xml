@@ -8,7 +8,7 @@
   </parent>
   <groupId>fr.paris.lutece.plugins</groupId>
   <artifactId>plugin-fodansmarue</artifactId>
-  <version>1.2.0</version>
+  <version>1.4.3-SNAPSHOT</version>
   <packaging>lutece-plugin</packaging>
   <name>Lutece fodansmarue plugin</name>
   <url>https://dev.lutece.paris.fr/gitlab/tmma/r61/plugin-fodansmarue</url>
@@ -16,7 +16,7 @@
     <connection>scm:git:https://dev.lutece.paris.fr/gitlab/tmma/r61/plugin-fodansmarue.git</connection>
     <developerConnection>scm:git:https://dev.lutece.paris.fr/gitlab/tmma/r61/plugin-fodansmarue.git</developerConnection>
     <url>https://dev.lutece.paris.fr/gitlab/tmma/r61/plugin-fodansmarue</url>
-    <tag>plugin-fodansmarue-1.2.0</tag>
+    <tag>HEAD</tag>
   </scm>
   <properties>
     <jiraComponentId />
@@ -29,7 +29,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <profile.pre-recette.dir>${basedir}/src/conf/prerec</profile.pre-recette.dir>
     <maven.javadoc.skip>true</maven.javadoc.skip>
-    <module.leaflet-dansmarue.version>6.3.4</module.leaflet-dansmarue.version>
+    <module.leaflet-dansmarue.version>6.5.1</module.leaflet-dansmarue.version>
   </properties>
   <dependencies>
     <dependency>
@@ -37,6 +37,11 @@
       <artifactId>lutece-core</artifactId>
       <version>6.1.0</version>
       <type>lutece-core</type>
+    </dependency>
+    <dependency>
+      <groupId>fr.paris.lutece.plugins</groupId>
+      <artifactId>library-identitystore</artifactId>
+      <version>2.0.3</version>
     </dependency>
     <dependency>
       <groupId>fr.paris.lutece.plugins</groupId>
@@ -65,18 +70,6 @@
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <version>9.4.1211</version>
-    </dependency>
-    <dependency>
-      <groupId>fr.paris.lutece.plugins</groupId>
-      <artifactId>module-mylutece-openam</artifactId>
-      <version>1.0.4</version>
-      <type>lutece-plugin</type>
-    </dependency>
-    <dependency>
-      <groupId>fr.paris.lutece.plugins</groupId>
-      <artifactId>plugin-identitystore-openamprovider</artifactId>
-      <version>1.0.1</version>
-      <type>lutece-plugin</type>
     </dependency>
     <dependency>
       <groupId>fr.paris.lutece.plugins</groupId>

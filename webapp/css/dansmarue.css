@@ -184,7 +184,7 @@ body {
     margin-top: 30px;
     margin-left: 0px;
     margin-bottom: 15px;
-    margin-rigt: 0px;
+    margin-right: 0px;
 }
 
 .horizontal-steps .step:last-child{
@@ -1342,7 +1342,7 @@ form#regular .row.pictos [class*="col-"] a.selected .selected-value {
 	.w3-tooltip, .w3-display-container {
 		position: relative;
 	}
-	.w3-black, w3-hover-black:hover{
+	.w3-black, .w3-hover-black:hover{
 		/*color:#fff !important;*/
 		background: transparent !important;
 		font-size: 28px;
@@ -1454,4 +1454,9 @@ form#regular .row.pictos [class*="col-"] a.selected .selected-value {
     .spec-file {
         margin-left: 0;
     }
+}
+
+.center-vertical 
+{
+	margin: 0 !important;
 }

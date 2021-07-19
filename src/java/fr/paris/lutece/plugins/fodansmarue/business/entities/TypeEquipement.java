@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,7 +35,6 @@ package fr.paris.lutece.plugins.fodansmarue.business.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -48,16 +47,16 @@ public class TypeEquipement implements Serializable
     private static final long serialVersionUID = 6711260040916887707L;
 
     /** The n id. */
-    private Long              _nId;
+    private Long _nId;
 
     /** The str name. */
-    private String            _strName;
+    private String _strName;
 
     /** The str libelle ecran mobile. */
-    private String            _strLibelleEcranMobile;
+    private String _strLibelleEcranMobile;
 
     /** The list equipements. */
-    private List<Equipement>  _listEquipements = new ArrayList<>( );
+    private List<Equipement> _listEquipements = new ArrayList<>( );
 
     /**
      * Gets the id.
@@ -119,7 +118,7 @@ public class TypeEquipement implements Serializable
      */
     public void setListEquipements( List<Equipement> listEquipements )
     {
-        Collections.copy( _listEquipements, listEquipements );
+        _listEquipements = listEquipements;
     }
 
     /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,60 +55,60 @@ public class TypeSignalement implements RBACResource, Serializable
 {
 
     /** The Constant serialVersionUID. */
-    private static final long  serialVersionUID       = 3271735854044098343L;
+    private static final long serialVersionUID = 3271735854044098343L;
 
     /** The Constant RESOURCE_TYPE. */
-    public static final String RESOURCE_TYPE          = "TYPE_SIGNALEMENT";
+    public static final String RESOURCE_TYPE = "TYPE_SIGNALEMENT";
 
     /** The n id. */
-    private Integer            _nId;
+    private Integer _nId;
 
     /** The str libelle. */
     @NotBlank
-    private String             _strLibelle;
+    private String _strLibelle;
 
     /** The b actif. */
-    private boolean            _bActif;
+    private boolean _bActif;
 
     /** The type signalement parent. */
     @JsonBackReference
-    private TypeSignalement    _typeSignalementParent = null;
+    private TypeSignalement _typeSignalementParent = null;
 
     /** The unit. */
-    private Unit               _unit                  = new Unit( );
+    private Unit _unit = new Unit( );
 
     /** The n id type signalement parent. */
-    private Integer            _nIdTypeSignalementParent;
+    private Integer _nIdTypeSignalementParent;
 
     /** The image. */
-    private ImageResource      _image                 = null;
+    private ImageResource _image = null;
 
     /** The n ordre. */
     @NotNull
     @Min( 1 )
-    private int                _nOrdre;
+    private int _nOrdre;
 
     /** The str image url. */
-    private String             _strImageUrl           = "";
+    private String _strImageUrl = "";
 
     /** The n id category. */
     @Transient
-    private Integer            _nIdCategory;
+    private Integer _nIdCategory;
 
     /** The alias. */
-    private String             _alias;
+    private String _alias;
 
     /** The alias mobile. */
-    private String             _aliasMobile;
+    private String _aliasMobile;
 
     /** The TypeEquipement. */
-    private TypeEquipement     _typeEquipement;
+    private TypeEquipement _typeEquipement;
 
     /** The b hors DMR. */
-    private boolean            _bHorsDMR;
+    private boolean _bHorsDMR;
 
     /** The str message hors DMR. */
-    private String             _strMessageHorsDMR;
+    private String _strMessageHorsDMR;
 
     /**
      * Gets the ordre.
@@ -274,7 +274,7 @@ public class TypeSignalement implements RBACResource, Serializable
      * @param imageContent
      *            the new image content
      */
-    public void setImageContent( byte[] imageContent )
+    public void setImageContent( byte [ ] imageContent )
     {
         _image.setImage( imageContent );
     }

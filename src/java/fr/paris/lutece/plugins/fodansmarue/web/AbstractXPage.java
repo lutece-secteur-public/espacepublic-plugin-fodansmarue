@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,42 +31,6 @@
  *
  * License 1.0
  */
-
-/*
-*
-*  * Copyright (c) 2002-2017, Mairie de Paris
-*  * All rights reserved.
-*  *
-*  * Redistribution and use in source and binary forms, with or without
-*  * modification, are permitted provided that the following conditions
-*  * are met:
-*  *
-*  *  1. Redistributions of source code must retain the above copyright notice
-*  *     and the following disclaimer.
-*  *
-*  *  2. Redistributions in binary form must reproduce the above copyright notice
-*  *     and the following disclaimer in the documentation and/or other materials
-*  *     provided with the distribution.
-*  *
-*  *  3. Neither the name of 'Mairie de Paris' nor 'Lutece' nor the names of its
-*  *     contributors may be used to endorse or promote products derived from
-*  *     this software without specific prior written permission.
-*  *
-*  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-*  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-*  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-*  * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE
-*  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-*  * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-*  * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-*  * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-*  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-*  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-*  * POSSIBILITY OF SUCH DAMAGE.
-*  *
-*  * License 1.0
-*
-*/
 package fr.paris.lutece.plugins.fodansmarue.web;
 
 import java.util.ArrayList;
@@ -93,7 +57,6 @@ import fr.paris.lutece.portal.util.mvc.xpage.MVCApplication;
 import fr.paris.lutece.portal.web.xpages.XPage;
 import fr.paris.lutece.util.ErrorMessage;
 
-
 /**
  * The Class AbstractXPage.
  */
@@ -101,53 +64,53 @@ public class AbstractXPage extends MVCApplication
 {
 
     /** The Constant serialVersionUID. */
-    private static final long                         serialVersionUID       = -1948541342775881466L;
+    private static final long serialVersionUID = -1948541342775881466L;
 
     /** The Constant TOKEN. */
-    private static final String                       TOKEN                  = "token";
+    private static final String TOKEN = "token";
 
     /** The Constant PAGE_PORTAL. */
     // PAGES
-    protected static final String                     PAGE_PORTAL            = "Portal.jsp?page=";
+    protected static final String PAGE_PORTAL = "Portal.jsp?page=";
 
     /** The Constant PAGE_PORTAL_FULL. */
-    protected static final String                     PAGE_PORTAL_FULL       = "jsp/site/Portal.jsp?page=";
+    protected static final String PAGE_PORTAL_FULL = "jsp/site/Portal.jsp?page=";
 
     /** The Constant XPAGE_DANSMARUE. */
     // XPAGE NAMES
-    protected static final String                     XPAGE_DANSMARUE        = "dansmarue";
+    protected static final String XPAGE_DANSMARUE = "dansmarue";
 
     /** The Constant XPAGE_DOUBLONS. */
-    protected static final String                     XPAGE_DOUBLONS         = "doublons";
+    protected static final String XPAGE_DOUBLONS = "doublons";
 
     /** The Constant XPAGE_SUIVI. */
-    public static final String                        XPAGE_SUIVI            = "suivi";
+    public static final String XPAGE_SUIVI = "suivi";
 
     /** The Constant URL_ACCUEIL. */
     // URLS
-    protected static final String                     URL_ACCUEIL            = "jsp/site/Portal.jsp?page=accueil";
+    protected static final String URL_ACCUEIL = "jsp/site/Portal.jsp?page=accueil";
 
     /** The Constant MARK_BASE_URL. */
     // MARKS
-    protected static final String                     MARK_BASE_URL          = "base_url";
+    protected static final String MARK_BASE_URL = "base_url";
 
     /** The Constant MARK_WRAPPER_WARNINGS. */
-    protected static final String                     MARK_WRAPPER_WARNINGS  = "wrapper_warnings";
+    protected static final String MARK_WRAPPER_WARNINGS = "wrapper_warnings";
 
     /** The Constant MARK_MAP_ERRORS. */
-    protected static final String                     MARK_MAP_ERRORS        = "map_errors";
+    protected static final String MARK_MAP_ERRORS = "map_errors";
 
     /** The Constant MARK_ERRORS. */
-    protected static final String                     MARK_ERRORS            = "errors";
+    protected static final String MARK_ERRORS = "errors";
 
     /** The Constant dansmarueUploadHandler. */
-    protected static final DansMaRueUploadHandler     dansmarueUploadHandler = SpringContextService.getBean( "dansmarueUploadHandler" );
+    protected static final DansMaRueUploadHandler dansmarueUploadHandler = SpringContextService.getBean( "dansmarueUploadHandler" );
 
     /** The Constant signalementBoService. */
-    protected static final SignalementBOService       signalementBoService   = SpringContextService.getBean( "signalementBoService" );
+    protected static final SignalementBOService signalementBoService = SpringContextService.getBean( "signalementBoService" );
 
     /** The map errors. */
-    private transient Map<String, List<ErrorMessage>> _mapErrors             = new HashMap<>( );
+    private transient Map<String, List<ErrorMessage>> _mapErrors = new HashMap<>( );
 
     /**
      * Default contrusteur.
@@ -200,7 +163,7 @@ public class AbstractXPage extends MVCApplication
      *            {@link Object} Arguments
      * @return localized message
      */
-    protected String getMessageWithParam( String key, HttpServletRequest request, Object[] arg )
+    protected String getMessageWithParam( String key, HttpServletRequest request, Object [ ] arg )
     {
         return I18nService.getLocalizedString( key, arg, request.getLocale( ) );
     }
@@ -227,7 +190,7 @@ public class AbstractXPage extends MVCApplication
      */
     protected String getToken( final HttpServletRequest request )
     {
-        return ( String ) request.getSession( ).getAttribute( TOKEN );
+        return (String) request.getSession( ).getAttribute( TOKEN );
     }
 
     /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,20 +35,22 @@ package fr.paris.lutece.plugins.fodansmarue.service;
 
 import fr.paris.lutece.util.httpaccess.HttpAccessException;
 
-
 /**
  * The Interface IAdresseService.
  */
 public interface IAdresseService
 {
-    
+
     /**
      * Gets the adresse from store adr.
      *
-     * @param lat the lat
-     * @param lng the lng
+     * @param lat
+     *            the lat
+     * @param lng
+     *            the lng
      * @return the adresse from store adr
-     * @throws HttpAccessException the http access exception
+     * @throws HttpAccessException
+     *             the http access exception
      */
     String getAdresseFromStoreAdr( Double lat, Double lng ) throws HttpAccessException;
 }

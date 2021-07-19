@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -95,267 +95,267 @@ public class XPageDansMaRue extends AbstractXPage
 {
 
     /** The Constant serialVersionUID. */
-    private static final long        serialVersionUID                  = 7782392238698476108L;
+    private static final long serialVersionUID = 7782392238698476108L;
 
     /** The Constant TEMPLATE_XPAGE_ACCUEIL. */
     // TEMPLATES
-    private static final String      TEMPLATE_XPAGE_ACCUEIL            = "/skin/plugins/fosignalement/accueil.html";
+    private static final String TEMPLATE_XPAGE_ACCUEIL = "/skin/plugins/fosignalement/accueil.html";
 
     /** The Constant TEMPLATE_XPAGE_ADRESSE. */
-    private static final String      TEMPLATE_XPAGE_ADRESSE            = "/skin/plugins/fosignalement/adresse.html";
+    private static final String TEMPLATE_XPAGE_ADRESSE = "/skin/plugins/fosignalement/adresse.html";
 
     /** The Constant TEMPLATE_XPAGE_DOUBLONS. */
-    private static final String      TEMPLATE_XPAGE_DOUBLONS           = "/skin/plugins/fosignalement/doublons.html";
+    private static final String TEMPLATE_XPAGE_DOUBLONS = "/skin/plugins/fosignalement/doublons.html";
 
     /** The Constant TEMPLATE_XPAGE_CATEGORIE. */
-    private static final String      TEMPLATE_XPAGE_CATEGORIE          = "/skin/plugins/fosignalement/type_signalement.html";
+    private static final String TEMPLATE_XPAGE_CATEGORIE = "/skin/plugins/fosignalement/type_signalement.html";
 
     /** The Constant TEMPLATE_XPAGE_FINALISATION. */
-    private static final String      TEMPLATE_XPAGE_FINALISATION       = "/skin/plugins/fosignalement/finalisation.html";
+    private static final String TEMPLATE_XPAGE_FINALISATION = "/skin/plugins/fosignalement/finalisation.html";
 
     /** The Constant TEMPLATE_XPAGE_SUIVI. */
-    private static final String      TEMPLATE_XPAGE_SUIVI              = "/skin/plugins/fosignalement/suivi_signalement.html";
+    private static final String TEMPLATE_XPAGE_SUIVI = "/skin/plugins/fosignalement/suivi_signalement.html";
 
     /** The Constant TEMPLATE_XPAGE_CONFIRMATION. */
-    private static final String      TEMPLATE_XPAGE_CONFIRMATION       = "/skin/plugins/fosignalement/confirmation.html";
+    private static final String TEMPLATE_XPAGE_CONFIRMATION = "/skin/plugins/fosignalement/confirmation.html";
 
     /** The Constant VIEW_DOUBLONS. */
     // VIEW
-    private static final String      VIEW_DOUBLONS                     = "doublons";
+    private static final String VIEW_DOUBLONS = "doublons";
 
     /** The Constant VIEW_CATEGORIE. */
-    private static final String      VIEW_CATEGORIE                    = "categorie";
+    private static final String VIEW_CATEGORIE = "categorie";
 
     /** The Constant VIEW_FINALISATION. */
-    private static final String      VIEW_FINALISATION                 = "finalisation";
+    private static final String VIEW_FINALISATION = "finalisation";
 
     /** The Constant VIEW_SUIVI_SIGNALEMENT. */
-    private static final String      VIEW_SUIVI_SIGNALEMENT            = "suivi_signalement";
+    private static final String VIEW_SUIVI_SIGNALEMENT = "suivi_signalement";
 
     /** The Constant VIEW_CONFIRMATION. */
-    private static final String      VIEW_CONFIRMATION                 = "confirmation";
+    private static final String VIEW_CONFIRMATION = "confirmation";
 
     /** The Constant VIEW_ADRESSE_ANOMALIE. */
-    private static final String      VIEW_ADRESSE_ANOMALIE             = "adresse";
+    private static final String VIEW_ADRESSE_ANOMALIE = "adresse";
 
     /** The Constant ACTION_SEARCH_ADDRESS. */
     // ACTIONS
-    private static final String      ACTION_SEARCH_ADDRESS             = "search_address";
+    private static final String ACTION_SEARCH_ADDRESS = "search_address";
 
     /** The Constant ACTION_VALIDATE_DECLARATION. */
-    private static final String      ACTION_VALIDATE_DECLARATION       = "validate_declaration";
+    private static final String ACTION_VALIDATE_DECLARATION = "validate_declaration";
 
     /** The Constant ACTION_VALIDATE_ADDRESS. */
-    private static final String      ACTION_VALIDATE_ADDRESS           = "validate_address";
+    private static final String ACTION_VALIDATE_ADDRESS = "validate_address";
 
     /** The Constant ACTION_VALIDATE_EQUIPEMENT. */
-    private static final String      ACTION_VALIDATE_EQUIPEMENT        = "validate_equipement";
+    private static final String ACTION_VALIDATE_EQUIPEMENT = "validate_equipement";
 
     /** The Constant ACTION_VALIDATE_DOUBLONS. */
-    private static final String      ACTION_VALIDATE_DOUBLONS          = "validate_doublons";
+    private static final String ACTION_VALIDATE_DOUBLONS = "validate_doublons";
 
     /** The Constant ACTION_VALIDATE_CATEGORIE. */
-    private static final String      ACTION_VALIDATE_CATEGORIE         = "validate_categorie";
+    private static final String ACTION_VALIDATE_CATEGORIE = "validate_categorie";
 
     /** The Constant ACTION_VALIDATE_FINALISATION. */
-    private static final String      ACTION_VALIDATE_FINALISATION      = "validate_finalisation";
+    private static final String ACTION_VALIDATE_FINALISATION = "validate_finalisation";
 
     /** The Constant ACTION_VALIDATE_SUIVI_SIGNALEMENT. */
-    private static final String      ACTION_VALIDATE_SUIVI_SIGNALEMENT = "validate_suivi_signalement";
+    private static final String ACTION_VALIDATE_SUIVI_SIGNALEMENT = "validate_suivi_signalement";
 
     /** The Constant ACTION_VALIDATE_SIGNALEMENT. */
-    private static final String      ACTION_VALIDATE_SIGNALEMENT       = "validate_signalement";
+    private static final String ACTION_VALIDATE_SIGNALEMENT = "validate_signalement";
 
     /** The Constant ACTION_DOWNLOAD. */
-    private static final String      ACTION_DOWNLOAD                   = "download";
+    private static final String ACTION_DOWNLOAD = "download";
 
     /** The Constant ACTION_RETOUR_ACCUEIL. */
-    private static final String      ACTION_RETOUR_ACCUEIL             = "retour_accueil";
+    private static final String ACTION_RETOUR_ACCUEIL = "retour_accueil";
 
     /** The Constant PARAMETER_ADDRESS. */
     // PARAMETERS
-    private static final String      PARAMETER_ADDRESS                 = "adresse";
+    private static final String PARAMETER_ADDRESS = "adresse";
 
     /** The Constant PARAMETER_TYPE_EQUIPEMENT. */
-    private static final String      PARAMETER_TYPE_EQUIPEMENT         = "typeEquipement";
+    private static final String PARAMETER_TYPE_EQUIPEMENT = "typeEquipement";
 
     /** The Constant PARAMETER_EQUIPEMENT. */
-    private static final String      PARAMETER_EQUIPEMENT              = "validEquipement";
+    private static final String PARAMETER_EQUIPEMENT = "validEquipement";
 
     /** The Constant PARAMETER_WITHOUT_JS. */
-    private static final String      PARAMETER_WITHOUT_JS              = "withoutJS";
+    private static final String PARAMETER_WITHOUT_JS = "withoutJS";
 
     /** The Constant PARAMETER_VALID_ADDRESS. */
-    private static final String      PARAMETER_VALID_ADDRESS           = "validAddress";
+    private static final String PARAMETER_VALID_ADDRESS = "validAddress";
 
     /** The Constant PARAMETER_TYPE_SIGNALEMENT_ID. */
-    private static final String      PARAMETER_TYPE_SIGNALEMENT_ID     = "typeSignalementId";
+    private static final String PARAMETER_TYPE_SIGNALEMENT_ID = "typeSignalementId";
 
     /** The Constant PARAMETER_TYPE_SIGNALEMENT. */
-    private static final String      PARAMETER_TYPE_SIGNALEMENT        = "typeSignalement";
+    private static final String PARAMETER_TYPE_SIGNALEMENT = "typeSignalement";
 
     /** The Constant PARAMETER_PRIORITE. */
-    private static final String      PARAMETER_PRIORITE                = "priorite";
+    private static final String PARAMETER_PRIORITE = "priorite";
 
     /** The Constant PARAMETER_COMMENTAIRE. */
-    private static final String      PARAMETER_COMMENTAIRE             = "commentaire";
+    private static final String PARAMETER_COMMENTAIRE = "commentaire";
 
     /** The Constant PARAMETER_SIGNALEMENT_ID. */
-    private static final String      PARAMETER_SIGNALEMENT_ID          = "signalementId";
+    private static final String PARAMETER_SIGNALEMENT_ID = "signalementId";
 
     /** The Constant PARAMETER_PHOTO_DETAILLEE. */
-    private static final String      PARAMETER_PHOTO_DETAILLEE         = "photo_detaillee";
+    private static final String PARAMETER_PHOTO_DETAILLEE = "photo_detaillee";
 
     /** The Constant PARAMETER_PHOTO_DENSEMBLE. */
-    private static final String      PARAMETER_PHOTO_DENSEMBLE         = "photo_ensemble";
+    private static final String PARAMETER_PHOTO_DENSEMBLE = "photo_ensemble";
 
     /** The Constant PARAMETER_EMAIL. */
-    private static final String      PARAMETER_EMAIL                   = "email";
+    private static final String PARAMETER_EMAIL = "email";
 
     /** The Constant PARAMETER_SAUVEGARDE_SIGNALEMENT. */
-    private static final String      PARAMETER_SAUVEGARDE_SIGNALEMENT  = "sauvegardeSignalement";
+    private static final String PARAMETER_SAUVEGARDE_SIGNALEMENT = "sauvegardeSignalement";
 
     /** The Constant PARAMETER_ID_SOURCE. */
-    private static final String      PARAMETER_ID_SOURCE               = "idSource";
+    private static final String PARAMETER_ID_SOURCE = "idSource";
 
     /** The Constant PARAMETER_REF_ITEM_SOURCE. */
-    private static final String      PARAMETER_REF_ITEM_SOURCE         = "refItemSource";
+    private static final String PARAMETER_REF_ITEM_SOURCE = "refItemSource";
 
     /** The Constant PARAMETER_POSITION_X. */
-    private static final String      PARAMETER_POSITION_X              = "x";
+    private static final String PARAMETER_POSITION_X = "x";
 
     /** The Constant PARAMETER_POSITION_Y. */
-    private static final String      PARAMETER_POSITION_Y              = "y";
+    private static final String PARAMETER_POSITION_Y = "y";
 
     /** The Constant MARK_PROPOSED_ADDRESSES. */
     // MARKERS
-    public static final String       MARK_PROPOSED_ADDRESSES           = "proposedAddresses";
+    public static final String MARK_PROPOSED_ADDRESSES = "proposedAddresses";
 
     /** The Constant MARK_PROPOSED_EQUIPEMENT. */
-    public static final String       MARK_PROPOSED_EQUIPEMENT          = "proposedEquipements";
+    public static final String MARK_PROPOSED_EQUIPEMENT = "proposedEquipements";
 
     /** The Constant MARK_NO_VALID_ADDRESSES. */
-    public static final String       MARK_NO_VALID_ADDRESSES           = "noValidAddresses";
+    public static final String MARK_NO_VALID_ADDRESSES = "noValidAddresses";
 
     /** The Constant MARK_CHOICE. */
-    public static final String       MARK_CHOICE                       = "choix_declaration";
+    public static final String MARK_CHOICE = "choix_declaration";
 
     /** The Constant MARK_SIGNALEMENT. */
-    private static final String      MARK_SIGNALEMENT                  = "signalementFOBean";
+    private static final String MARK_SIGNALEMENT = "signalementFOBean";
 
     /** The Constant MARK_ADRESSE. */
-    private static final String      MARK_ADRESSE                      = "adresse";
+    private static final String MARK_ADRESSE = "adresse";
 
     /** The Constant MARK_TYPE_EQUIPEMENT_LIST. */
-    private static final String      MARK_TYPE_EQUIPEMENT_LIST         = "typeEquipementList";
+    private static final String MARK_TYPE_EQUIPEMENT_LIST = "typeEquipementList";
 
     /** The Constant MARK_IS_EQUIPEMENT_UP. */
-    private static final String      MARK_IS_EQUIPEMENT_UP             = "isEquipementUp";
+    private static final String MARK_IS_EQUIPEMENT_UP = "isEquipementUp";
 
     /** The Constant MARK_TYPE_EQUIPEMENT_ID. */
-    private static final String      MARK_TYPE_EQUIPEMENT_ID           = "typeEquipementId";
+    private static final String MARK_TYPE_EQUIPEMENT_ID = "typeEquipementId";
 
     /** The Constant MARK_TYPE_EQUIPEMENT_LIBELLE. */
-    private static final String      MARK_TYPE_EQUIPEMENT_LIBELLE      = "typeEquipementLibelle";
+    private static final String MARK_TYPE_EQUIPEMENT_LIBELLE = "typeEquipementLibelle";
 
     /** The Constant MARK_EQUIPEMENT. */
-    private static final String      MARK_EQUIPEMENT                   = "equipement";
+    private static final String MARK_EQUIPEMENT = "equipement";
 
     /** The Constant MARK_EQUIPEMENT_LIST. */
-    private static final String      MARK_EQUIPEMENT_LIST              = "equipementsList";
+    private static final String MARK_EQUIPEMENT_LIST = "equipementsList";
 
     /** The Constant MARK_LIST_DOUBLONS. */
-    private static final String      MARK_LIST_DOUBLONS                = "list_doublons";
+    private static final String MARK_LIST_DOUBLONS = "list_doublons";
 
     /** The Constant MARK_TYPE_SIGNALEMENT. */
-    private static final String      MARK_TYPE_SIGNALEMENT             = "typeSignalement";
+    private static final String MARK_TYPE_SIGNALEMENT = "typeSignalement";
 
     /** The Constant MARK_LIST_PHOTO_DETAILLEE. */
-    private static final String      MARK_LIST_PHOTO_DETAILLEE         = "listupload_photo_detaillee";
+    private static final String MARK_LIST_PHOTO_DETAILLEE = "listupload_photo_detaillee";
 
     /** The Constant MARK_LIST_PHOTO_ENSEMBLE. */
-    private static final String      MARK_LIST_PHOTO_ENSEMBLE          = "listupload_photo_ensemble";
+    private static final String MARK_LIST_PHOTO_ENSEMBLE = "listupload_photo_ensemble";
 
     /** The Constant MARK_PHOTO_ENSEMBLE. */
-    private static final String      MARK_PHOTO_ENSEMBLE               = "photo_ensemble";
+    private static final String MARK_PHOTO_ENSEMBLE = "photo_ensemble";
 
     /** The Constant MARK_PHOTO_DETAILLEE. */
-    private static final String      MARK_PHOTO_DETAILLEE              = "photo_detaillee";
+    private static final String MARK_PHOTO_DETAILLEE = "photo_detaillee";
 
     /** The Constant MARK_EMAIL. */
-    private static final String      MARK_EMAIL                        = "email";
+    private static final String MARK_EMAIL = "email";
 
     /** The Constant MARK_NOT_SIGNED_IN. */
-    private static final String      MARK_NOT_SIGNED_IN                = "not_signed_in";
+    private static final String MARK_NOT_SIGNED_IN = "not_signed_in";
 
     /** The Constant CHOICE_ESPACE_PUBLIC. */
     // CHOICE
-    public static final String       CHOICE_ESPACE_PUBLIC              = "Espace public";
+    public static final String CHOICE_ESPACE_PUBLIC = "Espace public";
 
     /** The Constant CHOICE_EQUIPEMENT. */
-    public static final String       CHOICE_EQUIPEMENT                 = "Equipement municipal";
+    public static final String CHOICE_EQUIPEMENT = "Equipement municipal";
 
     /** The Constant JSON_KEY_ID. */
-    private static final String      JSON_KEY_ID                       = "id";
+    private static final String JSON_KEY_ID = "id";
 
     /** The adresse service. */
     // SERVICE
-    private transient AdresseService _adresseService                   = SpringContextService.getBean( "adresseService" );
+    private transient AdresseService _adresseService = SpringContextService.getBean( "adresseService" );
 
     /** The Constant MESSAGE_ERROR_LOCALISATION. */
     // MESSAGES
-    private static final String      MESSAGE_ERROR_LOCALISATION        = "fodansmarue.etape.localisation.error.horsparis";
+    private static final String MESSAGE_ERROR_LOCALISATION = "fodansmarue.etape.localisation.error.horsparis";
 
     /** The Constant MESSAGE_ERROR_NO_STREET_NUMBER. */
-    private static final String      MESSAGE_ERROR_NO_STREET_NUMBER    = "fodansmarue.etape.localisation.error.numero.adresse";
+    private static final String MESSAGE_ERROR_NO_STREET_NUMBER = "fodansmarue.etape.localisation.error.numero.adresse";
 
     /** The Constant MESSAGE_ERROR_EQUIPEMENT. */
-    private static final String      MESSAGE_ERROR_EQUIPEMENT          = "fodansmarue.etape.localisation.error.equipement";
+    private static final String MESSAGE_ERROR_EQUIPEMENT = "fodansmarue.etape.localisation.error.equipement";
 
     /** The lutece user. */
-    private LuteceUser               _luteceUser;
+    private LuteceUser _luteceUser;
 
     /** The signalement. */
-    private Signalement              _signalement;
+    private Signalement _signalement;
 
     /** The type equipement. */
-    private TypeEquipement           _typeEquipement;
+    private TypeEquipement _typeEquipement;
 
     /** The signaleur. */
-    private Signaleur                _signaleur;
+    private Signaleur _signaleur;
 
     /** The photos. */
-    private List<PhotoDMR>           _photos                           = new ArrayList<>( );
+    private List<PhotoDMR> _photos = new ArrayList<>( );
 
     /** The type equipement list. */
-    private List<TypeEquipement>     _typeEquipementList               = new ArrayList<>( );
+    private List<TypeEquipement> _typeEquipementList = new ArrayList<>( );
 
     /** The equipement list. */
-    private List<Equipement>         _equipementList                   = new ArrayList<>( );
+    private List<Equipement> _equipementList = new ArrayList<>( );
 
     /** The list photos detaillee. */
-    private List<FileItem>           _listPhotosDetaillee              = new ArrayList<>( );
+    private List<FileItem> _listPhotosDetaillee = new ArrayList<>( );
 
     /** The list photos ensemble. */
-    private List<FileItem>           _listPhotosEnsemble               = new ArrayList<>( );
+    private List<FileItem> _listPhotosEnsemble = new ArrayList<>( );
 
     /** The b is from another source. */
-    private boolean                  _bIsFromAnotherSource             = false;
+    private boolean _bIsFromAnotherSource = false;
 
     /** The str ref item source. */
-    private String                   _strRefItemSource;
+    private String _strRefItemSource;
 
     /** The source. */
-    private Source                   _source;
+    private Source _source;
 
     /** The choice. */
-    private String                   _choice;
+    private String _choice;
 
     /** The Constant PARAMETER_FIELD_NAME. */
     /*
      * Constantes pour le download
      */
-    public static final String       PARAMETER_FIELD_NAME              = "fieldName";
+    public static final String PARAMETER_FIELD_NAME = "fieldName";
 
     /**
      * Checks if is user connected.
@@ -424,7 +424,7 @@ public class XPageDansMaRue extends AbstractXPage
     @Action( ACTION_VALIDATE_DECLARATION )
     public XPage validateDeclaration( HttpServletRequest request )
     {
-        Long typeEquipementId = ( long ) -1;
+        Long typeEquipementId = (long) -1;
 
         if ( ( request.getParameter( PARAMETER_TYPE_EQUIPEMENT ) != null ) && ( Long.parseLong( request.getParameter( PARAMETER_TYPE_EQUIPEMENT ) ) != -1 ) )
         {
@@ -567,29 +567,29 @@ public class XPageDansMaRue extends AbstractXPage
             String allParameter = request.getParameter( PARAMETER_VALID_ADDRESS );
             String delimiter = "/";
 
-            String[] temp = allParameter.split( delimiter );
+            String [ ] temp = allParameter.split( delimiter );
 
             // get the address label
-            String labelAddress = temp[0].toLowerCase( );
+            String labelAddress = temp [0].toLowerCase( );
 
             // get the lat/lng in lambert 27561
 
-            String strLng = temp[1];
-            String strLat = temp[2];
+            String strLng = temp [1];
+            String strLat = temp [2];
 
             Double dLat = Double.parseDouble( strLat );
             Double dLng = Double.parseDouble( strLng );
 
             // transform the lambert coordinates to WGS84 for the
-            Double[] geom = null;
+            Double [ ] geom = null;
 
             geom = signalementBoService.getGeomFromLambertToWgs84( dLng, dLat );
 
             adresse.setAdresse( labelAddress );
             if ( geom != null )
             {
-                adresse.setLng( geom[0] );
-                adresse.setLat( geom[1] );
+                adresse.setLng( geom [0] );
+                adresse.setLat( geom [1] );
             }
         }
         else
@@ -616,7 +616,7 @@ public class XPageDansMaRue extends AbstractXPage
             return redirectView( request, VIEW_ADRESSE_ANOMALIE );
         }
 
-        errors = ( Map<String, String> ) request.getSession( ).getAttribute( MARK_MAP_ERRORS );
+        errors = (Map<String, String>) request.getSession( ).getAttribute( MARK_MAP_ERRORS );
         if ( null != errors )
         {
             errors.remove( PARAMETER_ADDRESS );
@@ -716,7 +716,8 @@ public class XPageDansMaRue extends AbstractXPage
         {
             DossierSignalementDTO dossierSignalementDTO = dosIterator.next( );
 
-            dossierSignalementDTO.setDistance( signalementBoService.getDistanceBetweenSignalement( lat, lng, dossierSignalementDTO.getLat( ), dossierSignalementDTO.getLng( ) ) );
+            dossierSignalementDTO.setDistance(
+                    signalementBoService.getDistanceBetweenSignalement( lat, lng, dossierSignalementDTO.getLat( ), dossierSignalementDTO.getLng( ) ) );
             typeSignalement = signalementBoService.findByIdTypeSignalement( 1000 );
 
             if ( StringUtils.isEmpty( dossierSignalementDTO.getImgUrl( ) ) && ( typeSignalement != null ) )
@@ -731,20 +732,23 @@ public class XPageDansMaRue extends AbstractXPage
             DossierSignalementDTO dossierSignalementDTO = sigIterator.next( );
             // Vérification si statut permettant le suivi
 
-            if ( signalementBoService.isSignalementFollowableAndisSignalementFollowedByUser( dossierSignalementDTO.getId( ).intValue( ), user != null ? user.getName( ) : null, _choice ) )
+            if ( signalementBoService.isSignalementFollowableAndisSignalementFollowedByUser( dossierSignalementDTO.getId( ).intValue( ),
+                    user != null ? user.getName( ) : null, _choice ) )
             {
                 sigIterator.remove( );
                 continue;
             }
 
-            dossierSignalementDTO.setDistance( signalementBoService.getDistanceBetweenSignalement( lat, lng, dossierSignalementDTO.getLat( ), dossierSignalementDTO.getLng( ) ) );
+            dossierSignalementDTO.setDistance(
+                    signalementBoService.getDistanceBetweenSignalement( lat, lng, dossierSignalementDTO.getLat( ), dossierSignalementDTO.getLng( ) ) );
             typeSignalement = signalementBoService.getTypeSignalement( Integer.parseInt( dossierSignalementDTO.getType( ) ), _choice );
 
             dossierSignalementDTO.setType( typeSignalement.getFormatTypeSignalement( ) );
             // on récupère l'image par defaut s'il n'y a pas d'image enregistrer
             if ( ( dossierSignalementDTO.getImgUrl( ) == null ) || StringUtils.isEmpty( dossierSignalementDTO.getImgUrl( ) ) )
             {
-                dossierSignalementDTO.setImgUrl( AppPropertiesService.getProperty( "signalement-rest.url_picture" ).concat( typeSignalement.getRoot( ).getImageUrl( ) ) );
+                dossierSignalementDTO
+                        .setImgUrl( AppPropertiesService.getProperty( "signalement-rest.url_picture" ).concat( typeSignalement.getRoot( ).getImageUrl( ) ) );
             }
         }
         List<DossierSignalementDTO> listDoublons = listDoublonsSignalement;
@@ -783,7 +787,8 @@ public class XPageDansMaRue extends AbstractXPage
             DossierSignalementDTO dossierSignalementDTO = sigIterator.next( );
             // Vérification si statut permettant le suivi
 
-            if ( signalementBoService.isSignalementFollowableAndisSignalementFollowedByUser( dossierSignalementDTO.getId( ).intValue( ), user != null ? user.getName( ) : null, _choice ) )
+            if ( signalementBoService.isSignalementFollowableAndisSignalementFollowedByUser( dossierSignalementDTO.getId( ).intValue( ),
+                    user != null ? user.getName( ) : null, _choice ) )
             {
                 sigIterator.remove( );
                 continue;
@@ -795,7 +800,8 @@ public class XPageDansMaRue extends AbstractXPage
             // on récupère l'image par defaut s'il n'y a pas d'image enregistrer
             if ( ( dossierSignalementDTO.getImgUrl( ) == null ) || StringUtils.isEmpty( dossierSignalementDTO.getImgUrl( ) ) )
             {
-                dossierSignalementDTO.setImgUrl( AppPropertiesService.getProperty( "equipement-rest.url_picture" ).concat( typeSignalement.getRoot( ).getImageUrl( ) ) );
+                dossierSignalementDTO
+                        .setImgUrl( AppPropertiesService.getProperty( "equipement-rest.url_picture" ).concat( typeSignalement.getRoot( ).getImageUrl( ) ) );
             }
         }
 
@@ -868,16 +874,16 @@ public class XPageDansMaRue extends AbstractXPage
                 _signalement.setAdressesForm( 0, adresse );
 
                 // transform the lambert coordinates to WGS84 for the
-                Double[] geom = null;
+                Double [ ] geom = null;
                 geom = signalementBoService.getGeomFromLambert93ToWgs84( lat, lng );
 
-                if ( geom != null )
+                if ( ( geom != null ) && ( geom.length > 0 ) )
                 {
-                    adresse.setLat( geom[1] );
-                    adresse.setLng( geom[0] );
+                    adresse.setLat( geom [1] );
+                    adresse.setLng( geom [0] );
                 }
             }
-            catch ( Exception e )
+            catch( Exception e )
             {
                 //
             }
@@ -887,37 +893,50 @@ public class XPageDansMaRue extends AbstractXPage
 
             _source = signalementBoService.getInfosForSource( idSource );
 
-            _signalement.setCommentaireAgentTerrain( _source.getCommentaire( ) != null ? _source.getCommentaire( ) : request.getParameter( PARAMETER_REF_ITEM_SOURCE ) );
+            _signalement.setCommentaireAgentTerrain( ( _source != null ) && ( _source.getCommentaire( ) != null ) ? _source.getCommentaire( )
+                    : request.getParameter( PARAMETER_REF_ITEM_SOURCE ) );
             _strRefItemSource = request.getParameter( PARAMETER_REF_ITEM_SOURCE );
+            if ( !StringUtils.isEmpty( _strRefItemSource ) )
+            {
+                StringBuilder commentaireAgentTerrain = new StringBuilder( );
+
+                if ( !StringUtils.isEmpty( _signalement.getCommentaireAgentTerrain( ) ) )
+                {
+                    commentaireAgentTerrain.append( _signalement.getCommentaireAgentTerrain( ) + " \n " );
+                }
+
+                commentaireAgentTerrain.append( _strRefItemSource );
+
+                _signalement.setCommentaireAgentTerrain( commentaireAgentTerrain.toString( ) );
+            }
 
             _typeEquipement = new TypeEquipement( );
             _typeEquipement.setId( -1L );
 
-        }
-        else if ( _bIsFromAnotherSource )
-        {
-            adresse = _signalement.getAdresses( ).get( 0 );
-
-            // Récupération des signalements pour la source
-            int idSource = Integer.parseInt( request.getParameter( PARAMETER_ID_SOURCE ) );
-            typeSignalementTree = signalementBoService.getTypeSignalementTreeForSource( idSource );
-
-            _typeEquipement = new TypeEquipement( );
-            _typeEquipement.setId( -1L );
         }
         else
-        {
-            if ( CHOICE_ESPACE_PUBLIC.equals( _choice ) )
+            if ( _bIsFromAnotherSource && ( _source != null ) )
             {
                 adresse = _signalement.getAdresses( ).get( 0 );
-                typeSignalementTree = signalementBoService.getTypeSignalementTree( );
+
+                // Récupération des signalements pour la source
+                typeSignalementTree = signalementBoService.getTypeSignalementTreeForSource( _source.getId( ) );
+                _typeEquipement = new TypeEquipement( );
+                _typeEquipement.setId( -1L );
             }
             else
             {
-                equipement = _signalement.getEquipement( );
-                typeSignalementTree = signalementBoService.getTypeSignalementTreeEquipement( equipement.getParentId( ) );
+                if ( CHOICE_ESPACE_PUBLIC.equals( _choice ) )
+                {
+                    adresse = _signalement.getAdresses( ).get( 0 );
+                    typeSignalementTree = signalementBoService.getTypeSignalementTree( );
+                }
+                else
+                {
+                    equipement = _signalement.getEquipement( );
+                    typeSignalementTree = signalementBoService.getTypeSignalementTreeEquipement( equipement.getParentId( ) );
+                }
             }
-        }
 
         // set l'id du type de signalement a 0 - si on récuèpre un id on set l'id pour l'autoséléctionnner
         String id = "0";
@@ -955,19 +974,21 @@ public class XPageDansMaRue extends AbstractXPage
 
             _signalement.setTypeSignalement( typeSignalement );
         }
-        else if ( ( request.getParameter( PARAMETER_TYPE_SIGNALEMENT_ID ) != null ) && StringUtils.isNotEmpty( request.getParameter( PARAMETER_TYPE_SIGNALEMENT_ID ) )
-                && !"0".equals( request.getParameter( PARAMETER_TYPE_SIGNALEMENT_ID ) ) )
-        {
-
-            typeSignalement = signalementBoService.getTypeSignalement( Integer.parseInt( request.getParameter( PARAMETER_TYPE_SIGNALEMENT_ID ) ), _choice );
-
-            _signalement.setTypeSignalement( typeSignalement );
-        }
         else
-        {
-            errors.put( PARAMETER_TYPE_SIGNALEMENT, "Veuillez choisir une categorie." );
-            return redirectView( request, VIEW_CATEGORIE );
-        }
+            if ( ( request.getParameter( PARAMETER_TYPE_SIGNALEMENT_ID ) != null )
+                    && StringUtils.isNotEmpty( request.getParameter( PARAMETER_TYPE_SIGNALEMENT_ID ) )
+                    && !"0".equals( request.getParameter( PARAMETER_TYPE_SIGNALEMENT_ID ) ) )
+            {
+
+                typeSignalement = signalementBoService.getTypeSignalement( Integer.parseInt( request.getParameter( PARAMETER_TYPE_SIGNALEMENT_ID ) ), _choice );
+
+                _signalement.setTypeSignalement( typeSignalement );
+            }
+            else
+            {
+                errors.put( PARAMETER_TYPE_SIGNALEMENT, "Veuillez choisir une categorie." );
+                return redirectView( request, VIEW_CATEGORIE );
+            }
 
         return redirectView( request, VIEW_FINALISATION );
     }
@@ -1076,15 +1097,17 @@ public class XPageDansMaRue extends AbstractXPage
     public XPage setSuiviSignalement( HttpServletRequest request ) throws UserNotSignedException
     {
 
-        if ( isUserConnected( request ) && StringUtils.isNotEmpty( request.getParameter( PARAMETER_SIGNALEMENT_ID ) ) && ( request.getParameter( PARAMETER_SIGNALEMENT_ID ) != null ) )
+        if ( isUserConnected( request ) && StringUtils.isNotEmpty( request.getParameter( PARAMETER_SIGNALEMENT_ID ) )
+                && ( request.getParameter( PARAMETER_SIGNALEMENT_ID ) != null ) )
         {
             LuteceUser user = getUser( request, true );
             long idSignalement = Integer.parseInt( request.getParameter( PARAMETER_SIGNALEMENT_ID ) );
             try
             {
-                signalementBoService.addFollower( idSignalement, user.getName( ), "", user.getUserInfo( LuteceUser.BUSINESS_INFO_ONLINE_EMAIL ), "", "", true, _choice );
+                signalementBoService.addFollower( idSignalement, user.getName( ), "", user.getUserInfo( LuteceUser.BUSINESS_INFO_ONLINE_EMAIL ), "", "", true,
+                        _choice );
             }
-            catch ( Exception e )
+            catch( Exception e )
             {
                 AppLogService.error( e.getMessage( ), e );
             }
@@ -1110,14 +1133,15 @@ public class XPageDansMaRue extends AbstractXPage
         // Récupèration de la priorite saisi par l'utilisateur
         ValidatorFinalisation vFinalisation = new ValidatorFinalisation( );
         boolean isFinalisationValide = vFinalisation.validate( request );
-        if ( ( request.getParameter( PARAMETER_PRIORITE ) != null ) && ( !StringUtils.isEmpty( request.getParameter( PARAMETER_PRIORITE ) ) && isFinalisationValide ) )
+        if ( ( request.getParameter( PARAMETER_PRIORITE ) != null )
+                && ( !StringUtils.isEmpty( request.getParameter( PARAMETER_PRIORITE ) ) && isFinalisationValide ) )
         {
             Priorite priorite = null;
             try
             {
                 priorite = signalementBoService.loadPrioriteById( NumberUtils.toInt( request.getParameter( PARAMETER_PRIORITE ) ) );
             }
-            catch ( IOException | JSONException e )
+            catch( IOException | JSONException e )
             {
                 AppLogService.error( e.getMessage( ), e );
             }
@@ -1133,10 +1157,25 @@ public class XPageDansMaRue extends AbstractXPage
         _signalement.setCommentaire( request.getParameter( PARAMETER_COMMENTAIRE ) );
 
         // Ajout de la ref item si présente
-        if ( ( _strRefItemSource != null ) && !_strRefItemSource.isEmpty( ) )
+        if ( !StringUtils.isEmpty( _strRefItemSource ) )
         {
-            String commentaire = ( _signalement.getCommentaire( ) + " \n " ) + ( _source.getDescription( ) != null ? _source.getDescription( ) : _strRefItemSource );
-            _signalement.setCommentaire( commentaire );
+            StringBuilder commentaire = new StringBuilder( );
+
+            // Ajout du commentaire ihm
+            if ( !StringUtils.isEmpty( _signalement.getCommentaire( ) ) )
+            {
+                commentaire.append( _signalement.getCommentaire( ) + " \n " );
+            }
+
+            // Ajout du commentaire via la source et/ou l'url
+            if ( !StringUtils.isEmpty( _source.getDescription( ) ) )
+            {
+                commentaire.append( _source.getDescription( ) + " \n " );
+            }
+
+            commentaire.append( _strRefItemSource );
+
+            _signalement.setCommentaire( commentaire.toString( ) );
         }
 
         // supprime les photos s'il existe pour mettre les nouvelles
@@ -1254,10 +1293,11 @@ public class XPageDansMaRue extends AbstractXPage
         {
             model.put( MARK_EMAIL, user.getUserInfo( LuteceUser.BUSINESS_INFO_ONLINE_EMAIL ) );
         }
-        else if ( _signaleur.getMail( ) != null )
-        {
-            model.put( MARK_EMAIL, _signaleur.getMail( ) );
-        }
+        else
+            if ( _signaleur.getMail( ) != null )
+            {
+                model.put( MARK_EMAIL, _signaleur.getMail( ) );
+            }
 
         model.put( MARK_NOT_SIGNED_IN, user == null );
 
@@ -1337,7 +1377,8 @@ public class XPageDansMaRue extends AbstractXPage
                 if ( SignalementConstants.ERREUR_SAUVEGARDE_PHOTO.equals( codeErreurCreation ) )
                 {
                     // Erreur à la l'enregistrement des photos
-                    errors.put( PARAMETER_SAUVEGARDE_SIGNALEMENT, DatastoreService.getDataValue( "sitelabels.site_property.erreur.enregistrement.photo", null ) );
+                    errors.put( PARAMETER_SAUVEGARDE_SIGNALEMENT,
+                            DatastoreService.getDataValue( "sitelabels.site_property.erreur.enregistrement.photo", null ) );
                     request.getSession( ).setAttribute( MARK_MAP_ERRORS, errors );
                 }
                 else
@@ -1349,7 +1390,7 @@ public class XPageDansMaRue extends AbstractXPage
                 return redirectView( request, VIEW_SUIVI_SIGNALEMENT );
             }
         }
-        catch ( IOException | JSONException e )
+        catch( IOException | JSONException e )
         {
             AppLogService.error( e.getMessage( ), e );
             return redirectView( request, VIEW_SUIVI_SIGNALEMENT );
