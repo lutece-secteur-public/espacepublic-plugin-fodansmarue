@@ -55,42 +55,6 @@ body {
     width: 408px;
 }
 /*************************************/
-/* PASTILLE MON COMPTE               */
-/*************************************/
-.pastille {
-    margin-top: 10px;
-}
-
-.mon-compte{
-	margin-top: -8px;
-}
-
-.banner-mon-compte__connexion-wrapper .banner-mon-compte__connexion-avatar,
-.banner-mon-compte__connexion-wrapper .banner-mon-compte__connected-avatar {
-	background-color: rgb(255, 255, 255);
-}
-
-.banner-mon-compte__connexion-wrapper .banner-mon-compte__connexion-avatar > svg > path {
-	fill: rgb(12, 81, 138);
-}
-
-.banner-mon-compte__connexion-wrapper .banner-mon-compte__connected-avatar span.letter {
-	color: rgb(12, 81, 138);
-}
-
-.banner-mon-compte__connexion-wrapper .banner-mon-compte__my-account::after{
-	color: rgb(12, 81, 138) !important;
-}
-
-.banner-mon-compte__connexion-wrapper .banner-mon-compte__sub-menu-parent .banner-mon-compte__sub-menu{
-	margin: 0px;
-}
-
-.btn-paris:hover:after, .btn-paris:focus:after, .btn-paris[disabled]:after {
-	width: 100%;
-}
-
-/*************************************/
 /* BOUTONS            				 */
 /*************************************/
 .btn-paris, .btn-paris:hover{
@@ -287,7 +251,7 @@ h1.section-title {
     margin-top: 30px;
     margin-left: 0px;
     margin-bottom: 15px;
-    margin-rigt: 0px;
+    margin-right: 0px;
 }
 
 .horizontal-steps .step:last-child{
@@ -303,7 +267,7 @@ h1.section-title {
     background-color: rgb(12, 81, 138);
 }
 
-horizontal-steps .step.valide .headline  {
+.horizontal-steps .step.valide .headline  {
 	padding-top: 20px;
 	height: 65px;
     width: 100%;

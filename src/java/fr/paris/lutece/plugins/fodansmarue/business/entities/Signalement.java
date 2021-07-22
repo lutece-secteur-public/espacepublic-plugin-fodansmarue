@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,7 +35,6 @@ package fr.paris.lutece.plugins.fodansmarue.business.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -53,91 +52,91 @@ public class Signalement implements Serializable
 {
 
     /** The Constant serialVersionUID. */
-    private static final long      serialVersionUID             = 463361533884052226L;
+    private static final long serialVersionUID = 463361533884052226L;
 
     /** Workflow resource type. */
-    public static final String     WORKFLOW_RESOURCE_TYPE       = "SIGNALEMENT_SIGNALEMENT";
+    public static final String WORKFLOW_RESOURCE_TYPE = "SIGNALEMENT_SIGNALEMENT";
 
     /** The adresses. */
-    private List<Adresse>          _adresses                    = new ArrayList<>( );
+    private List<Adresse> _adresses = new ArrayList<>( );
 
     /** The equipements. */
-    private Equipement             _equipement;
+    private Equipement _equipement;
 
     /** The arrondissement. */
-    private Arrondissement         _arrondissement;
+    private Arrondissement _arrondissement;
 
     /** The date creation. */
-    private String                 _dateCreation;
+    private String _dateCreation;
 
     /** The _heure creation. */
-    private Date                   _heureCreation;
+    private Date _heureCreation;
 
     /** The id. */
-    private Long                   _lId;
+    private Long _lId;
 
     /** The annee. */
-    private int                    _nAnnee;
+    private int _nAnnee;
 
     /** The numero. */
-    private int                    _nNumero;
+    private int _nNumero;
 
     /** The suivi. */
-    private int                    _nSuivi;
+    private int _nSuivi;
 
     /** The congratulation. */
-    private int                    _nFelicitations;
+    private int _nFelicitations;
 
     /** The photos. */
-    private List<PhotoDMR>         _photos                      = new ArrayList<>( );
+    private List<PhotoDMR> _photos = new ArrayList<>( );
 
     /** The priorite. */
-    private Priorite               _priorite;
+    private Priorite _priorite;
 
     /** The signaleurs list. */
-    private List<Signaleur>        _signaleurs                  = new ArrayList<>( );
+    private List<Signaleur> _signaleurs = new ArrayList<>( );
 
     /** The commentaire. */
-    private String                 _strCommentaire;
+    private String _strCommentaire;
 
     /** The commentaire programmation. */
-    private String                 _strCommentaireProgrammation = "";
+    private String _strCommentaireProgrammation = "";
 
     /** The date prevue traitement. */
-    private String                 _strDatePrevueTraitement;
+    private String _strDatePrevueTraitement;
 
     /** The mois. */
-    private String                 _strMois;
+    private String _strMois;
 
     /** The prefix. */
-    private String                 _strPrefix;
+    private String _strPrefix;
 
     /** The type signalement. */
-    private TypeSignalement        _typeSignalement;
+    private TypeSignalement _typeSignalement;
 
     /** The unit. */
-    private Unit                   _unit                        = new Unit( );
+    private Unit _unit = new Unit( );
 
     /** direction. */
-    private Unit                   _direction;
+    private Unit _direction;
 
     /** token. */
-    private String                 _strToken;
+    private String _strToken;
 
     /** the date of passage. */
-    private String                 _strDateServiceFaitTraitement;
+    private String _strDateServiceFaitTraitement;
 
     /** the time of passage. */
-    private String                 _strHeureServiceFaitTraitement;
+    private String _strHeureServiceFaitTraitement;
 
     /** The observations rejet. */
     private List<ObservationRejet> _observationsRejet;
 
     /** The attribute to check if the signalement is a duplicate. */
-    private boolean                _bIsDoublon;
+    private boolean _bIsDoublon;
 
     /** The str commentaire agent terrain. */
-    private String                 _strCommentaireAgentTerrain;
+    private String _strCommentaireAgentTerrain;
 
     /**
      * Sets the direction.
@@ -432,7 +431,7 @@ public class Signalement implements Serializable
      */
     public void setAdresses( List<Adresse> pAdresses )
     {
-        Collections.copy( _adresses, pAdresses );
+        _adresses = pAdresses;
     }
 
     /**
@@ -553,7 +552,7 @@ public class Signalement implements Serializable
      */
     public void setPhotos( List<PhotoDMR> pPhotos )
     {
-        Collections.copy( _photos, pPhotos );
+        _photos = pPhotos;
     }
 
     /**
@@ -586,7 +585,7 @@ public class Signalement implements Serializable
      */
     public void setSignaleurs( List<Signaleur> pSignaleurs )
     {
-        Collections.copy( _signaleurs, pSignaleurs );
+        _signaleurs = pSignaleurs;
     }
 
     /**
@@ -801,7 +800,7 @@ public class Signalement implements Serializable
      */
     public void setObservationsRejet( List<ObservationRejet> observationsRejet )
     {
-        Collections.copy( _observationsRejet, observationsRejet );
+        _observationsRejet = observationsRejet;
     }
 
     /**

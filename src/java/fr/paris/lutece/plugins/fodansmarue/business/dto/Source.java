@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,31 +37,30 @@ import java.io.Serializable;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-
 /**
  * The Class Source.
  */
 public class Source implements Serializable
 {
-    
+
     /** The Constant serialVersionUID. */
-    private static final long  serialVersionUID = 401742873432165201L;
+    private static final long serialVersionUID = 401742873432165201L;
 
     /** The Constant RESOURCE_TYPE. */
-    public static final String RESOURCE_TYPE    = "TYPE_SIGNALEMENT";
+    public static final String RESOURCE_TYPE = "TYPE_SIGNALEMENT";
 
     /** The n id. */
-    private Integer            _nId;
+    private Integer _nId;
 
     /** The str libelle. */
     @NotBlank
-    private String             _strLibelle;
+    private String _strLibelle;
 
     /** The str description. */
-    private String             _strDescription;
+    private String _strDescription;
 
     /** The str commentaire. */
-    private String             _strCommentaire;
+    private String _strCommentaire;
 
     /**
      * Gets the id.

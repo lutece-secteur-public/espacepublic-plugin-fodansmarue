@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,7 +35,6 @@ package fr.paris.lutece.plugins.fodansmarue.web;
 
 import fr.paris.lutece.plugins.leaflet.modules.dansmarue.web.LeafletDansMaRueJspBean;
 
-
 /**
  * The Class SignalementMapJspBean.
  */
@@ -50,7 +49,7 @@ public class SignalementMapJspBean extends LeafletDansMaRueJspBean
      */
     public SignalementMapJspBean( )
     {
-        APP_NAME = "signalement";
+        _appName = "signalement";
     }
 
 }

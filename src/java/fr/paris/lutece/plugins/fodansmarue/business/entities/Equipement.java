@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,39 +35,38 @@ package fr.paris.lutece.plugins.fodansmarue.business.entities;
 
 import java.io.Serializable;
 
-
 /**
  * The Class Equipement.
  */
 public class Equipement implements Serializable
 {
-    
+
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -1879010402928930728L;
 
     /** The n id. */
-    private Long              _nId;
+    private Long _nId;
 
     /** The n parent id. */
-    private Long              _nParentId;
+    private Long _nParentId;
 
     /** The str name. */
-    private String            _strName;
+    private String _strName;
 
     /** The str adresse. */
-    private String            _strAdresse;
+    private String _strAdresse;
 
     /** The latitude. */
-    private Double            _latitude;
+    private Double _latitude;
 
     /** The longitude. */
-    private Double            _longitude;
+    private Double _longitude;
 
     /** The str name format. */
-    private String            _strNameFormat;
+    private String _strNameFormat;
 
     /** The str adresse format. */
-    private String            _strAdresseFormat;
+    private String _strAdresseFormat;
 
     /**
      * Gets the id.

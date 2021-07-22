@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,7 +35,6 @@ package fr.paris.lutece.plugins.fodansmarue.business.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import fr.paris.lutece.portal.service.image.ImageResource;
@@ -51,43 +50,43 @@ public class TypeEquipement implements Serializable
 
     /** The n id type equipement. */
     // Variables declarations
-    private int               _nIdTypeEquipement;
+    private int _nIdTypeEquipement;
 
     /** The str libelle type equipement. */
-    private String            _strLibelleTypeEquipement;
+    private String _strLibelleTypeEquipement;
 
     /** The str nom public. */
-    private String            _strNomPublic;
+    private String _strNomPublic;
 
     /** The str libelle barre recherche. */
-    private String            _strLibelleBarreRecherche;
+    private String _strLibelleBarreRecherche;
 
     /** The str libelle ecr mobile. */
-    private String            _strLibelleEcrMobile;
+    private String _strLibelleEcrMobile;
 
     /** The str msg alert no equipement. */
-    private String            _strMsgAlertNoEquipement;
+    private String _strMsgAlertNoEquipement;
 
     /** The str msg usage. */
-    private String            _strMsgUsage;
+    private String _strMsgUsage;
 
     /** The image. */
-    private ImageResource     _image;
+    private ImageResource _image;
 
     /** The str image url. */
-    private String            _strImageUrl;
+    private String _strImageUrl;
 
     /** The icone. */
-    private ImageResource     _icone;
+    private ImageResource _icone;
 
     /** The str icone url. */
-    private String            _strIconeUrl;
+    private String _strIconeUrl;
 
     /** The children. */
-    private List<Integer>     _children        = new ArrayList<>( );
+    private List<Integer> _children = new ArrayList<>( );
 
     /** The str description. */
-    private String            _strDescription;
+    private String _strDescription;
 
     /**
      * Returns the IdTypeEquipement.
@@ -318,7 +317,7 @@ public class TypeEquipement implements Serializable
      */
     public void setChildren( List<Integer> children )
     {
-        Collections.copy( _children, children );
+        _children = children;
     }
 
     /**
@@ -390,7 +389,7 @@ public class TypeEquipement implements Serializable
      * @param imageContent
      *            the new image content
      */
-    public void setImageContent( byte[] imageContent )
+    public void setImageContent( byte [ ] imageContent )
     {
         _image.setImage( imageContent );
     }
@@ -401,7 +400,7 @@ public class TypeEquipement implements Serializable
      * @param iconeContent
      *            the new icone content
      */
-    public void setIconeContent( byte[] iconeContent )
+    public void setIconeContent( byte [ ] iconeContent )
     {
         _icone.setImage( iconeContent );
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -48,6 +48,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import fr.paris.lutece.plugins.fodansmarue.business.dto.HistorySignalementDTO;
 import fr.paris.lutece.plugins.fodansmarue.business.entities.Signalement;
 import fr.paris.lutece.plugins.fodansmarue.commons.BusinessException;
+import fr.paris.lutece.plugins.fodansmarue.utils.constants.SignalementConstants;
 import fr.paris.lutece.portal.service.i18n.I18nService;
 import fr.paris.lutece.portal.service.util.AppLogService;
 import fr.paris.lutece.portal.service.util.AppPropertiesService;
@@ -64,69 +65,69 @@ public class XPageSuivi extends AbstractXPage
 {
 
     /** The Constant serialVersionUID. */
-    private static final long   serialVersionUID                       = 1L;
+    private static final long serialVersionUID = 1L;
 
     /** The Constant TEMPLATE_XPAGE_SUIVI_SIGNALEMENT. */
     // TEMPLATES
-    private static final String TEMPLATE_XPAGE_SUIVI_SIGNALEMENT       = "/skin/plugins/suivi/suivi_signalement.html";
+    private static final String TEMPLATE_XPAGE_SUIVI_SIGNALEMENT = "/skin/plugins/suivi/suivi_signalement.html";
 
     /** The Constant ACTION_VALIDER_CHECKBOX. */
     // ACTIONS
-    private static final String ACTION_VALIDER_CHECKBOX                = "validate_checkbox";
+    private static final String ACTION_VALIDER_CHECKBOX = "validate_checkbox";
 
     /** The Constant ACTION_VALIDER_SERVICE_FAIT. */
-    private static final String ACTION_VALIDER_SERVICE_FAIT            = "validate_service_fait";
+    private static final String ACTION_VALIDER_SERVICE_FAIT = "validate_service_fait";
 
     /** The Constant MESSAGE_ERREUR_SIGNALEMENT_INTROUVABLE. */
     // MESSAGES
     private static final String MESSAGE_ERREUR_SIGNALEMENT_INTROUVABLE = "fodansmarue.page.suivi.erreur.signalement.introuvable";
 
     /** The Constant MESSAGE_ERREUR_SERVICE_FAIT_ERROR. */
-    private static final String MESSAGE_ERREUR_SERVICE_FAIT_ERROR      = "fodansmarue.page.suivi.erreur.signalement.service.fait";
+    private static final String MESSAGE_ERREUR_SERVICE_FAIT_ERROR = "fodansmarue.page.suivi.erreur.signalement.service.fait";
 
     /** The Constant MARK_SIGNALEMENT. */
     // MARKER
-    private static final String MARK_SIGNALEMENT                       = "signalement";
+    private static final String MARK_SIGNALEMENT = "signalement";
 
     /** The Constant MARK_MESSAGE_ERREUR. */
-    private static final String MARK_MESSAGE_ERREUR                    = "erreur";
+    private static final String MARK_MESSAGE_ERREUR = "erreur";
 
     /** The Constant MARK_CURRENT_STATE. */
-    private static final String MARK_CURRENT_STATE                     = "currentState";
+    private static final String MARK_CURRENT_STATE = "currentState";
 
     /** The Constant MARK_CURRENT_STATE_ID. */
-    private static final String MARK_CURRENT_STATE_ID                  = "currentStateId";
+    private static final String MARK_CURRENT_STATE_ID = "currentStateId";
 
     /** The Constant MARK_DATE_LAST_STATE. */
-    private static final String MARK_DATE_LAST_STATE                   = "currentStateDate";
+    private static final String MARK_DATE_LAST_STATE = "currentStateDate";
 
     /** The Constant MARK_HISTORY. */
-    private static final String MARK_HISTORY                           = "history";
+    private static final String MARK_HISTORY = "history";
 
     /** The Constant MARK_SERVICE_FAIT_AVAILABLE. */
-    private static final String MARK_SERVICE_FAIT_AVAILABLE            = "service_fait_available";
+    private static final String MARK_SERVICE_FAIT_AVAILABLE = "service_fait_available";
 
     /** The Constant MARK_TOKEN. */
-    private static final String MARK_TOKEN                             = "token";
+    private static final String MARK_TOKEN = "token";
 
     /** The Constant MARK_INSTANCE. */
-    private static final String MARK_INSTANCE                          = "instance";
+    private static final String MARK_INSTANCE = "instance";
 
     /** The Constant PROPERTY_ID_STATE_SERVICE_FAIT. */
     // PROPERTIES
-    public static final String  PROPERTY_ID_STATE_SERVICE_FAIT         = "signalement.idStateServiceFait";
+    public static final String PROPERTY_ID_STATE_SERVICE_FAIT = "signalement.idStateServiceFait";
 
     /** The Constant PROPERTY_ID_STATE_SERVICE_FAIT_LOCK. */
-    public static final String  PROPERTY_ID_STATE_SERVICE_FAIT_LOCK    = "service.fait.lock";
+    public static final String PROPERTY_ID_STATE_SERVICE_FAIT_LOCK = "service.fait.lock";
 
     /** The Constant PROPERTY_ID_STATE_REPORT_CLOSE. */
-    public static final String  PROPERTY_ID_STATE_REPORT_CLOSE         = "state.close.report";
+    public static final String PROPERTY_ID_STATE_REPORT_CLOSE = "state.close.report";
 
     /** The Constant STATUT_EN_COURS. */
-    private static final String STATUT_EN_COURS                        = "En cours";
+    private static final String STATUT_EN_COURS = "En cours";
 
     /** The Constant STATUT_CLOS. */
-    private static final String STATUT_CLOS                            = "Clôturée";
+    private static final String STATUT_CLOS = "Clôturée";
 
     /**
      * Returns the content of the page accueil.
@@ -146,7 +147,7 @@ public class XPageSuivi extends AbstractXPage
         {
             getSignalement( request, model );
         }
-        catch ( BusinessException e )
+        catch( BusinessException e )
         {
             erreur = e.getCode( );
             AppLogService.error( e );
@@ -192,6 +193,14 @@ public class XPageSuivi extends AbstractXPage
 
         boolean serviceFait = false;
 
+        // Control validate state
+        getSignalement( request, model );
+        Integer signalementState = (Integer) model.get( MARK_CURRENT_STATE_ID );
+        if ( ( signalementState != null ) && ( signalementState.intValue( ) == SignalementConstants.STATE_FAILURE_SEND_WS ) )
+        {
+            token = null;
+        }
+
         if ( ( token != null ) && ( instance != null ) )
         {
             serviceFait = signalementBoService.validateServiceFaitSignalementByToken( token, instance );
@@ -204,7 +213,7 @@ public class XPageSuivi extends AbstractXPage
             {
                 getSignalement( request, model );
             }
-            catch ( BusinessException e )
+            catch( BusinessException e )
             {
                 erreur = e.getCode( );
                 AppLogService.error( e );
@@ -247,14 +256,15 @@ public class XPageSuivi extends AbstractXPage
             signalement = signalementBoService.getSignalementByToken( token, instance );
             if ( signalement == null )
             {
-                throw new BusinessException( new Signalement( ), I18nService.getLocalizedString( MESSAGE_ERREUR_SIGNALEMENT_INTROUVABLE, request.getLocale( ) ) );
+                throw new BusinessException( new Signalement( ),
+                        I18nService.getLocalizedString( MESSAGE_ERREUR_SIGNALEMENT_INTROUVABLE, request.getLocale( ) ) );
             }
 
             try
             {
                 history = signalementBoService.getHistorySignalement( signalement.getId( ).intValue( ), instance );
             }
-            catch ( IOException e )
+            catch( IOException e )
             {
                 AppLogService.error( e );
             }
@@ -272,10 +282,12 @@ public class XPageSuivi extends AbstractXPage
                 Boolean serviceFait = mapper.readValue( json.findPath( MARK_SERVICE_FAIT_AVAILABLE ), Boolean.class );
                 // Current state
                 Integer currentStateId = mapper.readValue( json.findPath( MARK_CURRENT_STATE_ID ), Integer.class );
+                model.put( MARK_CURRENT_STATE_ID, currentStateId );
                 // Date last state
                 String strDateLastState = mapper.readValue( json.findPath( MARK_DATE_LAST_STATE ), String.class );
 
-                List<String> listEtatServiceFaitPossible = Arrays.asList( AppPropertiesService.getProperty( PROPERTY_ID_STATE_SERVICE_FAIT_LOCK ).split( "," ) );
+                List<String> listEtatServiceFaitPossible = Arrays
+                        .asList( AppPropertiesService.getProperty( PROPERTY_ID_STATE_SERVICE_FAIT_LOCK ).split( "," ) );
 
                 // State for report close
                 List<String> liststateclose = Arrays.asList( AppPropertiesService.getProperty( PROPERTY_ID_STATE_REPORT_CLOSE ).split( "," ) );

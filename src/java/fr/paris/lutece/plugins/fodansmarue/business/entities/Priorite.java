@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,6 @@ import java.io.Serializable;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-
 /**
  * The Class Priorite.
  */
@@ -49,13 +48,13 @@ public class Priorite implements Serializable
     private static final long serialVersionUID = 6997731542097285794L;
 
     /** The l id. */
-    private Long              _lId;
+    private Long _lId;
 
     /** The str libelle. */
-    private String            _strLibelle;
+    private String _strLibelle;
 
     /** The ordre priorite. */
-    private Integer           _ordrePriorite;
+    private Integer _ordrePriorite;
 
     /**
      * Gets the ordre priorite.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,26 +46,29 @@ import fr.paris.lutece.portal.service.util.AppPropertiesService;
 import fr.paris.lutece.util.httpaccess.HttpAccess;
 import fr.paris.lutece.util.httpaccess.HttpAccessException;
 
-
 /**
  * The Class AdresseService.
  */
 public class AdresseService implements IAdresseService
 {
-    
+
     /**
      * Gets the adresse from store adr.
      *
-     * @param lat the lat
-     * @param lng the lng
+     * @param lat
+     *            the lat
+     * @param lng
+     *            the lng
      * @return the adresse from store adr
-     * @throws HttpAccessException the http access exception
+     * @throws HttpAccessException
+     *             the http access exception
      */
     @Override
     public String getAdresseFromStoreAdr( Double lat, Double lng ) throws HttpAccessException
     {
         HttpAccess http = new HttpAccess( );
-        String answer = http.doGet( AppPropertiesService.getProperty( SignalementConstants.PROPERTY_URL_STORE_ADR ) + "StoreAdr/rest/AdressesPostales/R61/xy/(" + lat + "," + lng + ",5)" );
+        String answer = http.doGet( AppPropertiesService.getProperty( SignalementConstants.PROPERTY_URL_STORE_ADR ) + "StoreAdr/rest/AdressesPostales/R61/xy/("
+                + lat + "," + lng + ",5)" );
 
         Map<String, ArrayList> answerMap = new Gson( ).fromJson( answer, Map.class );
 

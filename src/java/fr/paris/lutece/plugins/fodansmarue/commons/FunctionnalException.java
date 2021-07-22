@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,7 +36,6 @@ package fr.paris.lutece.plugins.fodansmarue.commons;
 import java.util.HashMap;
 import java.util.Map;
 
-
 /**
  * DOCUMENT ME!.
  *
@@ -46,10 +45,10 @@ public class FunctionnalException extends RuntimeException
 {
 
     /** The Constant serialVersionUID. */
-    private static final long             serialVersionUID = 3057503015842458338L;
+    private static final long serialVersionUID = 3057503015842458338L;
 
     /** The bean. */
-    private transient Object              _bean;
+    private transient Object _bean;
 
     /** The additional parameters. */
     private transient Map<String, Object> _additionalParameters;

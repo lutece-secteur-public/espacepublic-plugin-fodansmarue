@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2020, City of Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,29 +37,28 @@ import java.io.Serializable;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-
 /**
  * The Class ObservationRejet.
  */
 public class ObservationRejet implements Serializable
 {
-    
+
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -640150499800596028L;
 
     /** The l id. */
-    private Integer           _lId;
+    private Integer _lId;
 
     /** The str libelle. */
     @NotBlank
-    private String            _strLibelle;
+    private String _strLibelle;
 
     /** The b actif. */
-    private boolean           _bActif;
+    private boolean _bActif;
 
     /** The i ordre. */
     // Ordre d'affichage
-    private Integer           _iOrdre;
+    private Integer _iOrdre;
 
     /**
      * Gets the id.
