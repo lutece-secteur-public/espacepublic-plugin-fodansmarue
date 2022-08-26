@@ -883,6 +883,7 @@ form#regular .row.pictos [class*="col-"] a.selected .selected-value {
 @media (min-width: 768px) {
   .info-sup-precisions {
     margin-right:180px;
+    overflow-wrap: break-word;
   }
 }
 

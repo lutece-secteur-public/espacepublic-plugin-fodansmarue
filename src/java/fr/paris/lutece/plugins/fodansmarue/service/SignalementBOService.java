@@ -948,6 +948,21 @@ public final class SignalementBOService implements ISignalementBOService
                     signalement.setEquipement( equipement );
                 }
 
+                if( json.get( "pictureClose" ) != null )
+                {
+                    signalement.setUrlpictureClose( json.get( "pictureClose" ).getTextValue() );
+                }
+
+                if( json.get( "pictureFar" ) != null )
+                {
+                    signalement.setUrlpictureFar( json.get( "pictureFar" ).getTextValue() );
+                }
+
+                if( json.get( "pictureServiceFait" ) != null )
+                {
+                    signalement.setUrlpictureServiceFait( json.get( "pictureServiceFait" ).getTextValue() );
+                }
+
                 return signalement;
             }
         }
