@@ -40,7 +40,7 @@
                         	<div class="col-md-5 col-sm-8 col-xs-12">
                             	<div class="form-group">
                                 	<label for="loc" class="champs-adresse">#i18n{fodansmarue.etape.finalisation.precision.label}</label>
-                               		<input type="text" onkeyup="reste(this.value);"  maxlength="155" class="form-control" id="commentaire" name="commentaire" value="${(signalementFOBean.commentaire)!}"/>
+                               		<textarea onkeyup="reste(this.value);" rows="3" cols="100" maxlength="250" class="form-control" id="commentaire" name="commentaire">${(signalementFOBean.commentaire)!}</textarea>
 									<noscript>
 										<span class="champs-adresse">#i18n{fodansmarue.finalisation.precisions.max}</span>
 									</noscript>
@@ -115,6 +115,6 @@
 $(window).scrollTop($('.step.active').offset().top);
 
 $(document).ready(function(){
-	$('#nbreMax').append('<span class="champs-adresse" id="caracteres">0</span> <label for="loc" class="champs-adresse">/155 #i18n{fodansmarue.etape.finalisation.caracteres}</label>');
+	$('#nbreMax').append('<span class="champs-adresse" id="caracteres">0</span> <label for="loc" class="champs-adresse">/250 #i18n{fodansmarue.etape.finalisation.caracteres}</label>');
 });
 </script>

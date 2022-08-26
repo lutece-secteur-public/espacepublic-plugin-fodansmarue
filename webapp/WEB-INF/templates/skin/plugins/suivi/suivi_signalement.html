@@ -36,17 +36,17 @@
 				 		<p class="info-suivi">E${signalement.numeroSignalement!}</p>
 					</div>
 				</div>
-			</div>	
-		<#else>	
+			</div>
+		<#else>
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
 				 		<p class="info-suivi">${signalement.numeroSignalement!}</p>
 					</div>
 				</div>
-			</div>	
-		</#if>		
-	</#if>	
+			</div>
+		</#if>
+	</#if>
  	<#if (currentState!) != "" >
  	<div class="container">
  		<div class="row">
@@ -61,8 +61,8 @@
 		 		<p class="info-suivi">${currentState!}</p>
 			</div>
 		</div>
-	</div>	
- 	</#if>	
+	</div>
+ 	</#if>
  	<#if (currentStateDate!) != "" >
  	<div class="container">
  		<div class="row">
@@ -117,6 +117,49 @@
 			</div>
 		</div>
 	</#if>
+	<#if signalement.urlpictureClose?has_content || signalement.urlpictureFar?has_content >
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 rubrique">
+					<h3 class="sous-titre">#i18n{fodansmarue.page.suivi.photoInitiale}</h3>
+				</div>
+			</div>
+		</div>
+		<#if signalement.urlpictureClose?has_content>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<img src="${signalement.urlpictureClose}" alt="photo initiale" class="img-thumbnail" style="max-width: 450px; max-height: 450px;" />
+					</div>
+				</div>
+			</div>
+		</#if>
+		<#if signalement.urlpictureFar?has_content>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<img src="${signalement.urlpictureFar}" alt="photo initiale" class="img-thumbnail" style="max-width: 450px; max-height: 450px;" />
+					</div>
+				</div>
+			</div>
+		</#if>
+	</#if>
+	<#if signalement.urlpictureServiceFait?has_content >
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 rubrique">
+					<h3 class="sous-titre">#i18n{fodansmarue.page.suivi.photoServiceFait}</h3>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<img src="${signalement.urlpictureServiceFait}" alt="photo service fait" class="img-thumbnail" style="max-width: 450px; max-height: 450px;" />
+				</div>
+			</div>
+		</div>
+	</#if>
 	<#if service_fait_available!>
 		<div class="container">
 	 		<div class="row">
@@ -132,7 +175,7 @@
 					<#else>
 						<label for="servicefait" class="info-suivi"><input type="radio" checked id="servicefait" name="servicefait">#i18n{fodansmarue.page.suivi.action.servicefait}</label>
 					</#if>
-			 		
+
 				</div>
 			</div>
 		</div>
@@ -149,7 +192,7 @@
 			</div>
 		</#if>
 	</#if>
-	<#if history!?has_content && (history!?size > 0) >	
+	<#if history!?has_content && (history!?size > 0) >
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 rubrique">
@@ -169,7 +212,7 @@
 	</div>
 	</#if>
 </#if>
-	
+
 </div>
 
 <script type="text/javascript">

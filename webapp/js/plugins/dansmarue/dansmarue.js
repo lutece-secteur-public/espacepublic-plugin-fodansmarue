@@ -70,6 +70,7 @@ jQuery.noConflict();
                 }
 				var fillInput = selectedCategory.find('.type-remarque-texte').text() + " : "+ selectedCategory.find('.selected-value').text();
 				$('#autocomplete').val(fillInput);
+				$("#autocomplete").attr('title', fillInput);
                 var selectedCateroryId = $('input[name=radiobtn-grp]:checked').closest('label').parent('div').attr('id');
 				$('#typeSignalementId').val(selectedCateroryId);
 				var retour = $(this).parent('div').parent('div').parent('div').parent('div').attr('id'); 

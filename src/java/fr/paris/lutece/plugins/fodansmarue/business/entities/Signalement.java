@@ -138,6 +138,12 @@ public class Signalement implements Serializable
     /** The str commentaire agent terrain. */
     private String _strCommentaireAgentTerrain;
 
+    private String _strUrlpictureClose;
+
+    private String _strUrlpictureFar;
+
+    private String _strUrlpictureServiceFait;
+
     /**
      * Sets the direction.
      *
@@ -841,4 +847,33 @@ public class Signalement implements Serializable
         _strCommentaireAgentTerrain = strCommentaireAgentTerrain;
     }
 
+    public String getUrlpictureClose( )
+    {
+        return _strUrlpictureClose;
+    }
+
+    public void setUrlpictureClose( String urlpictureClose )
+    {
+        this._strUrlpictureClose = urlpictureClose;
+    }
+
+    public String getUrlpictureFar( )
+    {
+        return _strUrlpictureFar;
+    }
+
+    public void setUrlpictureFar( String urlpictureFar )
+    {
+        this._strUrlpictureFar = urlpictureFar;
+    }
+
+    public String getUrlpictureServiceFait( )
+    {
+        return _strUrlpictureServiceFait;
+    }
+
+    public void setUrlpictureServiceFait( String urlpictureServiceFait )
+    {
+        this._strUrlpictureServiceFait = urlpictureServiceFait;
+    }
 }

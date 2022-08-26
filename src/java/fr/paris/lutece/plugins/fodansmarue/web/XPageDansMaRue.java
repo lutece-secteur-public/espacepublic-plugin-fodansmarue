@@ -743,12 +743,12 @@ public class XPageDansMaRue extends AbstractXPage
                     signalementBoService.getDistanceBetweenSignalement( lat, lng, dossierSignalementDTO.getLat( ), dossierSignalementDTO.getLng( ) ) );
             typeSignalement = signalementBoService.getTypeSignalement( Integer.parseInt( dossierSignalementDTO.getType( ) ), _choice );
 
-            dossierSignalementDTO.setType( typeSignalement.getFormatTypeSignalement( ) );
+            dossierSignalementDTO.setType( StringUtils.isEmpty( typeSignalement.getAliasMobile( ) ) ? typeSignalement.getFormatTypeSignalement( ) : typeSignalement.getAliasMobile( ) );
             // on récupère l'image par defaut s'il n'y a pas d'image enregistrer
             if ( ( dossierSignalementDTO.getImgUrl( ) == null ) || StringUtils.isEmpty( dossierSignalementDTO.getImgUrl( ) ) )
             {
                 dossierSignalementDTO
-                        .setImgUrl( AppPropertiesService.getProperty( "signalement-rest.url_picture" ).concat( typeSignalement.getRoot( ).getImageUrl( ) ) );
+                .setImgUrl( AppPropertiesService.getProperty( "signalement-rest.url_picture" ).concat( typeSignalement.getRoot( ).getImageUrl( ) ) );
             }
         }
         List<DossierSignalementDTO> listDoublons = listDoublonsSignalement;
@@ -801,7 +801,7 @@ public class XPageDansMaRue extends AbstractXPage
             if ( ( dossierSignalementDTO.getImgUrl( ) == null ) || StringUtils.isEmpty( dossierSignalementDTO.getImgUrl( ) ) )
             {
                 dossierSignalementDTO
-                        .setImgUrl( AppPropertiesService.getProperty( "equipement-rest.url_picture" ).concat( typeSignalement.getRoot( ).getImageUrl( ) ) );
+                .setImgUrl( AppPropertiesService.getProperty( "equipement-rest.url_picture" ).concat( typeSignalement.getRoot( ).getImageUrl( ) ) );
             }
         }
 
