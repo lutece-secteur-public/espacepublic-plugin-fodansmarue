@@ -297,7 +297,12 @@ public class AbstractXPage extends MVCApplication
     protected void fillCommons( Map<String, Object> model )
     {
         super.fillCommons( model );
-        Map<String, List<ErrorMessage>> mapErrorFieldsCopy = new HashMap<>( _mapErrors );
+        Map<String, List<ErrorMessage>> mapErrorFieldsCopy = new HashMap<>(  );
+
+        if(!_mapErrors.isEmpty( ) ) {
+            mapErrorFieldsCopy.putAll( _mapErrors );
+        }
+
         model.put( MARK_MAP_ERRORS, mapErrorFieldsCopy );
         _mapErrors.clear( );
 

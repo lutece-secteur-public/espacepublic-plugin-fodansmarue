@@ -37,11 +37,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
+import org.apache.commons.lang3.StringUtils;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.DeserializationConfig.Feature;
@@ -57,7 +56,6 @@ import fr.paris.lutece.plugins.fodansmarue.business.entities.Arrondissement;
 import fr.paris.lutece.plugins.fodansmarue.business.entities.Equipement;
 import fr.paris.lutece.plugins.fodansmarue.business.entities.Priorite;
 import fr.paris.lutece.plugins.fodansmarue.business.entities.Signalement;
-import fr.paris.lutece.plugins.fodansmarue.business.entities.TypeEquipement;
 import fr.paris.lutece.plugins.fodansmarue.commons.FunctionnalException;
 import fr.paris.lutece.plugins.fodansmarue.dto.DossierSignalementDTO;
 import fr.paris.lutece.plugins.fodansmarue.utils.constants.SignalementConstants;
@@ -77,9 +75,6 @@ public final class SignalementBOService implements ISignalementBOService
     /** The Constant ADRESSES. */
     private static final String ADRESSES = "adresses";
 
-    /** The Constant PICTURES. */
-    private static final String PICTURES = "pictures";
-
     /** The Constant ADDRESS. */
     private static final String ADDRESS = "address";
 
@@ -88,6 +83,16 @@ public final class SignalementBOService implements ISignalementBOService
 
     /** The Constant ESPACE_PUBLIC. */
     private static final String ESPACE_PUBLIC = "Espace public";
+
+    /**
+     * TOKEN_GRAVITEE
+     */
+    private static final String TOKEN_GRAVITEE = AppPropertiesService.getProperty( SignalementConstants.PROPERTY_TOKEN_GRAVITEE );
+
+    /**
+     * API_KEY_GRAVITEE
+     */
+    private static final String API_KEY_GRAVITEE = AppPropertiesService.getProperty( SignalementConstants.PROPERTY_KEY_GRAVITEE );
 
     /**
      * Gets the geom from lambert to wgs 84.
@@ -259,7 +264,7 @@ public final class SignalementBOService implements ISignalementBOService
     public boolean isSignalementFollowableAndisSignalementFollowedByUser( int nIdSignalement, String userGuid, String choice )
     {
 
-        String response;
+        String response="";
 
         try
         {
@@ -276,11 +281,7 @@ public final class SignalementBOService implements ISignalementBOService
                         .concat( SignalementConstants.REST_IS_SIGNALEMENT_FOLLOWABLE ), jObject.toString( ), true );
 
             }
-            else
-            {
-                response = callWSBOSignalement( AppPropertiesService.getProperty( SignalementConstants.PROPERTY_REST_EQUIPEMENT_BO_URL )
-                        .concat( SignalementConstants.REST_IS_SIGNALEMENT_FOLLOWABLE ), jObject.toString( ), true );
-            }
+
 
             ObjectMapper mapper = new ObjectMapper( );
 
@@ -313,11 +314,6 @@ public final class SignalementBOService implements ISignalementBOService
                 response = callWSBOSignalement( AppPropertiesService.getProperty( SignalementConstants.PROPERTY_REST_SIGNALEMENT_BO_URL )
                         .concat( SignalementConstants.REST_GET_ALL_PRIORITE ), null, false );
 
-            }
-            else
-            {
-                response = callWSBOSignalement( AppPropertiesService.getProperty( SignalementConstants.PROPERTY_REST_EQUIPEMENT_BO_URL )
-                        .concat( SignalementConstants.REST_GET_ALL_PRIORITE ), null, false );
             }
 
             ObjectMapper mapper = new ObjectMapper( );
@@ -404,154 +400,6 @@ public final class SignalementBOService implements ISignalementBOService
 
     }
 
-    /**
-     * Gets the incidents by equipement.
-     *
-     * @param equipementId
-     *            the equipement id
-     * @return the incidents by equipement
-     */
-    @Override
-    public List<DossierSignalementDTO> getIncidentsByEquipement( Long equipementId )
-    {
-
-        String response;
-        try
-        {
-            JSONObject jObject = new JSONObject( );
-
-            jObject.put( "request", SignalementConstants.REST_GET_INCIDENT_BY_EQUIPEMENT );
-            jObject.put( "equipementId", equipementId );
-
-            response = callWSBOSignalement( AppPropertiesService.getProperty( SignalementConstants.PROPERTY_REST_EQUIPEMENT_BO_URL )
-                    .concat( SignalementConstants.REST_GET_INCIDENT_BY_EQUIPEMENT ), jObject.toString( ), true );
-
-            ObjectMapper mapper = new ObjectMapper( );
-            JsonNode json = mapper.readTree( response );
-
-            List<DossierSignalementDTO> incidentsList = new ArrayList<>( );
-            JsonNode jsonIncidents = json.findPath( "closest_incidents" );
-            ObjectMapper incidentsMapper = new ObjectMapper( ).configure( Feature.FAIL_ON_UNKNOWN_PROPERTIES, false );
-
-            for ( JsonNode value : jsonIncidents )
-            {
-                // Incidents
-                DossierSignalementDTO incident = incidentsMapper.readValue( value, DossierSignalementDTO.class );
-                incident.setAdresse( value.get( ADDRESS ).getTextValue( ) );
-                incident.setDateCreation( value.get( "date" ).getTextValue( ) );
-                incident.setCommentaire( value.get( "descriptive" ).getTextValue( ) );
-                incident.setHeureCreation( value.get( "hour" ).getTextValue( ) );
-                incident.setLat( value.get( "lat" ).getDoubleValue( ) );
-                incident.setLng( value.get( "lng" ).getDoubleValue( ) );
-                incident.setIdCategory( value.get( "categoryId" ).getIntValue( ) );
-                if ( value.get( PICTURES ).get( "close" ).get( 0 ) != null )
-                {
-                    incident.setImgUrl( value.get( PICTURES ).get( "close" ).get( 0 ).getTextValue( ) );
-
-                }
-                else
-                    if ( value.get( PICTURES ).get( "far" ).get( 0 ) != null )
-                    {
-                        incident.setImgUrl( value.get( PICTURES ).get( "far" ).get( 0 ).getTextValue( ) );
-                    }
-                incidentsList.add( incident );
-
-            }
-
-            return incidentsList;
-
-        }
-        catch( HttpAccessException | JSONException | IOException e )
-        {
-            AppLogService.error( "Erreur lors l'appel à getIncidentsByEquipement", e );
-        }
-
-        return Collections.emptyList( );
-
-    }
-
-    /**
-     * Gets the all equipements.
-     *
-     * @return the all equipements
-     * @throws IOException
-     *             Signals that an I/O exception has occurred.
-     * @throws JSONException
-     *             the JSON exception
-     */
-    @Override
-    public List<TypeEquipement> getAllEquipements( ) throws IOException, JSONException
-    {
-
-        String response;
-        try
-        {
-
-            JSONObject jObject = new JSONObject( );
-
-            response = callWSBOSignalement( AppPropertiesService.getProperty( SignalementConstants.PROPERTY_REST_EQUIPEMENT_BO_URL )
-                    .concat( SignalementConstants.REST_GET_EQUIPEMENTS ), jObject.toString( ), false );
-
-            ObjectMapper mapper = new ObjectMapper( );
-            JsonNode json = mapper.readTree( response );
-
-            List<TypeEquipement> typeEquipements = new ArrayList<>( );
-            List<Equipement> equipements = new ArrayList<>( );
-            Map<String, TypeEquipement> map = new HashMap<>( );
-
-            JsonNode jsonEquipement = json.findPath( "equipements" );
-            ObjectMapper typeEquipementMapper = new ObjectMapper( ).configure( Feature.FAIL_ON_UNKNOWN_PROPERTIES, false );
-            Iterator<Entry<String, JsonNode>> fields = jsonEquipement.getFields( );
-
-            // Remplissage de la liste de TypeEquipement et de la liste Equipement
-            while ( fields.hasNext( ) )
-            {
-                Entry<String, JsonNode> entry = fields.next( );
-                String key = entry.getKey( );
-
-                if ( !"0".equals( key ) )
-                {
-                    JsonNode value = entry.getValue( );
-
-                    Integer parentId = value.get( "parent_id" ).getIntValue( );
-
-                    if ( parentId.equals( 0 ) )
-                    {
-                        // TypeEquipement
-                        TypeEquipement typeEquipement = typeEquipementMapper.readValue( value, TypeEquipement.class );
-                        typeEquipement.setId( Long.parseLong( key ) );
-                        typeEquipement.setLibelleEcranMobile( value.get( "libelleEcranMobile" ).getTextValue( ) );
-                        typeEquipements.add( typeEquipement );
-
-                        map.put( key, typeEquipement );
-
-                    }
-                    else
-                    {
-                        // Equipement
-                        Equipement equipement = typeEquipementMapper.readValue( value, Equipement.class );
-                        equipement.setId( Long.valueOf( key ) );
-                        equipement.setParentId( Long.valueOf( parentId ) );
-                        equipements.add( equipement );
-
-                        if ( map.containsKey( parentId.toString( ) ) )
-                        {
-                            map.get( parentId.toString( ) ).getListEquipements( ).add( equipement );
-                        }
-                    }
-                }
-            }
-
-            return typeEquipements;
-        }
-        catch( HttpAccessException | IOException e )
-        {
-            AppLogService.error( "Erreur lors l'appel à getAllEquipements", e );
-        }
-
-        return new ArrayList<>( );
-
-    }
 
     /**
      * Adds the follower.
@@ -581,7 +429,7 @@ public final class SignalementBOService implements ISignalementBOService
 
     {
 
-        String response;
+        String response="";
 
         Boolean isAddOk = null;
 
@@ -603,11 +451,6 @@ public final class SignalementBOService implements ISignalementBOService
                 response = callWSBOSignalement( AppPropertiesService.getProperty( SignalementConstants.PROPERTY_REST_SIGNALEMENT_BO_URL )
                         .concat( SignalementConstants.REST_ADD_FOLLOWER ), jObject.toString( ), true );
 
-            }
-            else
-            {
-                response = callWSBOSignalement( AppPropertiesService.getProperty( SignalementConstants.PROPERTY_REST_EQUIPEMENT_BO_URL )
-                        .concat( SignalementConstants.REST_ADD_FOLLOWER ), jObject.toString( ), true );
             }
 
             isAddOk = new JSONObject( response ).getBoolean( "isAddOk" );
@@ -701,41 +544,6 @@ public final class SignalementBOService implements ISignalementBOService
         return null;
     }
 
-    /**
-     * Gets the type signalement tree equipement.
-     *
-     * @param typeEquipementId
-     *            the type equipement id
-     * @return the type signalement tree equipement
-     * @throws JSONException
-     *             the JSON exception
-     */
-    @Override
-    public List<TypeSignalementDTO> getTypeSignalementTreeEquipement( Long typeEquipementId ) throws JSONException
-    {
-
-        try
-        {
-
-            JSONObject jObject = new JSONObject( );
-            jObject.put( "typeEquipementId", typeEquipementId );
-
-            String response = callWSBOSignalement( AppPropertiesService.getProperty( SignalementConstants.PROPERTY_REST_EQUIPEMENT_BO_URL )
-                    .concat( SignalementConstants.REST_GET_TYPE_SIGNALEMENT_TREE ), jObject.toString( ), true );
-
-            ObjectMapper mapper = new ObjectMapper( );
-            mapper.configure( DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false );
-            return mapper.readValue( response, mapper.getTypeFactory( ).constructCollectionType( List.class, TypeSignalementDTO.class ) );
-
-        }
-        catch( HttpAccessException | IOException e )
-        {
-            AppLogService.error( "Erreur lors l'appel à getTypeSignalementTree", e );
-        }
-
-        return Collections.emptyList( );
-
-    }
 
     /**
      * Gets the type signalement.
@@ -763,11 +571,7 @@ public final class SignalementBOService implements ISignalementBOService
                         .concat( SignalementConstants.REST_GET_TYPE_SIGNALEMENT ), jObject.toString( ), true );
 
             }
-            else
-            {
-                response = callWSBOSignalement( AppPropertiesService.getProperty( SignalementConstants.PROPERTY_REST_EQUIPEMENT_BO_URL )
-                        .concat( SignalementConstants.REST_GET_TYPE_SIGNALEMENT ), jObject.toString( ), true );
-            }
+
             ObjectMapper mapper = new ObjectMapper( );
             mapper.configure( DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false );
             return mapper.readValue( response, TypeSignalement.class );
@@ -897,7 +701,7 @@ public final class SignalementBOService implements ISignalementBOService
     public Signalement getSignalementByToken( String token, String instance )
     {
 
-        String response;
+        String response = null;
 
         try
         {
@@ -910,11 +714,7 @@ public final class SignalementBOService implements ISignalementBOService
                         .concat( SignalementConstants.REST_GET_SIGNALEMENT_BY_TOKEN ), jObject.toString( ), true );
 
             }
-            else
-            {
-                response = callWSBOSignalement( AppPropertiesService.getProperty( SignalementConstants.PROPERTY_REST_EQUIPEMENT_BO_URL )
-                        .concat( SignalementConstants.REST_GET_SIGNALEMENT_BY_TOKEN ), jObject.toString( ), true );
-            }
+
 
             if ( response != null )
             {
@@ -989,7 +789,7 @@ public final class SignalementBOService implements ISignalementBOService
     public String getHistorySignalement( Integer idSignalement, String instance ) throws IOException
     {
 
-        String response;
+        String response="";
 
         try
         {
@@ -1001,11 +801,6 @@ public final class SignalementBOService implements ISignalementBOService
                 response = callWSBOSignalement( AppPropertiesService.getProperty( SignalementConstants.PROPERTY_REST_SIGNALEMENT_BO_URL )
                         .concat( SignalementConstants.REST_GET_HISTORY_SIGNALEMENT ), jObject.toString( ), true );
 
-            }
-            else
-            {
-                response = callWSBOSignalement( AppPropertiesService.getProperty( SignalementConstants.PROPERTY_REST_EQUIPEMENT_BO_URL )
-                        .concat( SignalementConstants.REST_GET_HISTORY_SIGNALEMENT ), jObject.toString( ), true );
             }
 
             return response;
@@ -1031,7 +826,7 @@ public final class SignalementBOService implements ISignalementBOService
     public boolean validateServiceFaitSignalementByToken( String token, String instance )
     {
         boolean serviceFait = false;
-        String response;
+        String response="";
 
         try
         {
@@ -1044,11 +839,7 @@ public final class SignalementBOService implements ISignalementBOService
                         .concat( SignalementConstants.REST_SERVICE_FAIT_SIGNALEMENT ), jObject.toString( ), true );
 
             }
-            else
-            {
-                response = callWSBOSignalement( AppPropertiesService.getProperty( SignalementConstants.PROPERTY_REST_EQUIPEMENT_BO_URL )
-                        .concat( SignalementConstants.REST_SERVICE_FAIT_SIGNALEMENT ), jObject.toString( ), true );
-            }
+
 
             serviceFait = new JSONObject( response ).getBoolean( "isServiceFait" );
 
@@ -1081,7 +872,7 @@ public final class SignalementBOService implements ISignalementBOService
     @Override
     public JSONObject sauvegarderSignalement( Signalement demandeSignalement, LuteceUser user, String choice ) throws IOException, JSONException
     {
-        String response;
+        String response="";
         try
         {
             JSONObject jObject = new JSONObject( );
@@ -1104,11 +895,7 @@ public final class SignalementBOService implements ISignalementBOService
                         .concat( SignalementConstants.SAVE_SIGNALEMENT ), jObject.toString( ), true );
 
             }
-            else
-            {
-                response = callWSBOSignalement( AppPropertiesService.getProperty( SignalementConstants.PROPERTY_REST_EQUIPEMENT_BO_URL )
-                        .concat( SignalementConstants.SAVE_SIGNALEMENT ), jObject.toString( ), true );
-            }
+
             return new JSONObject( response );
 
         }
@@ -1142,6 +929,11 @@ public final class SignalementBOService implements ISignalementBOService
 
         Map<String, String> headersRequest = new HashMap<>( );
         headersRequest.put( "Content-Type", "application/json" );
+
+        if(StringUtils.isNotBlank( API_KEY_GRAVITEE ) && StringUtils.isNotBlank( TOKEN_GRAVITEE )) {
+            headersRequest.put( API_KEY_GRAVITEE, TOKEN_GRAVITEE );
+        }
+
         Map<String, String> headersResponse = new HashMap<>( );
 
         if ( isPost )
@@ -1150,7 +942,7 @@ public final class SignalementBOService implements ISignalementBOService
         }
         else
         {
-            return http.doGet( restUrl );
+            return http.doGet( restUrl,null,null,headersRequest );
         }
 
     }

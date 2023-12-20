@@ -31,7 +31,7 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.fodansmarue.utils;
+package fr.paris.lutece.plugins.fodansmarue.utils.impl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,10 +40,12 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import fr.paris.lutece.plugins.fodansmarue.utils.IListUtils;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
-import org.apache.log4j.Logger;
+
+import fr.paris.lutece.portal.service.util.AppLogService;
 
 /*
  * Copyright (c) 2002-2010, Mairie de Paris
@@ -86,20 +88,17 @@ import fr.paris.lutece.util.ReferenceList;
 /**
  * Utilitaire servant à la manipulation des listes.
  */
-public final class ListUtils
+public final class ListUtils implements IListUtils
 {
 
     /** The Constant ERREUR_LORS_DE_LA_CREATION_D_UNE_LISTE_POUR_COMBO. */
-    private static final String ERREUR_LORS_DE_LA_CREATION_D_UNE_LISTE_POUR_COMBO = "Erreur lors de la création d'une liste pour combo : ";
-
-    /** The Constant LOGGER. */
-    private static final Logger LOGGER = Logger.getLogger( ListUtils.class );
+    private final String ERREUR_LORS_DE_LA_CREATION_D_UNE_LISTE_POUR_COMBO = "Erreur lors de la création d'une liste pour combo : ";
 
     /** The Constant PROPERTY_LIST_SEPARATOR. */
-    private static final String PROPERTY_LIST_SEPARATOR = ";";
+    private final String PROPERTY_LIST_SEPARATOR = ";";
 
     /** The Constant PROPERTY_LIST_COMA. */
-    private static final String PROPERTY_LIST_COMA = ",";
+    private final String PROPERTY_LIST_COMA = ",";
 
     /**
      * Instantiates a new list utils.
@@ -110,13 +109,10 @@ public final class ListUtils
     }
 
     /**
-     * Return.
-     *
-     * @param propertyKey
-     *            the property key
-     * @return the property list
+     * {@inheritDoc}
      */
-    public static List<String> getPropertyList( String propertyKey )
+    @Override
+    public List<String> getPropertyList( String propertyKey )
     {
         String property = AppPropertiesService.getProperty( propertyKey );
         if ( property != null )
@@ -131,41 +127,19 @@ public final class ListUtils
     }
 
     /**
-     * Conversion d'une liste de type {@link List} vers une {@link ReferenceList}.
-     *
-     * @param list
-     *            la liste à convertir
-     * @param key
-     *            la valeur de la propriété du bean servant de clé dans la {@link ReferenceList}
-     * @param value
-     *            la valeur de la propriété du bean servant de valeur dans la {@link ReferenceList}
-     * @param firstItem
-     *            valeur de la première ligne dans la {@link ReferenceList} (exemple, en vue d'afficher la ReferenceList dans une liste déroulante : " --
-     *            Sélectionnez une valeur --").
-     * @return La {@link ReferenceList} peuplée avec les données de la Liste
+     * {@inheritDoc}
      */
-    public static ReferenceList toReferenceList( List<?> list, String key, String value, String firstItem )
+    @Override
+    public ReferenceList toReferenceList( List<?> list, String key, String value, String firstItem )
     {
-        return ListUtils.toReferenceList( list, key, value, firstItem, false );
+        return toReferenceList( list, key, value, firstItem, false );
     }
 
     /**
-     * Conversion d'une liste de type {@link List} vers une.
-     *
-     * @param list
-     *            la liste à convertir
-     * @param key
-     *            la valeur de la propriété du bean servant de clé dans la
-     * @param value
-     *            la valeur de la propriété du bean servant de valeur dans la
-     * @param firstItem
-     *            valeur de la première ligne dans la {@link ReferenceList} (exemple, en vue d'afficher la ReferenceList dans une liste déroulante : " --
-     *            Sélectionnez une valeur --").
-     * @param sort
-     *            if true reference list twill be sorted
-     * @return La {@link ReferenceList} peuplée avec les données de la Liste {@link ReferenceList} {@link ReferenceList} {@link ReferenceList}
+     * {@inheritDoc}
      */
-    public static ReferenceList toReferenceList( List<?> list, String key, String value, String firstItem, boolean sort )
+    @Override
+    public ReferenceList toReferenceList( List<?> list, String key, String value, String firstItem, boolean sort )
     {
         ReferenceList referenceList = new ReferenceList( );
         String valeurKey;
@@ -201,25 +175,17 @@ public final class ListUtils
         }
         catch( Exception e )
         {
-            LOGGER.warn( ERREUR_LORS_DE_LA_CREATION_D_UNE_LISTE_POUR_COMBO + e.getMessage( ), e );
+            AppLogService.error( ERREUR_LORS_DE_LA_CREATION_D_UNE_LISTE_POUR_COMBO + e.getMessage( ), e );
         }
 
         return referenceList;
     }
 
     /**
-     * Remove every elements from a reference list that are NOT contained in a given list.
-     * 
-     * @param refList
-     *            The list ro filter
-     * @param listId
-     *            The list of ids to retain in the reference list
-     * @param bKeepFirstItem
-     *            True to keep the first item, false to keep it only ifs code match any item of the id list.
-     * @return a new list with only the items of the referenceList which ids are in the parameter list. Note that a new list is created, but items are NOT
-     *         duplicated !
+     * {@inheritDoc}
      */
-    public static ReferenceList retainReferenceList( ReferenceList refList, List<Integer> listId, boolean bKeepFirstItem )
+    @Override
+    public ReferenceList retainReferenceList( ReferenceList refList, List<Integer> listId, boolean bKeepFirstItem )
     {
         ReferenceList filterList = new ReferenceList( );
         if ( ( listId == null ) || ( listId.isEmpty( ) ) )
@@ -251,13 +217,10 @@ public final class ListUtils
     }
 
     /**
-     * Converts an array of string, to a list of int.
-     *
-     * @param array
-     *            the array
-     * @return the list of int from str array
+     * {@inheritDoc}
      */
-    public static List<Integer> getListOfIntFromStrArray( String [ ] array )
+    @Override
+    public List<Integer> getListOfIntFromStrArray( String [ ] array )
     {
         if ( null == array )
         {
@@ -276,13 +239,10 @@ public final class ListUtils
     }
 
     /**
-     * Return.
-     *
-     * @param propertyKey
-     *            the property key
-     * @return the property list
+     * {@inheritDoc}
      */
-    public static List<Integer> getPropertyListInt( String propertyKey )
+    @Override
+    public List<Integer> getPropertyListInt( String propertyKey )
     {
         String property = AppPropertiesService.getProperty( propertyKey );
         if ( property != null )

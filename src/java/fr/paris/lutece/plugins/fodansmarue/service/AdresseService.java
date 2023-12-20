@@ -67,7 +67,7 @@ public class AdresseService implements IAdresseService
     public String getAdresseFromStoreAdr( Double lat, Double lng ) throws HttpAccessException
     {
         HttpAccess http = new HttpAccess( );
-        String answer = http.doGet( AppPropertiesService.getProperty( SignalementConstants.PROPERTY_URL_STORE_ADR ) + "StoreAdr/rest/AdressesPostales/R61/xy/("
+        String answer = http.doGet( AppPropertiesService.getProperty( SignalementConstants.PROPERTY_URL_STORE_ADR ) + "StoreAdr/rest/AdressesPostales/S65/xy/("
                 + lat + "," + lng + ",5)" );
 
         Map<String, ArrayList> answerMap = new Gson( ).fromJson( answer, Map.class );

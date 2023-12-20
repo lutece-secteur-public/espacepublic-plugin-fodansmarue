@@ -63,12 +63,11 @@ import fr.paris.lutece.plugins.fodansmarue.business.entities.Signaleur;
 import fr.paris.lutece.plugins.fodansmarue.business.entities.TypeEquipement;
 import fr.paris.lutece.plugins.fodansmarue.dto.DossierSignalementDTO;
 import fr.paris.lutece.plugins.fodansmarue.service.AdresseService;
-import fr.paris.lutece.plugins.fodansmarue.utils.DmrUtils;
-import fr.paris.lutece.plugins.fodansmarue.utils.ListUtils;
+import fr.paris.lutece.plugins.fodansmarue.utils.IDmrUtils;
+import fr.paris.lutece.plugins.fodansmarue.utils.IListUtils;
 import fr.paris.lutece.plugins.fodansmarue.utils.constants.SignalementConstants;
 import fr.paris.lutece.plugins.fodansmarue.utils.validator.ValidatorFinalisation;
 import fr.paris.lutece.plugins.fodansmarue.utils.validator.ValidatorLocalisation;
-import fr.paris.lutece.plugins.fodansmarue.utils.validator.ValidatorSignaleur;
 import fr.paris.lutece.plugins.leaflet.modules.dansmarue.entities.Address;
 import fr.paris.lutece.portal.service.datastore.DatastoreService;
 import fr.paris.lutece.portal.service.i18n.I18nService;
@@ -302,6 +301,13 @@ public class XPageDansMaRue extends AbstractXPage
     // SERVICE
     private transient AdresseService _adresseService = SpringContextService.getBean( "adresseService" );
 
+    /** The dmr utils. */
+    // UTILS
+    private transient IDmrUtils _dmrUtils = SpringContextService.getBean( "dmrUtils" );
+
+    /** The list utils. */
+    private transient IListUtils _listUtils = SpringContextService.getBean( "listUtils" );
+
     /** The Constant MESSAGE_ERROR_LOCALISATION. */
     // MESSAGES
     private static final String MESSAGE_ERROR_LOCALISATION = "fodansmarue.etape.localisation.error.horsparis";
@@ -398,10 +404,9 @@ public class XPageDansMaRue extends AbstractXPage
         Map<String, Object> model = getModel( );
         _luteceUser = getUser( request, false );
 
-        _typeEquipementList = signalementBoService.getAllEquipements( );
         _photos = new ArrayList<>( );
 
-        ReferenceList refListTypeEquipement = ListUtils.toReferenceList( _typeEquipementList, JSON_KEY_ID, "libelleEcranMobile", null );
+        ReferenceList refListTypeEquipement = _listUtils.toReferenceList( _typeEquipementList, JSON_KEY_ID, "libelleEcranMobile", null );
 
         ReferenceItem refItem = new ReferenceItem( );
         refItem.setCode( Long.toString( -1 ) );
@@ -475,7 +480,7 @@ public class XPageDansMaRue extends AbstractXPage
         }
         Map<String, Object> model = getModel( );
 
-        DmrUtils.formatStringManual( _equipementList );
+        _dmrUtils.formatStringManual( _equipementList );
 
         model.put( MARK_TYPE_EQUIPEMENT_ID, _typeEquipement.getId( ) );
         model.put( MARK_TYPE_EQUIPEMENT_LIBELLE, _typeEquipement.getLibelleEcranMobile( ) );
@@ -657,7 +662,7 @@ public class XPageDansMaRue extends AbstractXPage
         LuteceUser user = getUser( request, false );
         Adresse adresse = new Adresse( );
         Equipement equipement = new Equipement( );
-        List<DossierSignalementDTO> listDoublons;
+        List<DossierSignalementDTO> listDoublons = new ArrayList<>( );
 
         // Vérifie si le choix de déclaration était espace public ou équipement
         if ( CHOICE_ESPACE_PUBLIC.equals( _choice ) )
@@ -668,13 +673,9 @@ public class XPageDansMaRue extends AbstractXPage
 
             listDoublons = getDoublonsAdresses( lat, lng, user );
             // order by distance
-            DmrUtils.triBulles( listDoublons );
+            _dmrUtils.triBulles( listDoublons );
         }
-        else
-        {
-            equipement = _signalement.getEquipement( );
-            listDoublons = getDoublonsEquipement( user, equipement );
-        }
+
 
         model.put( MARK_LIST_DOUBLONS, listDoublons );
 
@@ -764,49 +765,6 @@ public class XPageDansMaRue extends AbstractXPage
         return listDoublons;
     }
 
-    /**
-     * Return a listDoublons from the selected equipement.
-     *
-     * @param user
-     *            the user
-     * @param equipement
-     *            the equipement
-     * @return listDoublons
-     */
-    public List<DossierSignalementDTO> getDoublonsEquipement( LuteceUser user, Equipement equipement )
-    {
-
-        TypeSignalement typeSignalement = null;
-
-        // get all the dossiers and signalements in perimeter
-        List<DossierSignalementDTO> listDoublonsSignalement = signalementBoService.getIncidentsByEquipement( equipement.getId( ) );
-        // set le type de signalement pour chaque DossierSignalementDTO
-        Iterator<DossierSignalementDTO> sigIterator = listDoublonsSignalement.iterator( );
-        while ( sigIterator.hasNext( ) )
-        {
-            DossierSignalementDTO dossierSignalementDTO = sigIterator.next( );
-            // Vérification si statut permettant le suivi
-
-            if ( signalementBoService.isSignalementFollowableAndisSignalementFollowedByUser( dossierSignalementDTO.getId( ).intValue( ),
-                    user != null ? user.getName( ) : null, _choice ) )
-            {
-                sigIterator.remove( );
-                continue;
-            }
-
-            typeSignalement = signalementBoService.getTypeSignalement( Integer.parseInt( dossierSignalementDTO.getType( ) ), _choice );
-
-            dossierSignalementDTO.setType( typeSignalement.getFormatTypeSignalement( ) );
-            // on récupère l'image par defaut s'il n'y a pas d'image enregistrer
-            if ( ( dossierSignalementDTO.getImgUrl( ) == null ) || StringUtils.isEmpty( dossierSignalementDTO.getImgUrl( ) ) )
-            {
-                dossierSignalementDTO
-                .setImgUrl( AppPropertiesService.getProperty( "equipement-rest.url_picture" ).concat( typeSignalement.getRoot( ).getImageUrl( ) ) );
-            }
-        }
-
-        return listDoublonsSignalement;
-    }
 
     /**
      * Sets the localisation.
@@ -885,7 +843,7 @@ public class XPageDansMaRue extends AbstractXPage
             }
             catch( Exception e )
             {
-                //
+                AppLogService.error( e.getMessage( ), e );
             }
             // Récupération des signalements pour la source
             int idSource = Integer.parseInt( request.getParameter( PARAMETER_ID_SOURCE ) );
@@ -930,11 +888,6 @@ public class XPageDansMaRue extends AbstractXPage
                 {
                     adresse = _signalement.getAdresses( ).get( 0 );
                     typeSignalementTree = signalementBoService.getTypeSignalementTree( );
-                }
-                else
-                {
-                    equipement = _signalement.getEquipement( );
-                    typeSignalementTree = signalementBoService.getTypeSignalementTreeEquipement( equipement.getParentId( ) );
                 }
             }
 
@@ -1061,7 +1014,7 @@ public class XPageDansMaRue extends AbstractXPage
 
         List<Priorite> priorites = signalementBoService.getAllPriorite( _choice );
 
-        ReferenceList listePriorite = ListUtils.toReferenceList( priorites, "id", "libelle", null, false );
+        ReferenceList listePriorite = _listUtils.toReferenceList( priorites, "id", "libelle", null, false );
 
         if ( _signalement.getPriorite( ) != null )
         {
@@ -1339,28 +1292,19 @@ public class XPageDansMaRue extends AbstractXPage
 
         LuteceUser user = getUser( request, false );
 
-        if ( ( request.getParameter( PARAMETER_EMAIL ) != null ) && StringUtils.isNotEmpty( PARAMETER_EMAIL ) )
+        if ( user == null )
         {
-
+            return redirectView( request, VIEW_SUIVI_SIGNALEMENT );
+        }
+        else
+        {
             Signaleur signaleur = new Signaleur( );
-            ValidatorSignaleur vsignaleur = new ValidatorSignaleur( );
-            Map<String, String> errors = vsignaleur.validate( request );
-            if ( !errors.isEmpty( ) )
-            {
-
-                return redirectView( request, VIEW_SUIVI_SIGNALEMENT );
-            }
-            signaleur.setMail( request.getParameter( PARAMETER_EMAIL ) );
-
-            if ( user != null )
-            {
-                signaleur.setGuid( user.getName( ) );
-            }
+            signaleur.setMail( user.getUserInfo( LuteceUser.BUSINESS_INFO_ONLINE_EMAIL ) );
+            signaleur.setGuid( user.getName( ) );
 
             List<Signaleur> signaleurs = new ArrayList<>( );
             signaleurs.add( signaleur );
             _signalement.setSignaleurs( signaleurs );
-
         }
         try
         {

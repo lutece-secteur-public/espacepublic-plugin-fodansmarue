@@ -41,58 +41,38 @@
 	                            <button class="btn btn-center register compte">#i18n{fodansmarue.etape.suivi.inscris}</button>
 	                        </div>
 	                    </div>
+	                </div>
+                <#elseif not_signed_in?? && not_signed_in == false>
+	                <div class="container">
 	                    <div class="row">
-	                        <div class="col-md-12 text-center">
-	                            <img src="images/image-DMR/ou.png" alt="ou" class="ou" width="49px" height="49px">
+	                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 newsletter">
+								<br/>
+	                            <@checkForErrors key="email">
+	                            <p class="champs-adresse">Adresse mail</p>
+	                            <div class="form-group">
+									<div class="row">
+										<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+											<input type="email" class="form-control" name="email" value="${email!}" disabled>
+										</div>
+									</div>
+	                            </div>
+	                            </@checkForErrors>
+								<@printError key="email"/>
 	                        </div>
 	                    </div>
 	                </div>
-                </#if>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 newsletter">
-							<#if not_signed_in?? && not_signed_in == true>
-								<p class="info-sup">#i18n{fodansmarue.etape.suivi.nocompte.email}</p>
-							<#else>
-								<br/>
-							</#if>
-                            <@checkForErrors key="email">
-                            <p class="champs-adresse">Adresse mail</p>
-                            <div class="form-group">
-								<div class="row">
-									<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-										<input type="email" class="form-control" name="email" value="${email!}">
-									</div>
-								</div>
-                            </div>
-                            </@checkForErrors>
-							<@printError key="email"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <img src="images/image-DMR/ou.png" alt="ou" class="ou" width="49px" height="49px">
-                        </div>
-                    </div>
-                </div>
-               <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <p class="nomail">#i18n{fodansmarue.etape.suivi.nocompte.noemail}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                        	<@checkForErrors key="sauvegardeSignalement">
-	                            <button type="submit" class="btn btn-center continue" name="action_validate_signalement" role="button">valider
-	                            </button>
-	                        </@checkForErrors>
-							<@printError key="sauvegardeSignalement"/>
-                        </div>
-                    </div>
-                </div>
+	               <div class="container">
+	                    <div class="row">
+	                        <div class="col-md-12 text-center">
+	                        	<@checkForErrors key="sauvegardeSignalement">
+		                            <button type="submit" class="btn btn-center continue" name="action_validate_signalement" role="button">valider
+		                            </button>
+		                        </@checkForErrors>
+								<@printError key="sauvegardeSignalement"/>
+	                        </div>
+	                    </div>
+	                </div>
+	            </#if>
             </div><!--fin step active-->
 <@conditionGeneral/>
 </div>

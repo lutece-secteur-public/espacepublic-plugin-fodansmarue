@@ -4,19 +4,19 @@
   <parent>
     <groupId>fr.paris.lutece.tools</groupId>
     <artifactId>lutece-global-pom</artifactId>
-    <version>5.1.2</version>
+    <version>6.0.0</version>
   </parent>
   <groupId>fr.paris.lutece.plugins</groupId>
   <artifactId>plugin-fodansmarue</artifactId>
-  <version>1.5.1-SNAPSHOT</version>
+  <version>2.0.2</version>
   <packaging>lutece-plugin</packaging>
   <name>Lutece fodansmarue plugin</name>
-  <url>https://dev.lutece.paris.fr/gitlab/tmma/r61/plugin-fodansmarue</url>
+  <url>https://github.com/lutece-secteur-public/espacepublic-plugin-fodansmarue</url>
   <scm>
-    <connection>scm:git:https://dev.lutece.paris.fr/gitlab/tmma/r61/plugin-fodansmarue.git</connection>
-    <developerConnection>scm:git:https://dev.lutece.paris.fr/gitlab/tmma/r61/plugin-fodansmarue.git</developerConnection>
-    <url>https://dev.lutece.paris.fr/gitlab/tmma/r61/plugin-fodansmarue</url>
-    <tag>HEAD</tag>
+    <connection>scm:git:https://github.com/lutece-secteur-public/espacepublic-plugin-fodansmarue.git</connection>
+    <developerConnection>scm:git:https://github.com/lutece-secteur-public/espacepublic-plugin-fodansmarue.git</developerConnection>
+    <url>https://github.com/lutece-secteur-public/espacepublic-plugin-fodansmarue</url>
+    <tag>plugin-fodansmarue-2.0.2</tag>
   </scm>
   <properties>
     <jiraComponentId />
@@ -29,62 +29,57 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <profile.pre-recette.dir>${basedir}/src/conf/prerec</profile.pre-recette.dir>
     <maven.javadoc.skip>true</maven.javadoc.skip>
-    <module.leaflet-dansmarue.version>6.5.1</module.leaflet-dansmarue.version>
   </properties>
-   <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>fr.paris.lutece</groupId>
-        <artifactId>lutece-core</artifactId>
-        <version>6.1.0</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
   <dependencies>
     <dependency>
       <groupId>fr.paris.lutece</groupId>
       <artifactId>lutece-core</artifactId>
-      <version>6.1.0</version>
+      <version>7.0.6</version>
       <type>lutece-core</type>
     </dependency>
     <dependency>
       <groupId>fr.paris.lutece.plugins</groupId>
       <artifactId>library-identitystore</artifactId>
-      <version>2.0.3</version>
+      <version>2.0.6</version>
+      <exclusions>
+        <exclusion>
+        	<groupId>fr.paris.lutece.plugins</groupId>
+   			<artifactId>library-httpaccess</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
+    <dependency>
+   		<groupId>fr.paris.lutece.plugins</groupId>
+   		<artifactId>library-httpaccess</artifactId>
+   		<version>2.5.2</version>
+   	</dependency>
     <dependency>
       <groupId>fr.paris.lutece.plugins</groupId>
       <artifactId>plugin-unittree</artifactId>
-      <version>2.1.2</version>
+      <version>3.1.0</version>
     </dependency>
     <dependency>
       <groupId>fr.paris.lutece.plugins</groupId>
       <artifactId>module-leaflet-dansmarue</artifactId>
-      <version>${module.leaflet-dansmarue.version}</version>
+      <version>7.0.0</version>
       <type>lutece-plugin</type>
     </dependency>
     <dependency>
       <groupId>fr.paris.lutece.plugins</groupId>
       <artifactId>plugin-leaflet</artifactId>
-      <version>1.0.0</version>
+      <version>1.0.1</version>
       <type>lutece-plugin</type>
     </dependency>
     <dependency>
       <groupId>fr.paris.lutece.plugins</groupId>
       <artifactId>plugin-asynchronousupload</artifactId>
-      <version>1.0.5</version>
+      <version>1.1.8</version>
       <type>lutece-plugin</type>
     </dependency>
     <dependency>
-      <groupId>org.postgresql</groupId>
-      <artifactId>postgresql</artifactId>
-      <version>9.4.1211</version>
-    </dependency>
-    <dependency>
-      <groupId>fr.paris.lutece.plugins</groupId>
-      <artifactId>plugin-piwik</artifactId>
-      <version>1.0.3</version>
-      <type>lutece-plugin</type>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20140107</version>
     </dependency>
   </dependencies>
   <repositories>
