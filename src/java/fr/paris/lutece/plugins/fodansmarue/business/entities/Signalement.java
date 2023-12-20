@@ -679,7 +679,8 @@ public class Signalement implements Serializable
      */
     public void setAdressesForm( int index, Adresse adresse )
     {
-        while ( index >= _adresses.size( ) )
+        int missingIndexes = index - _adresses.size( );
+        for (int i = 0; i <= missingIndexes; i++)
         {
             _adresses.add( new Adresse( ) );
         }
@@ -696,7 +697,8 @@ public class Signalement implements Serializable
      */
     public Adresse getAdressesForm( int index )
     {
-        while ( index >= _adresses.size( ) )
+        int missingIndexes = index - _adresses.size( );
+        for (int i = 0; i <= missingIndexes; i++)
         {
             _adresses.add( new Adresse( ) );
         }
@@ -854,7 +856,7 @@ public class Signalement implements Serializable
 
     public void setUrlpictureClose( String urlpictureClose )
     {
-        this._strUrlpictureClose = urlpictureClose;
+        _strUrlpictureClose = urlpictureClose;
     }
 
     public String getUrlpictureFar( )
@@ -864,7 +866,7 @@ public class Signalement implements Serializable
 
     public void setUrlpictureFar( String urlpictureFar )
     {
-        this._strUrlpictureFar = urlpictureFar;
+        _strUrlpictureFar = urlpictureFar;
     }
 
     public String getUrlpictureServiceFait( )
@@ -874,6 +876,6 @@ public class Signalement implements Serializable
 
     public void setUrlpictureServiceFait( String urlpictureServiceFait )
     {
-        this._strUrlpictureServiceFait = urlpictureServiceFait;
+        _strUrlpictureServiceFait = urlpictureServiceFait;
     }
 }

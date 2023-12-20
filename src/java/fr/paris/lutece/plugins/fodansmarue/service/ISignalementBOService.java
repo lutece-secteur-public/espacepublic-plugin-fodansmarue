@@ -45,7 +45,6 @@ import fr.paris.lutece.plugins.fodansmarue.business.dto.TypeSignalementDTO;
 import fr.paris.lutece.plugins.fodansmarue.business.entities.Arrondissement;
 import fr.paris.lutece.plugins.fodansmarue.business.entities.Priorite;
 import fr.paris.lutece.plugins.fodansmarue.business.entities.Signalement;
-import fr.paris.lutece.plugins.fodansmarue.business.entities.TypeEquipement;
 import fr.paris.lutece.plugins.fodansmarue.dto.DossierSignalementDTO;
 import fr.paris.lutece.plugins.leaflet.modules.dansmarue.entities.Address;
 import fr.paris.lutece.portal.service.security.LuteceUser;
@@ -219,25 +218,6 @@ public interface ISignalementBOService
      */
     List<DossierSignalementDTO> getDossiersCourrantsByGeomWithLimit( Double longitude, Double latitude ) throws IOException, JSONException;
 
-    /**
-     * Gets the all equipements.
-     *
-     * @return the all equipements
-     * @throws IOException
-     *             Signals that an I/O exception has occurred.
-     * @throws JSONException
-     *             the JSON exception
-     */
-    List<TypeEquipement> getAllEquipements( ) throws IOException, JSONException;
-
-    /**
-     * Gets the incidents by equipement.
-     *
-     * @param equipementId
-     *            the equipement id
-     * @return the incidents by equipement
-     */
-    List<DossierSignalementDTO> getIncidentsByEquipement( Long equipementId );
 
     /**
      * Gets the type signalement.
@@ -250,16 +230,6 @@ public interface ISignalementBOService
      */
     TypeSignalement getTypeSignalement( int nIdSignalement, String choice );
 
-    /**
-     * Gets the type signalement tree equipement.
-     *
-     * @param typeEquipementId
-     *            the type equipement id
-     * @return the type signalement tree equipement
-     * @throws JSONException
-     *             the JSON exception
-     */
-    List<TypeSignalementDTO> getTypeSignalementTreeEquipement( Long typeEquipementId ) throws JSONException;
 
     /**
      * Gets the type signalement tree.

@@ -200,9 +200,6 @@ public final class SignalementConstants
     // Methodes WS
     public static final String PROPERTY_REST_SIGNALEMENT_BO_URL = "signalement-bo-rest-url";
 
-    /** The Constant PROPERTY_REST_EQUIPEMENT_BO_URL. */
-    public static final String PROPERTY_REST_EQUIPEMENT_BO_URL = "equipement-bo-rest-url";
-
     /** The Constant PROPERTY_SIGNALEMENT. */
     public static final String PROPERTY_SIGNALEMENT = "signalement";
 
@@ -267,15 +264,6 @@ public final class SignalementConstants
     /** The Constant SAVE_SIGNALEMENT. */
     public static final String SAVE_SIGNALEMENT = "sauvegarderSignalement";
 
-    /** The Constant REST_GET_EQUIPEMENTS. */
-    public static final String REST_GET_EQUIPEMENTS = "getEquipements";
-
-    /** The Constant REST_GET_INCIDENT_BY_EQUIPEMENT. */
-    public static final String REST_GET_INCIDENT_BY_EQUIPEMENT = "getIncidentsByEquipement";
-
-    /** The Constant REST_GET_EQUIPEMENT_BY_POSITION. */
-    public static final String REST_GET_EQUIPEMENT_BY_POSITION = "getEquipementsByPosition";
-
     /** The Constant REST_GET_SIGNALEMENT_BY_TOKEN. */
     public static final String REST_GET_SIGNALEMENT_BY_TOKEN = "getSignalementByToken";
 
@@ -304,6 +292,17 @@ public final class SignalementConstants
      * Sepcial Address
      */
     public static final String BRIDGE_ADDRESS = "pont";
+
+
+    /**
+     * The Constant PROPERTY_TOKEN_GRAVITEE
+     */
+    public static final String PROPERTY_TOKEN_GRAVITEE = "fo.token.gravitee";
+
+    /**
+     * The Constant PROPERTY_KEY_GRAVITEE
+     */
+    public static final String PROPERTY_KEY_GRAVITEE = "fo.key.gravitee";
 
     /**
      * Utility class - empty constructor.

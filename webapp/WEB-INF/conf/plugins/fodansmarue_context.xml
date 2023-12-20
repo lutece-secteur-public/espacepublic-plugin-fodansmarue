@@ -10,4 +10,7 @@
 	
 	<bean id="adresseService" class="fr.paris.lutece.plugins.fodansmarue.service.AdresseService" />
 
+	<bean id="dmrUtils" class="fr.paris.lutece.plugins.fodansmarue.utils.impl.DmrUtils" />
+	<bean id="listUtils" class="fr.paris.lutece.plugins.fodansmarue.utils.impl.ListUtils" />
+
 </beans>

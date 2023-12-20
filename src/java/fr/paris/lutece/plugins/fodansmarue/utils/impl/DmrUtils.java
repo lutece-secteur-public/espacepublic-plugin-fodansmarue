@@ -31,7 +31,7 @@
  *
  * License 1.0
  */
-package fr.paris.lutece.plugins.fodansmarue.utils;
+package fr.paris.lutece.plugins.fodansmarue.utils.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,12 +40,13 @@ import org.apache.commons.lang.StringUtils;
 
 import fr.paris.lutece.plugins.fodansmarue.business.entities.Equipement;
 import fr.paris.lutece.plugins.fodansmarue.dto.DossierSignalementDTO;
+import fr.paris.lutece.plugins.fodansmarue.utils.IDmrUtils;
 import fr.paris.lutece.portal.service.util.AppPropertiesService;
 
 /**
  * The Class DmrUtils.
  */
-public class DmrUtils
+public class DmrUtils implements IDmrUtils
 {
 
     /**
@@ -57,12 +58,10 @@ public class DmrUtils
     }
 
     /**
-     * Tri bulles.
-     *
-     * @param tab
-     *            the tab
+     * {@inheritDoc}
      */
-    public static void triBulles( List<DossierSignalementDTO> tab )
+    @Override
+    public void triBulles( List<DossierSignalementDTO> tab )
     {
         boolean tabInOrder = false;
         int size = tab.size( );
@@ -84,13 +83,10 @@ public class DmrUtils
     }
 
     /**
-     * Returns all the properties matching the prefix.
-     *
-     * @param prefix
-     *            the prefix
-     * @return the properties
+     * {@inheritDoc}
      */
-    public static List<String> getProperties( String prefix )
+    @Override
+    public List<String> getProperties( String prefix )
     {
         List<String> propertiesKeys = AppPropertiesService.getKeys( prefix );
         List<String> properties = new ArrayList<>( );
@@ -106,12 +102,10 @@ public class DmrUtils
     }
 
     /**
-     * Formattage adresse et nom des équipements sans accent et minuscule.
-     *
-     * @param listEquipement
-     *            the list equipement
+     * {@inheritDoc}
      */
-    public static void formatStringManual( List<Equipement> listEquipement )
+    @Override
+    public void formatStringManual( List<Equipement> listEquipement )
     {
 
         for ( Equipement equipement : listEquipement )
@@ -131,7 +125,7 @@ public class DmrUtils
     }
 
     // Formattage du nom/adresse de l'équipement
-    private static void format( char [ ] charsData )
+    private void format( char [ ] charsData )
     {
         char c;
 
